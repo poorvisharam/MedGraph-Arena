@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Environment Variables
+.env
+.env.local
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+pyrightconfig.json
+
+# Logs
+*.log
+
+# Mac OS
+.DS_Store
+
+# MedGraph Arena Specific
+indexes/
+# results/
+data/documents/pubmed/
+data/documents/guidelines/
+data/documents/fda_labels/
+data/documents/who_eml/
+data/documents/medquad/
