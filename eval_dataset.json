@@ -1,0 +1,177 @@
+[
+  {
+    "id": "Q01",
+    "question": "What is metformin used for?",
+    "ground_truth": "Metformin is a biguanide oral antidiabetic medication used as first-line treatment for type 2 diabetes mellitus. It works by decreasing hepatic glucose production, decreasing intestinal absorption of glucose, and improving insulin sensitivity.",
+    "question_type": "factual",
+    "sources_needed": ["pubmed", "medquad", "who_eml"]
+  },
+  {
+    "id": "Q02",
+    "question": "What are the main side effects of ibuprofen?",
+    "ground_truth": "Ibuprofen's main side effects include gastrointestinal risks such as gastric and duodenal ulceration (15-30% of chronic users), GI bleeding (3-5 fold increased risk), gastric perforation, and dyspepsia. It also carries cardiovascular and renal risks.",
+    "question_type": "factual",
+    "sources_needed": ["fda_labels", "medquad"]
+  },
+  {
+    "id": "Q03",
+    "question": "What is the recommended first-line treatment for hypertension?",
+    "ground_truth": "First-line treatments depend on patient characteristics: ACE inhibitors or ARBs for patients under 55 or with diabetes/CKD; calcium channel blockers or thiazide diuretics for patients over 55 or Black patients. Beta-blockers are not first-line unless heart failure or post-MI.",
+    "question_type": "factual",
+    "sources_needed": ["guidelines", "who_eml"]
+  },
+  {
+    "id": "Q04",
+    "question": "How do statins work to prevent cardiovascular disease?",
+    "ground_truth": "Statins are HMG-CoA reductase inhibitors that lower LDL cholesterol by 30-50%. Beyond lipid lowering, they have pleiotropic effects: improving endothelial function, reducing vascular inflammation, stabilizing plaques, and having antithrombotic properties.",
+    "question_type": "factual",
+    "sources_needed": ["pubmed", "medquad"]
+  },
+  {
+    "id": "Q05",
+    "question": "What is the mechanism of action of aspirin as an antiplatelet agent?",
+    "ground_truth": "At low doses (75-100mg daily), aspirin irreversibly inhibits cyclooxygenase-1 (COX-1) in platelets, preventing thromboxane A2 synthesis and thereby reducing platelet aggregation.",
+    "question_type": "factual",
+    "sources_needed": ["medquad", "who_eml"]
+  },
+  {
+    "id": "Q06",
+    "question": "What is insulin resistance?",
+    "ground_truth": "Insulin resistance is a pathological condition where cells fail to respond normally to insulin. It is a key feature of type 2 diabetes, metabolic syndrome, and PCOS. The pancreas compensates by producing more insulin (hyperinsulinemia), but eventually this fails, leading to elevated blood glucose.",
+    "question_type": "factual",
+    "sources_needed": ["medquad"]
+  },
+  {
+    "id": "Q07",
+    "question": "Can a patient on warfarin safely take ibuprofen?",
+    "ground_truth": "No. The combination is high-risk. Ibuprofen increases warfarin-related bleeding risk through multiple mechanisms: inhibiting COX-1 in platelets, damaging GI mucosa, potentially displacing warfarin from protein binding, and possibly inhibiting CYP2C9. Paracetamol is the preferred alternative.",
+    "question_type": "multi_hop",
+    "sources_needed": ["fda_labels", "medquad", "guidelines"]
+  },
+  {
+    "id": "Q08",
+    "question": "What happens when ACE inhibitors are combined with potassium-sparing diuretics?",
+    "ground_truth": "This combination creates significant hyperkalemia risk. Both drug classes independently increase potassium: ACE inhibitors reduce aldosterone (which normally promotes potassium excretion), while potassium-sparing diuretics block potassium excretion. However, the combination is used therapeutically in heart failure with careful monitoring.",
+    "question_type": "multi_hop",
+    "sources_needed": ["medquad", "guidelines", "who_eml"]
+  },
+  {
+    "id": "Q09",
+    "question": "Why are beta-blockers used in heart failure despite being negative inotropes?",
+    "ground_truth": "In heart failure, chronic sympathetic activation is harmful. Beta-blockers counter this by reducing heart rate (better diastolic filling), decreasing myocardial oxygen demand, preventing adverse remodeling, and reducing arrhythmia risk. Key trials show ~35% mortality reduction. Must be started at low doses.",
+    "question_type": "multi_hop",
+    "sources_needed": ["medquad", "guidelines"]
+  },
+  {
+    "id": "Q10",
+    "question": "How does chronic kidney disease affect metformin dosing?",
+    "ground_truth": "Metformin is contraindicated in severe CKD (eGFR < 30 mL/min/1.73m²) due to lactic acidosis risk. Dose should be halved when eGFR is 30-45 mL/min/1.73m². It can be used without adjustment when eGFR > 45. Renal function should be monitored regularly.",
+    "question_type": "multi_hop",
+    "sources_needed": ["medquad", "guidelines", "fda_labels"]
+  },
+  {
+    "id": "Q11",
+    "question": "What are the risks of combining warfarin with aspirin?",
+    "ground_truth": "The combination approximately doubles bleeding risk compared to warfarin alone. Both drugs impair hemostasis through different mechanisms (warfarin affects clotting cascade, aspirin affects platelets). Only indicated when benefit clearly outweighs risk, such as mechanical heart valve with coronary disease.",
+    "question_type": "multi_hop",
+    "sources_needed": ["medquad", "who_eml", "guidelines"]
+  },
+  {
+    "id": "Q12",
+    "question": "Why was empagliflozin added to the WHO Essential Medicines List?",
+    "ground_truth": "Empagliflozin was added in 2023 based on landmark trial evidence showing benefits beyond glucose lowering: 38% reduction in cardiovascular death (EMPA-REG), significant heart failure benefit (DAPA-HF), and CKD progression slowing (CREDENCE/DAPA-CKD). Now recommended as second-line after metformin for T2DM with CVD, HF, or CKD.",
+    "question_type": "multi_hop",
+    "sources_needed": ["who_eml", "medquad"]
+  },
+  {
+    "id": "Q13",
+    "question": "Do FDA warnings for atorvastatin match the clinical guideline recommendations?",
+    "ground_truth": "They largely align but differ in emphasis. Both warn about myopathy/rhabdomyolysis. FDA-specific: pregnancy Category X warning, dose limitations with CYP3A4 inhibitors (max 20mg with amiodarone), cognitive effects. Guidelines add: intensity-based dosing (high: 40-80mg, moderate: 10-20mg) tied to risk categories.",
+    "question_type": "cross_source",
+    "sources_needed": ["fda_labels", "guidelines", "medquad"]
+  },
+  {
+    "id": "Q14",
+    "question": "Compare the WHO Essential Medicines List entries for antihypertensives with clinical guideline recommendations.",
+    "ground_truth": "The WHO EML includes amlodipine, bisoprolol, enalapril, lisinopril, losartan, and hydrochlorothiazide. Clinical guidelines provide patient-specific selection criteria: ACE inhibitors/ARBs for young or diabetic patients, CCBs/thiazides for older or Black patients. WHO focuses on availability; guidelines focus on personalized selection.",
+    "question_type": "cross_source",
+    "sources_needed": ["who_eml", "guidelines"]
+  },
+  {
+    "id": "Q15",
+    "question": "How do PubMed research findings on warfarin interactions compare with FDA label warnings?",
+    "ground_truth": "PubMed research provides evidence-based detail on mechanisms and clinical significance, while FDA labels provide regulatory warnings. Both identify NSAIDs, aspirin, and amiodarone as key interactions. FDA labels focus on required precautions; research literature provides quantitative risk estimates and mechanistic understanding.",
+    "question_type": "cross_source",
+    "sources_needed": ["pubmed", "fda_labels"]
+  },
+  {
+    "id": "Q16",
+    "question": "What do different sources say about metformin's contraindications in renal impairment?",
+    "ground_truth": "Guidelines specify eGFR-based thresholds (contraindicated < 30, dose-adjust 30-45, safe > 45). FDA labels warn about lactic acidosis risk in renal impairment. WHO EML lists metformin without detailed renal guidance. MedQuAD specifies eGFR < 30 as contraindication. The sources are consistent but vary in specificity.",
+    "question_type": "cross_source",
+    "sources_needed": ["guidelines", "fda_labels", "who_eml", "medquad"]
+  },
+  {
+    "id": "Q17",
+    "question": "Cross-reference the drug interaction warnings across FDA labels, WHO guidance, and clinical guidelines for statins.",
+    "ground_truth": "All sources agree that statins interact with CYP3A4 inhibitors increasing myopathy risk. FDA labels provide specific dose caps (atorvastatin max 20mg with amiodarone). WHO guidance notes statin-amiodarone interaction generally. Guidelines recommend considering drug interactions when selecting statin intensity. The level of specificity varies by source.",
+    "question_type": "cross_source",
+    "sources_needed": ["fda_labels", "who_eml", "guidelines"]
+  },
+  {
+    "id": "Q18",
+    "question": "How consistent are the treatment recommendations for type 2 diabetes across PubMed, guidelines, and WHO EML?",
+    "ground_truth": "Highly consistent: all sources agree on metformin as first-line. Guidelines provide the most detailed stepwise algorithm (add SGLT2i if CVD/CKD, GLP-1 RA if atherosclerotic CVD). PubMed provides evidence basis. WHO EML added empagliflozin in 2023, aligning with guideline recommendations for CV/renal benefit.",
+    "question_type": "cross_source",
+    "sources_needed": ["pubmed", "guidelines", "who_eml", "medquad"]
+  },
+  {
+    "id": "Q19",
+    "question": "Is there agreement between FDA drug labels and MedQuAD on the safety profile of omeprazole?",
+    "ground_truth": "Both sources identify omeprazole's drug interactions (CYP2C19 inhibition affecting clopidogrel) and long-term risks (hypomagnesemia, B12 deficiency, fracture risk, C. difficile). FDA labels provide regulatory warnings; MedQuAD provides clinical context. Both recommend lowest effective dose for shortest duration.",
+    "question_type": "cross_source",
+    "sources_needed": ["fda_labels", "medquad"]
+  },
+  {
+    "id": "Q20",
+    "question": "What are the most common drug interaction risks across all cardiovascular and diabetes medications?",
+    "ground_truth": "Major categories: (1) Bleeding amplification (warfarin + NSAIDs/aspirin), (2) Hyperkalemia triangle (ACE/ARB + K-sparing diuretics + NSAIDs), (3) Hypoglycemia masking (beta-blockers in diabetics), (4) Triple whammy renal injury (ACE/ARB + diuretic + NSAID), (5) Statin toxicity with CYP3A4 inhibitors, (6) Metformin + contrast dye, (7) QT prolongation combinations.",
+    "question_type": "global",
+    "sources_needed": ["medquad", "fda_labels", "who_eml", "guidelines"]
+  },
+  {
+    "id": "Q21",
+    "question": "What overarching patterns emerge from all sources regarding safe prescribing for elderly patients with multiple conditions?",
+    "ground_truth": "Key patterns: (1) Polypharmacy is the primary risk — more drugs = exponentially more interactions; (2) Renal function declines with age, affecting dosing of metformin, digoxin, and others; (3) Start low, go slow with beta-blockers and ACE inhibitors; (4) Avoid NSAIDs where possible; (5) Monitor potassium, renal function, and INR frequently; (6) PPIs and statins need regular review for continued necessity.",
+    "question_type": "global",
+    "sources_needed": ["all"]
+  },
+  {
+    "id": "Q22",
+    "question": "Summarize the key themes about cardiovascular risk reduction across all document sources.",
+    "ground_truth": "Key themes: (1) Statin therapy is universally recommended for high-risk patients; (2) Blood pressure control with target < 130/80 is critical; (3) Antiplatelet therapy (aspirin) for secondary but not primary prevention; (4) SGLT2 inhibitors now recognized for CV benefit beyond glucose control; (5) Drug interactions must be managed carefully in patients on multiple CV drugs; (6) Lifestyle modification is foundational across all sources.",
+    "question_type": "global",
+    "sources_needed": ["all"]
+  },
+  {
+    "id": "Q23",
+    "question": "What are the main themes regarding drug safety monitoring across all sources?",
+    "ground_truth": "Main themes: (1) Narrow therapeutic index drugs (warfarin, digoxin) require regular lab monitoring; (2) Renal function monitoring is critical for many drugs; (3) Hepatic monitoring for statins (though de-emphasized recently); (4) Electrolyte monitoring for diuretic/ACE inhibitor combinations; (5) Symptom monitoring for myopathy with statins; (6) GI monitoring for NSAID users; (7) Regular review of medication necessity, especially in elderly.",
+    "question_type": "global",
+    "sources_needed": ["all"]
+  },
+  {
+    "id": "Q24",
+    "question": "What emerging trends in pharmacotherapy are reflected across the medical literature, guidelines, and WHO recommendations?",
+    "ground_truth": "Key trends: (1) SGLT2 inhibitors expanding beyond diabetes to heart failure and CKD (reflected in WHO EML 2023 addition); (2) De-emphasis of aspirin for primary prevention; (3) Precision medicine approach — choosing drugs based on comorbidities not just primary condition; (4) Growing recognition of polypharmacy risks; (5) Shift from reactive to proactive drug interaction monitoring.",
+    "question_type": "global",
+    "sources_needed": ["all"]
+  },
+  {
+    "id": "Q25",
+    "question": "Based on all available evidence, which drug class has the most complex interaction profile and why?",
+    "ground_truth": "Warfarin/oral anticoagulants have the most complex interaction profile due to: (1) Narrow therapeutic index — small changes in levels cause harm; (2) Extensive CYP450 metabolism (CYP2C9, CYP3A4) with dozens of interacting drugs; (3) Interactions with food (vitamin K); (4) Additive bleeding risk with any antiplatelet or NSAID; (5) Protein binding displacement; (6) Patient on anticoagulation typically has comorbidities requiring multiple other medications.",
+    "question_type": "global",
+    "sources_needed": ["all"]
+  }
+]
