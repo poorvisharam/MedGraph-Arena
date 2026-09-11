@@ -1,0 +1,33 @@
+# ─── RAG Systems ─────────────────────────────
+graphrag>=1.0.0
+lightrag-hku[api]
+NodeRAG
+chromadb
+langchain
+langchain-text-splitters
+langchain-community
+
+# ─── Evaluation ──────────────────────────────
+ragas
+openai
+datasets
+
+# ─── LLM & Embeddings ───────────────────────
+google-generativeai
+sentence-transformers
+
+# ─── Data Fetching ───────────────────────────
+biopython
+requests
+
+# ─── Dashboard ───────────────────────────────
+streamlit
+plotly
+
+# ─── Utilities ───────────────────────────────
+pydantic
+python-dotenv
+pandas
+tabulate
+tenacity
+PyYAML
