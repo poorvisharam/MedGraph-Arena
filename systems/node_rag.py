@@ -5,24 +5,22 @@ State-of-the-art multi-hop reasoning using concepts, relations, and semantic uni
 
 import time
 from pathlib import Path
-
-from openai import OpenAI
-
 import sys
-sys.path.insert(0, str(Path(__file__).parent.parent))
+
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
 from config import (
     NODERAG_INDEX_DIR,
-    GEMINI_OPENAI_BASE_URL,
-    GEMINI_OPENAI_API_KEY,
+    GEMINI_API_KEY,
     GEMINI_MODEL,
-    EMBEDDING_MODEL,
 )
 
 
 class NodeRAGSystem:
     """
     Wrapper around NodeRAG for heterogeneous graph-based retrieval.
-    Uses concept nodes, relation nodes, and semantic unit nodes.
+    Traverses concept nodes, relation nodes, and semantic unit text chunks.
     """
 
     def __init__(
@@ -32,47 +30,37 @@ class NodeRAGSystem:
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.noderag = None
+        self.noderag_config = None
         self._init_noderag()
 
-        # Fallback LLM
-        self.llm = OpenAI(
-            api_key=GEMINI_OPENAI_API_KEY,
-            base_url=GEMINI_OPENAI_BASE_URL,
-        )
-        self._documents = []
-
     def _init_noderag(self):
-        """Initialize NodeRAG instance."""
+        """Initialize NodeRAG instance with Gemini Free Tier / Flash configuration."""
         try:
             from NodeRAG import NodeConfig, NodeRag
 
             config_dict = {
-                'config': {
-                    'main_folder': str(self.cache_dir),
-                    'language': 'English',
-                    'chunk_size': 1200
+                "config": {
+                    "main_folder": str(self.cache_dir),
+                    "language": "English",
+                    "chunk_size": 1200,
+                    "dim": 3072,
                 },
-                'model_config': {
-                    'model_name': GEMINI_MODEL,
-                    'api_keys': GEMINI_OPENAI_API_KEY,
-                    'base_url': GEMINI_OPENAI_BASE_URL,
-                    'service_provider': 'openai'
+                "model_config": {
+                    "model_name": GEMINI_MODEL,
+                    "api_keys": GEMINI_API_KEY,
+                    "service_provider": "gemini",
                 },
-                'embedding_config': {
-                    'embedding_model_name': 'text-embedding-004',
-                    'api_keys': GEMINI_OPENAI_API_KEY,
-                    'base_url': GEMINI_OPENAI_BASE_URL,
-                    'service_provider': 'gemini_embedding'
-                }
+                "embedding_config": {
+                    "embedding_model_name": "gemini-embedding-001",
+                    "api_keys": GEMINI_API_KEY,
+                    "service_provider": "gemini_embedding",
+                },
             }
             self.noderag_config = NodeConfig(config_dict)
-            self.noderag = NodeRag(self.noderag_config, web_ui=True)
+            self.noderag = NodeRag(self.noderag_config, web_ui=False)
             print("  [NodeRAG] Initialized successfully")
-        except ImportError:
-            print("  [NodeRAG] ⚠ NodeRAG not installed — will use fallback mode")
-            self.noderag = None
         except Exception as e:
-            print(f"  [NodeRAG] ⚠ Init error: {e} — will use fallback mode")
+            print(f"  [NodeRAG] ⚠ Init error: {e}")
             self.noderag = None
 
     def ingest(self, documents: list[str], metadatas: list[dict] | None = None):
@@ -80,26 +68,19 @@ class NodeRAGSystem:
         Index documents into NodeRAG's heterogeneous graph.
         """
         print(f"  [NodeRAG] Ingesting {len(documents)} documents...")
-        self._documents = documents
 
         if self.noderag is None:
-            print("  [NodeRAG] Using fallback mode — documents stored in memory")
-            return
+            raise RuntimeError("NodeRAG is not initialized properly.")
 
-        try:
-            # NodeRAG expects documents to be written to files
-            input_dir = self.cache_dir / "input"
-            input_dir.mkdir(parents=True, exist_ok=True)
+        input_dir = self.cache_dir / "input"
+        input_dir.mkdir(parents=True, exist_ok=True)
 
-            for i, doc in enumerate(documents):
-                filepath = input_dir / f"doc_{i:03d}.txt"
-                filepath.write_text(doc, encoding="utf-8")
+        for i, doc in enumerate(documents):
+            filepath = input_dir / f"doc_{i:03d}.txt"
+            filepath.write_text(doc, encoding="utf-8")
 
-            self.noderag.run()
-            print(f"  [NodeRAG] Indexing complete ✓")
-        except Exception as e:
-            print(f"  [NodeRAG] ⚠ Indexing error: {e}")
-            print("  [NodeRAG] Falling back to in-memory store")
+        self.noderag.run()
+        print("  [NodeRAG] Indexing complete ✓")
 
     def query(self, question: str) -> dict:
         """
@@ -108,59 +89,45 @@ class NodeRAGSystem:
         """
         start_time = time.time()
 
-        if self.noderag is not None:
-            try:
-                from NodeRAG import NodeSearch
-                searcher = NodeSearch(self.noderag_config)
-                result = searcher.answer(question)
-                latency_ms = (time.time() - start_time) * 1000
-                return {
-                    "answer": str(result),
-                    "contexts": ["[NodeRAG heterogeneous graph retrieval]"],
-                    "latency_ms": round(latency_ms, 1),
-                }
-            except Exception as e:
-                print(f"  [NodeRAG] Query error: {e}, using fallback")
-
-        return self._fallback_query(question, start_time)
-
-    def _fallback_query(self, question: str, start_time: float) -> dict:
-        """
-        Fallback: Simulates NodeRAG's multi-hop reasoning via prompt engineering.
-        NodeRAG's key innovation is decomposing queries into concept/relation/semantic traversals.
-        """
-        context_text = "\n\n---\n\n".join(self._documents[:10])
+        if self.noderag_config is None:
+            return {
+                "answer": "[NodeRAG Error: System not configured]",
+                "contexts": [],
+                "latency_ms": round((time.time() - start_time) * 1000, 1),
+            }
 
         try:
-            response = self.llm.chat.completions.create(
-                model=GEMINI_MODEL,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            "You are a medical knowledge assistant using advanced multi-hop graph reasoning. "
-                            "Think step-by-step through the knowledge graph:\n"
-                            "1. CONCEPTS: Identify the key medical concepts in the question\n"
-                            "2. RELATIONS: Trace relationships between concepts (drug→effect, condition→treatment, etc.)\n"
-                            "3. SEMANTIC UNITS: Find coherent semantic units that bridge multiple concepts\n"
-                            "4. SYNTHESIS: Combine multi-hop paths into a comprehensive answer\n\n"
-                            "Show your reasoning path. Cite specific relationships you traversed."
-                        ),
-                    },
-                    {"role": "user", "content": f"Context:\n{context_text}\n\nQuestion: {question}"},
-                ],
-                temperature=0.1,
-                max_tokens=1024,
+            from NodeRAG import NodeSearch
+
+            strict_question = (
+                f"{question}\n\n[STRICT INSTRUCTION: Answer based ONLY on the retrieved graph context. "
+                "Do NOT use any pre-trained external knowledge or clinical assumptions. If the context does not contain "
+                "enough information, state: 'The provided context does not contain sufficient information to answer this question.']"
             )
-            answer = response.choices[0].message.content.strip()
+            searcher = NodeSearch(self.noderag_config)
+            retrieval = searcher.search(question)
+            answer = searcher.answer(strict_question)
+
+            contexts = []
+            if hasattr(retrieval, "retrieved_list") and retrieval.retrieved_list:
+                contexts = [
+                    item[0] if isinstance(item, (tuple, list)) else str(item)
+                    for item in retrieval.retrieved_list
+                ]
+            elif hasattr(retrieval, "unstructured_prompt") and retrieval.unstructured_prompt:
+                contexts = [retrieval.unstructured_prompt]
+
+            latency_ms = (time.time() - start_time) * 1000
+            return {
+                "answer": str(answer).strip(),
+                "contexts": contexts[:10],
+                "latency_ms": round(latency_ms, 1),
+            }
         except Exception as e:
-            answer = f"[NodeRAG fallback error: {e}]"
-
-        contexts = [doc[:200] + "..." for doc in self._documents[:5]]
-        latency_ms = (time.time() - start_time) * 1000
-
-        return {
-            "answer": answer,
-            "contexts": contexts,
-            "latency_ms": round(latency_ms, 1),
-        }
+            latency_ms = (time.time() - start_time) * 1000
+            print(f"  [NodeRAG] Query error: {e}")
+            return {
+                "answer": f"[NodeRAG Error: {e}]",
+                "contexts": [],
+                "latency_ms": round(latency_ms, 1),
+            }
