@@ -1,10 +1,12 @@
 # MedGraph Arena 🧬
 ### Benchmarking Vector vs. Graph RAG Architectures on Complex Clinical Knowledge
 
+[![Live App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://poorvisharam-medgraph-arena-app-rsfakn.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-brightgreen.svg)](https://python.org)
-[![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-FF4B4B.svg)](https://streamlit.io)
 [![Gemini](https://img.shields.io/badge/LLM-Gemini%203.6%20Flash-4285F4.svg)](https://ai.google.dev/)
+
+> 🌐 **Live Interactive Dashboard:** [https://poorvisharam-medgraph-arena-app-rsfakn.streamlit.app/](https://poorvisharam-medgraph-arena-app-rsfakn.streamlit.app/)
 
 ---
 
@@ -170,9 +172,12 @@ python ingest.py
 # Execute evaluation queries and run 6-Criteria G-Eval
 python run_benchmark.py
 
-# Launch the interactive Streamlit dashboard
+# Launch the interactive Streamlit dashboard locally
 streamlit run app.py
 ```
+
+> 💡 **No setup required?** Explore the live deployment at [poorvisharam-medgraph-arena-app-rsfakn.streamlit.app](https://poorvisharam-medgraph-arena-app-rsfakn.streamlit.app/).
+
 
 ---
 
