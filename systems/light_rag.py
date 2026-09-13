@@ -131,73 +131,64 @@ class LightRAGSystem:
         """
         start_time = time.time()
 
-        if self.rag is not None:
-            try:
-                import asyncio
-                from lightrag import QueryParam
-
-                async def _query():
-                    return await self.rag.aquery(
-                        question,
-                        param=QueryParam(mode=mode),
-                    )
-
-                if not hasattr(self, "_loop") or self._loop.is_closed():
-                    self._loop = asyncio.new_event_loop()
-                    asyncio.set_event_loop(self._loop)
-                
-                result = self._loop.run_until_complete(_query())
-
-                latency_ms = (time.time() - start_time) * 1000
-                return {
-                    "answer": str(result),
-                    "contexts": [f"[LightRAG {mode} retrieval]"],
-                    "latency_ms": round(latency_ms, 1),
-                }
-            except Exception as e:
-                print(f"  [LightRAG] Query error: {e}, using fallback")
-
-        # Fallback query
-        return self._fallback_query(question, mode, start_time)
-
-    def _fallback_query(self, question: str, mode: str, start_time: float) -> dict:
-        """Fallback query using stored documents + LLM."""
-        context_text = "\n\n---\n\n".join(self._documents[:10])
-
-        mode_instructions = {
-            "naive": "Use simple keyword/semantic matching to find relevant information.",
-            "local": "Focus on specific entities and their direct relationships mentioned in the context.",
-            "global": "Identify overarching themes and patterns across all documents.",
-            "hybrid": "Combine entity-level details with thematic analysis for a comprehensive answer.",
-        }
-
-        instruction = mode_instructions.get(mode, mode_instructions["hybrid"])
+        if self.rag is None:
+            return {
+                "answer": "[LightRAG Error: System not initialized]",
+                "contexts": [],
+                "latency_ms": round((time.time() - start_time) * 1000, 1),
+            }
 
         try:
-            response = self.llm.chat.completions.create(
-                model=GEMINI_MODEL,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            f"You are a medical knowledge assistant using graph-based retrieval ({mode} mode). "
-                            f"{instruction} Answer based on the provided context. Cite specific details."
-                        ),
-                    },
-                    {"role": "user", "content": f"Context:\n{context_text}\n\nQuestion: {question}"},
-                ],
-                temperature=0.1,
-                max_tokens=1024,
+            import asyncio
+            from lightrag import QueryParam
+
+            if not hasattr(self, "_loop") or self._loop.is_closed():
+                self._loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(self._loop)
+
+            strict_prompt = (
+                "You are a strict medical evaluation assistant. Answer the question based ONLY and EXCLUSIVELY on the provided context. "
+                "Do NOT use any pre-trained external knowledge, clinical assumptions, or unstated facts. "
+                "If the context does not contain enough information to answer the question, you MUST explicitly state: "
+                "'The provided context does not contain sufficient information to answer this question.' "
+                "Do NOT extrapolate or infer beyond what is directly stated."
             )
-            answer = response.choices[0].message.content.strip()
+
+            async def _run_query():
+                await self.rag.initialize_storages()
+                # 1. Retrieve the actual context from the knowledge graph
+                raw_context = await self.rag.aquery(
+                    question,
+                    param=QueryParam(mode=mode, only_need_context=True),
+                )
+                # 2. Generate the grounded answer
+                answer = await self.rag.aquery(
+                    question,
+                    param=QueryParam(mode=mode, user_prompt=strict_prompt),
+                )
+                return str(answer), str(raw_context)
+
+            answer, raw_context = self._loop.run_until_complete(_run_query())
+
+            # Split context text into readable sections/chunks for evaluation
+            context_blocks = [
+                block.strip() for block in raw_context.split("\n\n") if block.strip()
+            ]
+            if not context_blocks:
+                context_blocks = [raw_context]
+
+            latency_ms = (time.time() - start_time) * 1000
+            return {
+                "answer": answer.strip(),
+                "contexts": context_blocks[:10],
+                "latency_ms": round(latency_ms, 1),
+            }
         except Exception as e:
-            answer = f"[LightRAG fallback error: {e}]"
+            latency_ms = (time.time() - start_time) * 1000
+            print(f"  [LightRAG] Query error: {e}")
+            return {
+                "answer": f"[LightRAG Error: {e}]",
+                "contexts": [],
+                "latency_ms": round(latency_ms, 1),
+            }
 
-        contexts = [doc[:200] + "..." for doc in self._documents[:5]]
-        latency_ms = (time.time() - start_time) * 1000
-
-        return {
-            "answer": answer,
-            "contexts": contexts,
-            "latency_ms": round(latency_ms, 1),
-        }
