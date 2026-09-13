@@ -142,7 +142,11 @@ cd MedGraph-Arena
 
 python -m venv .venv
 source .venv/bin/activate
+# Install dashboard & evaluation dependencies (lightweight & cloud-ready)
 pip install -r requirements.txt
+
+# (Optional) If re-building graph indexes from scratch:
+# pip install -r requirements-full.txt
 ```
 
 ### 2. Configure API Keys
@@ -152,7 +156,7 @@ cp .env.example .env
 # Open .env and set: GEMINI_API_KEY="your-api-key-here"
 ```
 
-### 3. Fetch Data & Build Indexes
+### 3. Fetch Data & Build Indexes (Optional if using pre-built indexes)
 ```bash
 # Fetch public medical data (PubMed, Guidelines, FDA, WHO, MedQuAD)
 python data/fetch_all.py
@@ -161,7 +165,7 @@ python data/fetch_all.py
 python ingest.py
 ```
 
-### 4. Run Benchmark & Launch Dashboard
+### 4. Launch Dashboard & Run Evaluations
 ```bash
 # Execute evaluation queries and run 6-Criteria G-Eval
 python run_benchmark.py

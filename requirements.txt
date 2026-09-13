@@ -1,33 +1,13 @@
-# ─── RAG Systems ─────────────────────────────
-graphrag>=1.0.0
-lightrag-hku[api]
-NodeRAG
-chromadb
-langchain
-langchain-text-splitters
-langchain-community
+# ─── MedGraph Arena: Dashboard & Evaluation Requirements ──────────
+# Lightweight, high-compatibility dependencies for Streamlit Cloud deployment.
 
-# ─── Evaluation ──────────────────────────────
-ragas
-openai
-datasets
-
-# ─── LLM & Embeddings ───────────────────────
-google-generativeai
-sentence-transformers
-
-# ─── Data Fetching ───────────────────────────
-biopython
-requests
-
-# ─── Dashboard ───────────────────────────────
-streamlit
-plotly
-
-# ─── Utilities ───────────────────────────────
-pydantic
-python-dotenv
-pandas
-tabulate
-tenacity
-PyYAML
+streamlit>=1.35.0
+plotly>=5.18.0
+pandas>=2.0.0
+numpy>=1.24.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+PyYAML>=6.0
+openai>=1.30.0
+requests>=2.31.0
+tabulate>=0.9.0
