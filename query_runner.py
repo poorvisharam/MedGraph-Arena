@@ -70,19 +70,32 @@ def run_queries(systems: dict, eval_dataset: list[dict] | None = None) -> list[d
                     "contexts": [],
                     "latency_ms": 0,
                 }
+            time.sleep(2)
 
         results.append(result)
 
-    # Save results
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    with open(QUERY_OUTPUTS_PATH, "w") as f:
-        json.dump(results, f, indent=2)
-    print(f"\n💾 Results saved to {QUERY_OUTPUTS_PATH}")
+        # Incremental save so no progress is ever lost
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+        with open(QUERY_OUTPUTS_PATH, "w") as f:
+            json.dump(results, f, indent=2)
+        print(f"    💾 Saved progress ({i+1}/{len(eval_dataset)}) to {QUERY_OUTPUTS_PATH.name}")
 
+    print(f"\n💾 All results saved successfully to {QUERY_OUTPUTS_PATH}")
     return results
 
 
 if __name__ == "__main__":
-    from ingest import ingest_all
-    systems = ingest_all()
+    from systems.naive_rag import NaiveRAG
+    from systems.graph_rag import GraphRAGSystem
+    from systems.light_rag import LightRAGSystem
+    from systems.node_rag import NodeRAGSystem
+
+    print("\n📦 Loading RAG systems for evaluation...")
+    systems = {
+        "naive_rag": NaiveRAG(),
+        "graphrag": GraphRAGSystem(),
+        "lightrag": LightRAGSystem(),
+        "noderag": NodeRAGSystem(),
+    }
     run_queries(systems)
+

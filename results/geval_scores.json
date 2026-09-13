@@ -1,0 +1,1152 @@
+{
+  "criteria": [
+    "context_relevance",
+    "context_recall",
+    "groundedness",
+    "answer_relevance",
+    "clinical_accuracy",
+    "hallucination_safety"
+  ],
+  "summary": {
+    "naive_rag": {
+      "context_relevance": 3.72,
+      "context_recall": 3.34,
+      "groundedness": 5.0,
+      "answer_relevance": 4.03,
+      "clinical_accuracy": 4.47,
+      "hallucination_safety": 5.0
+    },
+    "graphrag": {
+      "context_relevance": 1.72,
+      "context_recall": 1.36,
+      "groundedness": 1.76,
+      "answer_relevance": 4.54,
+      "clinical_accuracy": 4.58,
+      "hallucination_safety": 3.0
+    },
+    "lightrag": {
+      "context_relevance": 4.23,
+      "context_recall": 4.19,
+      "groundedness": 4.25,
+      "answer_relevance": 4.84,
+      "clinical_accuracy": 4.9,
+      "hallucination_safety": 4.88
+    },
+    "noderag": {
+      "context_relevance": 4.7,
+      "context_recall": 4.42,
+      "groundedness": 4.49,
+      "answer_relevance": 4.79,
+      "clinical_accuracy": 4.72,
+      "hallucination_safety": 4.71
+    }
+  },
+  "overall_scores": {
+    "naive_rag": 4.26,
+    "graphrag": 2.83,
+    "lightrag": 4.55,
+    "noderag": 4.64
+  },
+  "per_question": [
+    {
+      "id": "Q01",
+      "question": "What is metformin used for?",
+      "ground_truth": "Metformin is a biguanide oral antidiabetic medication used as first-line treatment for type 2 diabetes mellitus. It works by decreasing hepatic glucose production, decreasing intestinal absorption of glucose, and improving insulin sensitivity.",
+      "question_type": "factual",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant and complete, covering the ground truth and additional accurate details regarding metformin's indications and exploratory uses. The system answer is fully grounded in the retrieved text, directly answers the query with high clinical accuracy, and contains zero hallucinations."
+        },
+        "graphrag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 2.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context discusses cardiovascular clinical trials (JUPITER, MERIT-HF, etc.), statins, beta-blockers, and MedQuAD, but contains zero information about metformin. Score: 1.0.\n2. **Context Recall**: The retrieved context misses all key facts present in the ground truth regarding metformin. Score: 1.0.\n3. **Groundedness**: The system answer contains extensive information and cites non-existent data nodes within the provided context (`[Data: Sources (17, 57)]`, etc.). Since none of these facts are present in the retrieved context, it is completely ungrounded. Score: 1.0.\n4. **Answer Relevance**: The system answer directly, thoroughly, and clearly addresses the question regarding the indications, mechanism, and clinical use of metformin. Score: 5.0.\n5. **Clinical Accuracy**: The medical facts provided (first-line for T2DM, mechanism of action, PCOS/weight management, eGFR < 30 contraindication, iodinated contrast protocol) are fully concordant with ground truth and clinical standards. Score: 5.0.\n6. **Hallucination Safety**: Although the clinical information is medically accurate, the system hallucinated synthetic graph citations (`[Data: ... ]`) and failed to acknowledge that the retrieved context lacked the necessary information. Score: 2.0."
+        },
+        "lightrag": {
+          "context_relevance": 4.5,
+          "context_recall": 5.0,
+          "groundedness": 3.8,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.5,
+          "reasoning": "The retrieved context is highly relevant and captures all necessary information from the ground truth as well as additional clinical nuance regarding metformin. The system answer directly and comprehensively answers the query with high clinical accuracy. However, the system answer includes a few details not explicitly present in the retrieved context (such as 'decreasing intestinal absorption of glucose', 'hypothalamic appetite regulatory centers', and fabricated reference citations [1]-[3]), slightly impacting groundedness while remaining clinically accurate and safe."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant and complete, containing direct facts to answer the question. The context recall is perfect as it contains all key medical facts required by the ground truth and even additional context. The system answer is 100% grounded in the provided context with zero hallucinations. It directly answers the user's prompt in a clear, accurate, and structured manner, aligning perfectly with clinical knowledge and ground truth."
+        }
+      }
+    },
+    {
+      "id": "Q02",
+      "question": "What are the main side effects of ibuprofen?",
+      "ground_truth": "Ibuprofen's main side effects include gastrointestinal risks such as gastric and duodenal ulceration (15-30% of chronic users), GI bleeding (3-5 fold increased risk), gastric perforation, and dyspepsia. It also carries cardiovascular and renal risks.",
+      "question_type": "factual",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.2,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.8,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. Context Relevance: The retrieved context provides specific details on ibuprofen's gastrointestinal risks, cardiovascular warnings, allergy alerts, and interactions, making it highly relevant to the clinical question asked.\n2. Context Recall: The retrieved context captures GI risks and cardiovascular risks mentioned in the ground truth, but fails to capture renal risks mentioned in the ground truth.\n3. Groundedness: The system answer relies entirely on the retrieved context without introducing any ungrounded assertions or extrapolations.\n4. Answer Relevance: The response directly and comprehensively answers the question regarding the main side effects of ibuprofen.\n5. Clinical Accuracy: The response is clinically accurate and aligns well with medical knowledge, listing primary risks (GI, CV, allergic reactions). Omitting renal risks is a mild limitation resulting from context limitations, but overall clinical accuracy remains high.\n6. Hallucination Safety: No hallucinated data or false medical claims were present; all information cited comes directly from the provided text."
+        },
+        "graphrag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.5,
+          "hallucination_safety": 2.0,
+          "reasoning": "The retrieved context contains information about cardiovascular trials (JUPITER, MERIT-HF, etc.) and MedQuAD, but completely lacks any context regarding ibuprofen or its side effects (context_relevance: 1.0, context_recall: 1.0). The system answer provides a comprehensive and clinically accurate response to the prompt (answer_relevance: 5.0, clinical_accuracy: 4.5). However, because the retrieved context provides zero evidence for these claims, the system answer relies entirely on parametric knowledge while fabricating internal citations like '[Data: Sources (13)]' (groundedness: 1.0, hallucination_safety: 2.0)."
+        },
+        "lightrag": {
+          "context_relevance": 3.0,
+          "context_recall": 3.5,
+          "groundedness": 2.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. Context Relevance: The retrieved context is a noisy knowledge graph output containing many entities completely unrelated to Ibuprofen (e.g., Amlodipine, Metformin, Metoprolol, Hydrochlorothiazide). However, it does contain several relevant entities for Ibuprofen side effects.\n2. Context Recall: The context covers GI bleeding (3-5 fold risk) and gastric perforation, but lacks explicit statistics on ulceration (15-30%), cardiovascular risks, and renal risks required by the ground truth.\n3. Groundedness: The system answer includes several accurate facts (e.g., 15-30% ulceration rate, specific cardiovascular warnings like heart attack/stroke, allergic reactions) that are not present in the provided retrieved context. Thus, it relies heavily on parametric knowledge rather than strictly grounding in the context.\n4. Answer Relevance: The response directly and thoroughly answers the user's question regarding ibuprofen's main side effects.\n5. Clinical Accuracy: The output is highly accurate, matching the ground truth and standard medical knowledge regarding NSAID risks.\n6. Hallucination Safety: The external knowledge brought in is clinically valid and safe, presenting no false or dangerous medical claims."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.8,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. **Context Relevance**: The retrieved passages from MedQuAD, openFDA, and PubMed directly concern ibuprofen's safety profile, side effects, warnings, and risks. (Score: 5.0)\n2. **Context Recall**: The retrieved context contains all facts from the ground truth, including gastrointestinal stats (15-30% ulceration, 3-5 fold GI bleeding), cardiovascular risks, and renal risks. (Score: 5.0)\n3. **Groundedness**: All statements in the system response (GI effects, cardiovascular risks, allergic reactions, and pregnancy complications) are directly pulled from the retrieved openFDA label and MedQuAD passages. (Score: 5.0)\n4. **Answer Relevance**: The system answer directly answers the query regarding the main side effects of ibuprofen in a clean, structured format. (Score: 5.0)\n5. **Clinical Accuracy**: The response is clinically accurate and provides appropriate depth on GI, cardiovascular, and allergic risks. It slightly omits renal risks which were noted in ground truth, but overall clinical guidance remains accurate and helpful. (Score: 4.8)\n6. **Hallucination Safety**: There are zero fabricated facts or dangerous claims present in the output. (Score: 5.0)"
+        }
+      }
+    },
+    {
+      "id": "Q03",
+      "question": "What is the recommended first-line treatment for hypertension?",
+      "ground_truth": "First-line treatments depend on patient characteristics: ACE inhibitors or ARBs for patients under 55 or with diabetes/CKD; calcium channel blockers or thiazide diuretics for patients over 55 or Black patients. Beta-blockers are not first-line unless heart failure or post-MI.",
+      "question_type": "factual",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 2.5,
+          "context_recall": 1.5,
+          "groundedness": 5.0,
+          "answer_relevance": 4.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context consists mostly of boilerplate drug label descriptions regarding blood pressure reduction and general guidelines (JNC). While related to hypertension management, it lacks explicit detailed recommendations for first-line therapies, making its relevance moderate to low (2.5).\n2. **Context Recall**: The retrieved passages omit almost all specific first-line guidance detailed in the ground truth (e.g., ACEi/ARB vs. CCB/thiazide recommendations based on age, race, and comorbidities) (1.5).\n3. **Groundedness**: The system answer correctly identifies that the context does not contain sufficient facts to answer the specific prompt and makes no unsupported claims (5.0).\n4. **Answer Relevance**: Stating that the context is insufficient is an appropriate answer given the inadequacy of the retrieved information, though it leaves the clinical prompt unanswered due to context constraints (4.0).\n5. **Clinical Accuracy**: The response makes no clinically inaccurate statements (5.0).\n6. **Hallucination Safety**: Perfect score, as the system safely declines to fabricate clinical guidelines not present in the context (5.0)."
+        },
+        "graphrag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 4.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. Context Relevance: The retrieved context discusses landmark cardiovascular trials (e.g., statin trials, MERIT-HF, CIBIS-II) and general cardiovascular management, but lacks any specific information regarding first-line antihypertensive treatments. Score: 1.0\n2. Context Recall: The context fails to capture any of the critical medical facts regarding first-line hypertension management specified in the ground truth. Score: 1.0\n3. Groundedness: The system accurately identifies that the retrieved context is insufficient to answer the question, avoiding any ungrounded claims. Score: 5.0\n4. Answer Relevance: By explicitly stating that the context lacks sufficient information, the system safely addresses the query given the context constraints. Score: 4.0\n5. Clinical Accuracy: The system makes no incorrect clinical assertions or dangerous recommendations, accurately refraining from answering without required context. Score: 5.0\n6. Hallucination Safety: There is zero hallucination; the system safely abstains from generating unsupported medical information. Score: 5.0"
+        },
+        "lightrag": {
+          "context_relevance": 4.0,
+          "context_recall": 3.5,
+          "groundedness": 4.8,
+          "answer_relevance": 4.8,
+          "clinical_accuracy": 4.7,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. **context_relevance**: The context provides relevant information regarding hypertension treatment, specifically identifying ACE inhibitors for CKD and amlodipine for Black/elderly patients, though it contains some extraneous drug/entity detail.\n2. **context_recall**: The retrieved context captures key segments of the ground truth (ACE inhibitors for CKD, CCBs for Black/elderly patients), but misses thiazide diuretics, ARBs, and explicit age <55 cutoffs.\n3. **groundedness**: The system answer strictly adheres to the provided retrieved context facts (ACE inhibitors for CKD, Amlodipine for Black and elderly patients, JNC references).\n4. **answer_relevance**: The response directly and clearly answers the user's prompt regarding first-line antihypertensive treatments.\n5. **clinical_accuracy**: The information provided is clinically sound and closely mirrors both standard clinical practice guidelines (JNC/NICE) and the ground truth.\n6. **hallucination_safety**: There are zero fabricated clinical claims or dangerous medical recommendations."
+        },
+        "noderag": {
+          "context_relevance": 4.5,
+          "context_recall": 3.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 3.8,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains detailed information regarding antihypertensive medications, specifically highlighting ACE inhibitors as first-line agents. However, it lacks full clinical nuance regarding age (<55 vs >55) and race-based recommendations (e.g., CCBs or thiazides for Black patients or patients >55) found in the ground truth. The system answer strictly grounds itself in the provided context, accurately summarizing that ACE inhibitors (such as lisinopril) are preferred first-line treatments, especially in patients with CKD or diabetic nephropathy. The answer is completely hallucination-free and faithful to the text, though clinically incomplete relative to full clinical practice guidelines due to limitations in the context recall."
+        }
+      }
+    },
+    {
+      "id": "Q04",
+      "question": "How do statins work to prevent cardiovascular disease?",
+      "ground_truth": "Statins are HMG-CoA reductase inhibitors that lower LDL cholesterol by 30-50%. Beyond lipid lowering, they have pleiotropic effects: improving endothelial function, reducing vascular inflammation, stabilizing plaques, and having antithrombotic properties.",
+      "question_type": "factual",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.8,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains a direct, accurate answer from a medical Q&A dataset that matches the ground truth word-for-word on all mechanisms of action. The system answer accurately extracts all key facts (HMG-CoA reductase inhibition, 30-50% LDL reduction, and pleiotropic effects including endothelial function improvement, inflammation reduction, plaque stabilization, and antithrombotic properties) without adding any hallucinations or clinical inaccuracies. Context relevance is very high despite a few extra retrieved snippets."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.5,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 2.5,
+          "reasoning": "1. Context Relevance: Only the first retrieved context snippet mentions statin therapy and key trials (JUPITER, 4S, WOSCOPS, HPS). The remaining contexts discuss beta-blockers, MedQuAD, and general interventional procedures without detailing statin mechanisms. Context relevance is low (2.0).\n2. Context Recall: The retrieved context omits almost all essential mechanism facts from the ground truth (HMG-CoA inhibition, 30-50% LDL reduction, pleiotropic effects like endothelial function, inflammation reduction, plaque stabilization, and antithrombotic properties). Context recall is very low (1.5).\n3. Groundedness: The system answer includes detailed mechanisms, percentages, and pleiotropic effects that are completely missing from the retrieved context, while inserting fake citation tags like '[Data: Sources (1, 7)]'. Groundedness is very poor (1.0).\n4. Answer Relevance: The response directly and thoroughly answers the prompt regarding how statins work to prevent cardiovascular disease. Answer relevance is excellent (5.0).\n5. Clinical Accuracy: The medical facts provided in the answer are clinically accurate, aligned with the ground truth, and reflect standard cardiovascular pharmacology. Clinical accuracy is excellent (5.0).\n6. Hallucination Safety: While the medical claims themselves are factually true in clinical practice, the model hallucinates evidence attribution and claims context grounding that does not exist in the retrieved text. Because it does not present dangerous medical advice, hallucination safety receives a moderate score (2.5)."
+        },
+        "lightrag": {
+          "context_relevance": 4.5,
+          "context_recall": 4.5,
+          "groundedness": 3.8,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.8,
+          "reasoning": "The retrieved context is relevant and contains most of the key entities (HMG-CoA reductase inhibition, endothelial function, vascular inflammation, plaque stabilization, clinical trials). The answer is clinically accurate, precise, and completely answers the prompt. However, regarding groundedness, the answer includes extra factual clinical details (such as JUPITER/WOSCOPS trials, 30-50% LDL reduction exact figure, liver enzymes, and CK monitoring) that were not strictly present in the provided context snippets, though they are medically correct and match standard clinical knowledge."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant and complete, covering all aspects of statin mechanisms present in the ground truth. The system answer is directly focused on the question, highly accurate clinically, 100% grounded in the provided context, and free of any hallucinations."
+        }
+      }
+    },
+    {
+      "id": "Q05",
+      "question": "What is the mechanism of action of aspirin as an antiplatelet agent?",
+      "ground_truth": "At low doses (75-100mg daily), aspirin irreversibly inhibits cyclooxygenase-1 (COX-1) in platelets, preventing thromboxane A2 synthesis and thereby reducing platelet aggregation.",
+      "question_type": "factual",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.5,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains exact information directly addressing the mechanism of action of aspirin, along with a few extra drug label snippets. The system answer extracts the precise mechanism verbatim/near-verbatim from the context, perfectly matching the ground truth. It is completely grounded, clinically accurate, highly relevant, and free of any hallucinations."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 3.0,
+          "reasoning": "The retrieved context mentions cardiovascular trials and antithrombotic regimens in general, but contains no specific information about aspirin's mechanism of action (COX-1, thromboxane A2). Consequently, context recall is 1.0 and context relevance is low (2.0). The system answer provides an accurate and clinically sound response that aligns perfectly with the ground truth and clinical standards (clinical accuracy 5.0, answer relevance 5.0). However, because the system relies entirely on parametric knowledge and includes inline citations to non-existent context sources (e.g., [Data: Sources (38)]), the response is completely ungrounded in the retrieved context (groundedness 1.0) and exhibits citation hallucination, although the clinical information itself is medically safe (hallucination safety 3.0)."
+        },
+        "lightrag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 4.8,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains all necessary entity descriptions regarding Aspirin, COX-1, Thromboxane A2, and platelet aggregation. The system answer accurately synthesizes this context to explain the precise mechanism of action of aspirin as an antiplatelet agent, matching the ground truth cleanly and clearly. Minor extrapolation of specific dosage (75-100 mg) aligns with clinical standards and ground truth."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The system answer concisely and accurately explains the mechanism of action of aspirin as an antiplatelet agent, matching the ground truth perfectly. All details (dose, irreversible COX-1 inhibition, prevention of thromboxane A2 synthesis, and reduction of platelet aggregation) are fully supported by the retrieved context, clinically precise, and free of any hallucinations."
+        }
+      }
+    },
+    {
+      "id": "Q06",
+      "question": "What is insulin resistance?",
+      "ground_truth": "Insulin resistance is a pathological condition where cells fail to respond normally to insulin. It is a key feature of type 2 diabetes, metabolic syndrome, and PCOS. The pancreas compensates by producing more insulin (hyperinsulinemia), but eventually this fails, leading to elevated blood glucose.",
+      "question_type": "factual",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.8,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains exact matches for the ground truth definition, mechanisms, and associated conditions. The system answer directly and accurately answers the question without hallucination, matching the ground truth entirely while sticking strictly to the context."
+        },
+        "graphrag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 2.5,
+          "reasoning": "1. Context Relevance: 1.0 - The retrieved context consists entirely of passages related to cardiovascular clinical trials (JUPITER, MERIT-HF, etc.), statins, and beta-blockers. It contains no relevant evidence about insulin resistance.\n2. Context Recall: 1.0 - The context misses all essential facts about insulin resistance present in the ground truth.\n3. Groundedness: 1.0 - The system answer is completely ungrounded in the retrieved context. Furthermore, it fabricates source citations (e.g., '[Data: Sources (52)]') to pretend the information was retrieved from context.\n4. Answer Relevance: 5.0 - The system answer directly, thoroughly, and clearly answers the user's prompt regarding what insulin resistance is.\n5. Clinical Accuracy: 5.0 - Medically, the answer is accurate, detailed, and completely aligned with clinical knowledge and the ground truth (definition, compensatory hyperinsulinemia, association with T2DM/PCOS/metabolic syndrome, and standard treatments).\n6. Hallucination Safety: 2.5 - Clinically, the answer contains no dangerous false medical claims or unsafe drug advice. However, it heavily fabricates fake inline metadata citations and context attribution."
+        },
+        "lightrag": {
+          "context_relevance": 4.8,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains rich, highly relevant knowledge graph data covering the definition, pathophysiology, diagnostic markers, associated conditions (T2D, PCOS, Metabolic Syndrome), and therapeutic options for insulin resistance. The system answer comprehensively defines insulin resistance, clearly explains the compensatory hyperinsulinemic pathophysiology leading to hyperglycemia, and details diagnostic and management strategies\u2014all directly supported by the retrieved context. The response is clinically accurate, completely grounded, highly relevant, and safe from hallucinations."
+        },
+        "noderag": {
+          "context_relevance": 4.8,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant and complete, containing all critical facts present in the ground truth as well as additional details. The system answer directly and accurately addresses the specific question asked without including extraneous retrieved details like treatment options. It is 100% grounded in the retrieved context, contains zero hallucinations, and maintains perfect clinical accuracy."
+        }
+      }
+    },
+    {
+      "id": "Q07",
+      "question": "Can a patient on warfarin safely take ibuprofen?",
+      "ground_truth": "No. The combination is high-risk. Ibuprofen increases warfarin-related bleeding risk through multiple mechanisms: inhibiting COX-1 in platelets, damaging GI mucosa, potentially displacing warfarin from protein binding, and possibly inhibiting CYP2C9. Paracetamol is the preferred alternative.",
+      "question_type": "multi_hop",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains an exact QA match from MedQuAD addressing the question directly. The system answer utilizes this context perfectly, covering all mechanisms of interaction and alternatives mentioned in the ground truth. Groundedness, relevance, accuracy, recall, and hallucination safety are all exemplary (5.0)."
+        },
+        "graphrag": {
+          "context_relevance": 1.5,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 4.5,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 3.5,
+          "reasoning": "1. **Context Relevance**: The retrieved context chunks discuss landmark trials (JUPITER, MERIT-HF), general cardiovascular events, and MedQuAD repository metadata. None of the passages contain specific details regarding the drug interaction between warfarin and ibuprofen. (Score: 1.5)\n2. **Context Recall**: The context misses all key clinical facts regarding the warfarin-ibuprofen interaction, mechanism of action, bleeding risk, and alternative medications. (Score: 1.0)\n3. **Groundedness**: The system answer relies entirely on parametric knowledge and includes specific citations ([Data: Sources (54)], Odds Ratio = 1.83, Triple Whammy) that are completely absent from the retrieved context. (Score: 1.0)\n4. **Answer Relevance**: The system directly and clearly answers the user's question, emphasizing that taking ibuprofen while on warfarin is not safe and explaining why. (Score: 4.5)\n5. **Clinical Accuracy**: The answer is clinically sound and aligned with medical standards; combining NSAIDs with anticoagulants significantly increases GI and severe bleeding risks. (Score: 5.0)\n6. **Hallucination Safety**: Although the model generates detailed statistical claims and meta-data tags not found in the context, the clinical content itself is medically accurate and poses zero patient safety hazard. (Score: 3.5)"
+        },
+        "lightrag": {
+          "context_relevance": 4.5,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains detailed entities directly explaining the pharmacological mechanisms of the warfarin-ibuprofen interaction, as well as safe alternatives like paracetamol. The system answer accurately and directly answers the query ('No'), details all 4 mechanisms mentioned in the ground truth and context, and suggests appropriate clinical alternatives/mitigations. All claims are strictly grounded in the context, medically accurate, and free of hallucinations."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains highly specific, accurate clinical evidence directly answering the question. The system answer is completely grounded in the retrieved context, fully concordant with the ground truth, clinically precise, and presents zero hallucinations. All six criteria deserve top marks."
+        }
+      }
+    },
+    {
+      "id": "Q08",
+      "question": "What happens when ACE inhibitors are combined with potassium-sparing diuretics?",
+      "ground_truth": "This combination creates significant hyperkalemia risk. Both drug classes independently increase potassium: ACE inhibitors reduce aldosterone (which normally promotes potassium excretion), while potassium-sparing diuretics block potassium excretion. However, the combination is used therapeutically in heart failure with careful monitoring.",
+      "question_type": "multi_hop",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 2.0,
+          "clinical_accuracy": 2.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. Context Relevance: The retrieved context contains direct and highly specific evidence addressing the exact interaction between ACE inhibitors and potassium-sparing diuretics. Score: 5.0.\n2. Context Recall: The context contains all key information requested and present in the ground truth, including mechanisms of hyperkalemia and therapeutic use in heart failure. Score: 5.0.\n3. Groundedness: The generated snippet is strictly grounded in the retrieved context, though it cuts off abruptly. Score: 5.0.\n4. Answer Relevance: The response is severely truncated mid-sentence ('epleren') and fails to state what actually happens when the two drug classes are combined. Score: 2.0.\n5. Clinical Accuracy: Because the text is truncated before explaining the physiological effect (hyperkalemia risk and clinical implications), it fails to convey crucial clinical information. Score: 2.0.\n6. Hallucination Safety: No false claims or fabrications are made; the partial text is completely factual and safe. Score: 5.0."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 2.0,
+          "groundedness": 1.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 3.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context mentions general cardiovascular trials (JUPITER, 4S, MERIT-HF, RALES) and general cardiovascular management, but lacks specific information on drug interaction mechanisms between ACE inhibitors and potassium-sparing diuretics.\n2. **Context Recall**: The retrieved context misses most of the specific medical facts (physiological mechanisms of aldosterone inhibition, collecting duct potassium excretion, and specific monitoring protocols) present in the ground truth.\n3. **Groundedness**: The system answer brings in extensive external parametric knowledge (e.g., specific monitoring intervals, NSAID interactions, eGFR cutoffs) that is not supported by the retrieved context. It also fabricates context source citations (e.g., [Data: Sources (53)]).\n4. **Answer Relevance**: The system answer directly, comprehensively, and clearly answers the user's query about combining ACE inhibitors with potassium-sparing diuretics.\n5. **Clinical Accuracy**: The clinical information provided (hyperkalemia risk, mechanisms of action, RALES trial evidence, monitoring protocols) is standard medical practice and fully accurate.\n6. **Hallucination Safety**: While the clinical information itself is safe and medically correct, the system fabricates context source references and relies heavily on ungrounded external knowledge rather than signaling context limitations."
+        },
+        "lightrag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 4.2,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. Context Relevance: The retrieved context contains highly specific entity nodes and descriptions directly covering ACE inhibitors, potassium-sparing diuretics, hyperkalemia, renal collecting duct mechanisms, and monitoring requirements.\n2. Context Recall: All crucial facts from the ground truth (hyperkalemia risk, aldosterone reduction mechanism, direct blockage of potassium excretion, and therapeutic use in heart failure) are present in the retrieved context.\n3. Groundedness: The answer is mostly grounded in the context. However, it incorporates minor external clinical details not explicitly stated in the retrieved text (e.g., citing the 'RALES trial' by name and specific numerical cutoffs like 'eGFR < 30 mL/min/1.73 m\u00b2' and '25 mg spironolactone').\n4. Answer Relevance: The response directly, comprehensively, and clearly answers the user's question regarding the drug interaction.\n5. Clinical Accuracy: The response is completely accurate, aligned with gold-standard medical knowledge and guidelines regarding ACE inhibitor and potassium-sparing diuretic co-administration.\n6. Hallucination Safety: The response introduces helpful, accurate standard clinical guidelines without introducing false, misleading, or dangerous medical information."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is exceptionally relevant and contains all key facts from the ground truth. The system answer is fully grounded in the retrieved context, directly answers the clinical question with precise physiological detail, maintains perfect clinical accuracy, and shows zero hallucinations."
+        }
+      }
+    },
+    {
+      "id": "Q09",
+      "question": "Why are beta-blockers used in heart failure despite being negative inotropes?",
+      "ground_truth": "In heart failure, chronic sympathetic activation is harmful. Beta-blockers counter this by reducing heart rate (better diastolic filling), decreasing myocardial oxygen demand, preventing adverse remodeling, and reducing arrhythmia risk. Key trials show ~35% mortality reduction. Must be started at low doses.",
+      "question_type": "multi_hop",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains direct and comprehensive evidence explaining the paradoxical benefit of beta-blockers in heart failure. The context recall is complete, matching and exceeding all details in the ground truth. The system answer is completely grounded in the provided context, addresses the question directly without any tangents, is clinically accurate, and contains no hallucinations."
+        },
+        "graphrag": {
+          "context_relevance": 2.5,
+          "context_recall": 2.5,
+          "groundedness": 2.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.5,
+          "reasoning": "The retrieved context contains high-level summaries mentioning landmark trials (MERIT-HF, COPERNICUS, CIBIS-II) establishing beta-blocker efficacy in heart failure, but lacks physiological details regarding sympathetic activation, diastolic filling, and dosing protocols. Consequently, context recall and context relevance are low to moderate. The system answer is clinically excellent, accurate, and directly answers the question, aligning perfectly with standard clinical knowledge and the ground truth. However, because the system answer relies heavily on internal parametric knowledge not present in the retrieved context (and cites non-existent source tags), its groundedness relative to the context is poor."
+        },
+        "lightrag": {
+          "context_relevance": 4.2,
+          "context_recall": 4.8,
+          "groundedness": 4.7,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains highly relevant knowledge graph entities directly addressing the question, alongside some slight noise from related drug classes. The context recall is high, capturing all major concepts required by the ground truth. The system answer is exceptionally well-structured, clinically accurate, perfectly relevant to the user's prompt, and grounded in sound medical principles."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The context retrieved is exceptionally relevant and rich in details regarding the physiological mechanisms, landmark trials, and clinical nuances of beta-blocker use in HFrEF. Context recall is complete, capturing all gold-standard facts. The system answer is fully grounded in the retrieved passages without any hallucinated information. It addresses the user query directly and comprehensively, maintaining absolute clinical accuracy and safety."
+        }
+      }
+    },
+    {
+      "id": "Q10",
+      "question": "How does chronic kidney disease affect metformin dosing?",
+      "ground_truth": "Metformin is contraindicated in severe CKD (eGFR < 30 mL/min/1.73m\u00b2) due to lactic acidosis risk. Dose should be halved when eGFR is 30-45 mL/min/1.73m\u00b2. It can be used without adjustment when eGFR > 45. Renal function should be monitored regularly.",
+      "question_type": "multi_hop",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.8,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant and directly answers the query regarding metformin dosing adjustments based on renal function. Groundedness, answer relevance, and hallucination safety are perfect (5.0) as the system answer strictly adheres to the retrieved text without introducing hallucinations. Context recall is slightly lower (~4.0) because the retrieved context lacks explicit statements about eGFR > 45 mL/min/1.73m\u00b2 requiring no adjustment and regular monitoring. Clinical accuracy is very strong (4.8), accurately capturing the key eGFR cutoffs (eGFR 30-45 half dose, eGFR < 30 contraindicated)."
+        },
+        "graphrag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 3.0,
+          "reasoning": "The retrieved context contains no information regarding metformin, CKD, or renal dosing guidelines (it focuses on cardiovascular trials like JUPITER, MERIT-HF, etc.), resulting in a context_relevance and context_recall score of 1.0. The system answer, despite being clinically accurate and directly answering the question, is completely ungrounded in the provided context and fabricates internal citations ([Data: Sources (49)], etc.), leading to a groundedness score of 1.0. Answer relevance and clinical accuracy are both 5.0 as the output provides exact, clinically sound eGFR dosing recommendations matching the ground truth. Hallucination safety is rated 3.0 due to hallucinated citation tags and failure to refuse when ungrounded, although the clinical information provided carries no patient safety risk."
+        },
+        "lightrag": {
+          "context_relevance": 3.5,
+          "context_recall": 4.0,
+          "groundedness": 3.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context provides relevant information regarding metformin contraindications (eGFR < 30 mL/min/1.73m\u00b2), lactic acidosis risk, and renal clearance mechanisms, though it contains some extraneous entity data. Context recall is good but lacks the specific detail regarding eGFR 30-45 dose halving, which the system answer filled in using correct external parametric/clinical knowledge. The system answer is direct, completely accurate clinically, and poses no safety/hallucination risks."
+        },
+        "noderag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.5,
+          "groundedness": 4.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.5,
+          "reasoning": "The retrieved context is highly relevant, containing specific details on metformin eGFR cutoffs, renal clearance mechanisms, and lactic acidosis risk. The system answer directly and accurately addresses the clinical query, matching all key aspects of the ground truth (eGFR <30 contraindication, eGFR 30-45 dose reduction/halving, lactic acidosis risk). The system introduces a minor ungrounded extrapolation regarding Zituvimet (not found in context), but it is clinically accurate and poses no safety hazard."
+        }
+      }
+    },
+    {
+      "id": "Q11",
+      "question": "What are the risks of combining warfarin with aspirin?",
+      "ground_truth": "The combination approximately doubles bleeding risk compared to warfarin alone. Both drugs impair hemostasis through different mechanisms (warfarin affects clotting cascade, aspirin affects platelets). Only indicated when benefit clearly outweighs risk, such as mechanical heart valve with coronary disease.",
+      "question_type": "multi_hop",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.5,
+          "context_recall": 4.8,
+          "groundedness": 5.0,
+          "answer_relevance": 4.8,
+          "clinical_accuracy": 4.7,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains rich, accurate information addressing the prompt. The system answer directly pulls facts from the context, accurately noting the doubled bleeding risk, clinical indications where benefit outweighs risk (e.g., mechanical heart valves), and related triple therapy risks. Groundedness and hallucination safety are perfect as all claims are directly supported by the context."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.5,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 2.5,
+          "reasoning": "The retrieved context consists of high-level community summaries with only vague mentions of antithrombotic/anticoagulant regimens, lacking specific facts about aspirin and warfarin combined risks (Context Relevance: 2.0, Context Recall: 1.5). The system answer provides a highly accurate, comprehensive clinical response that aligns perfectly with the ground truth (Answer Relevance: 5.0, Clinical Accuracy: 5.0). However, because almost all of the response is derived from external clinical knowledge rather than the provided context, and includes inline citations to non-existent data sources, it fails groundedness (Groundedness: 1.0) and exhibits moderate hallucination of source attribution despite clinical correctness (Hallucination Safety: 2.5)."
+        },
+        "lightrag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains rich, direct entity descriptions addressing the query. The system answer accurately summarizes the key points: doubling of bleeding risk, specific risk of GI bleeding, and clinical indications where benefit outweighs risk (e.g., mechanical heart valve with coronary disease). The output is fully grounded in the retrieved context, clinically precise, highly relevant, and free of hallucinations."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant and contains all key facts from the ground truth. The system answer accurately captures the doubling of bleeding risk, the clinical indications where benefits outweigh risks (e.g., mechanical heart valve with coronary disease), GI bleeding risks, and relevant clinical mitigation strategies. All statements in the answer are strictly grounded in the retrieved context, clinically precise, and free of hallucinations."
+        }
+      }
+    },
+    {
+      "id": "Q12",
+      "question": "Why was empagliflozin added to the WHO Essential Medicines List?",
+      "ground_truth": "Empagliflozin was added in 2023 based on landmark trial evidence showing benefits beyond glucose lowering: 38% reduction in cardiovascular death (EMPA-REG), significant heart failure benefit (DAPA-HF), and CKD progression slowing (CREDENCE/DAPA-CKD). Now recommended as second-line after metformin for T2DM with CVD, HF, or CKD.",
+      "question_type": "multi_hop",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.8,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 3.5,
+          "clinical_accuracy": 4.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. Context Relevance: The retrieved context is highly relevant, containing official EML sections as well as detailed trial evidence justifying the inclusion of empagliflozin.\n2. Context Recall: The context contains all essential facts mentioned in the ground truth, including specific trial names (EMPA-REG, DAPA-HF, CREDENCE) and effect sizes.\n3. Groundedness: The system answer is 100% grounded in the retrieved text, verbatim citing the phrase 'for T2DM with CVD/HF'.\n4. Answer Relevance: The response addresses why empagliflozin was added, but the response cuts off mid-sentence, leaving the answer incomplete.\n5. Clinical Accuracy: The stated reason ('for T2DM with CVD/HF') is accurate per clinical guidelines and ground truth, though it lacks depth due to truncation.\n6. Hallucination Safety: There is zero hallucination; everything stated is directly present in the context."
+        },
+        "graphrag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 3.0,
+          "reasoning": "1. Context Relevance: The retrieved context mentions statin trials, beta-blocker trials, and MedQuAD, but completely lacks any context regarding empagliflozin, SGLT2 inhibitors, or the WHO Essential Medicines List. Score: 1.0.\n2. Context Recall: The context fails to capture any of the essential facts needed to answer the prompt from the ground truth. Score: 1.0.\n3. Groundedness: The system answer relies entirely on parametric memory to provide detailed facts about empagliflozin and landmark trials (EMPA-REG, DAPA-HF, etc.), none of which exist in the retrieved context. Furthermore, it fabricates synthetic inline metadata citations like [Data: Reports (1); Sources (37)]. Score: 1.0.\n4. Answer Relevance: The response directly, clearly, and thoroughly answers the exact question posed by the user. Score: 5.0.\n5. Clinical Accuracy: The response is exceptionally accurate, correctly citing the year (2023), trials (EMPA-REG, DAPA-HF, CREDENCE, DAPA-CKD), percentage reductions, clinical benefits, and second-line positioning after metformin. Score: 5.0.\n6. Hallucination Safety: While the response fabricates source citations relative to the context, the medical information provided is completely accurate and poses zero clinical risk/false medical claims. Score: 3.0."
+        },
+        "lightrag": {
+          "context_relevance": 3.5,
+          "context_recall": 4.8,
+          "groundedness": 4.2,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.8,
+          "reasoning": "1. Context Relevance: The context contains relevant knowledge graph entities regarding Empagliflozin, the WHO EML, and EMPA-REG OUTCOME, but also includes significant noise/unrelated drugs (Warfarin, Amiodarone, Aspirin). (Score: 3.5)\n2. Context Recall: The context covers the primary details including the year added (2023), EMPA-REG 38% CV death reduction, second-line status after metformin, and class-level HF/CKD benefits. (Score: 4.8)\n3. Groundedness: Most claims are grounded in context, though the specific numbers for weight loss (2-3 kg) and blood pressure reduction (3-5 mmHg) extrapolate beyond the retrieved context. (Score: 4.2)\n4. Answer Relevance: The response directly and comprehensively answers why empagliflozin was added to the WHO list. (Score: 5.0)\n5. Clinical Accuracy: Excellent concordance with gold standard clinical data and landmark trial results. (Score: 5.0)\n6. Hallucination Safety: The minor extrapolations regarding exact mmHg and kg reductions represent true clinical trial data rather than dangerous hallucinations. (Score: 4.8)"
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The system answer perfectly addresses the query using information completely grounded in the retrieved context. All landmark trials (EMPA-REG OUTCOME, DAPA-HF, CREDENCE/DAPA-CKD), specific statistics (38% RRR in CV death), second-line positioning after metformin for T2DM with CVD/HF/CKD, and secondary clinical benefits are accurately captured and align with both ground truth and context."
+        }
+      }
+    },
+    {
+      "id": "Q13",
+      "question": "Do FDA warnings for atorvastatin match the clinical guideline recommendations?",
+      "ground_truth": "They largely align but differ in emphasis. Both warn about myopathy/rhabdomyolysis. FDA-specific: pregnancy Category X warning, dose limitations with CYP3A4 inhibitors (max 20mg with amiodarone), cognitive effects. Guidelines add: intensity-based dosing (high: 40-80mg, moderate: 10-20mg) tied to risk categories.",
+      "question_type": "cross_source",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 5.0,
+          "context_recall": 4.5,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant, containing an explicit overview comparing FDA warnings and clinical guidelines for atorvastatin. Context recall is very strong (4.5/5.0), missing only the specific mention of guideline intensity-based dosing categories (40-80mg vs 10-20mg). The system answer is completely grounded in the retrieved text with no hallucinations, making groundedness, answer relevance, clinical accuracy, and hallucination safety all 5.0."
+        },
+        "graphrag": {
+          "context_relevance": 1.5,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context consists of general summaries of cardiovascular trials and medical repositories, but completely lacks specific information regarding FDA warnings or clinical guideline recommendations for atorvastatin. As a result, context relevance and context recall are very low. However, the system answer accurately identifies that the retrieved context is insufficient to answer the question, avoiding hallucination and maintaining high groundedness, clinical accuracy, and safety."
+        },
+        "lightrag": {
+          "context_relevance": 4.5,
+          "context_recall": 5.0,
+          "groundedness": 4.9,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains entity knowledge graph triples covering atorvastatin, clinical guidelines, FDA labeling, Category X pregnancy warnings, cognitive effects (memory loss, confusion), CYP3A4/amiodarone interactions, myopathy/rhabdomyolysis, and intensity-based dosing regimens (10-20mg moderate, 40-80mg high). The RAG system answer addresses the question directly, matching all key nuances of the ground truth accurate to clinical standards and fully grounded in the context provided."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains a direct Q&A pair from MedQuAD specifically addressing the prompt, along with detailed drug label excerpts. The system answer captures all clinical nuances from the ground truth and context, providing a perfectly structured comparison between FDA warnings and clinical guidelines. All statements are strictly grounded, medically accurate, and free of hallucination."
+        }
+      }
+    },
+    {
+      "id": "Q14",
+      "question": "Compare the WHO Essential Medicines List entries for antihypertensives with clinical guideline recommendations.",
+      "ground_truth": "The WHO EML includes amlodipine, bisoprolol, enalapril, lisinopril, losartan, and hydrochlorothiazide. Clinical guidelines provide patient-specific selection criteria: ACE inhibitors/ARBs for young or diabetic patients, CCBs/thiazides for older or Black patients. WHO focuses on availability; guidelines focus on personalized selection.",
+      "question_type": "cross_source",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 3.0,
+          "context_recall": 2.5,
+          "groundedness": 5.0,
+          "answer_relevance": 4.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains general information on WHO Essential Medicines List selection criteria and some guideline excerpts (mentioning JNC, Black patients, diabetes), but it completely lacks section 1.3 (Antihypertensive Medicines) of the WHO EML. Because the explicit WHO EML entries for antihypertensives (such as amlodipine, enalapril, lisinopril, losartan, HCTZ) are missing from the retrieved context, the system's response that the context contains insufficient information is grounded, safe, and clinically appropriate."
+        },
+        "graphrag": {
+          "context_relevance": 1.5,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context focuses on cardiovascular clinical trials (statin and beta-blocker trials in heart failure) and general MedQuAD concepts, but contains no information about the WHO Essential Medicines List for antihypertensives or clinical guideline recommendations. The system correctly identifies that the context is insufficient and refuses to generate an ungrounded answer, demonstrating perfect groundedness, clinical accuracy, and hallucination safety."
+        },
+        "lightrag": {
+          "context_relevance": 2.5,
+          "context_recall": 2.0,
+          "groundedness": 5.0,
+          "answer_relevance": 4.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains fragments about WHO Essential Medicines List and specific antihypertensives (lisinopril, bisoprolol), but lacks detailed clinical guideline recommendations (e.g., patient age, race, or diabetes status recommendations) and comparative analysis between WHO population-level selection vs clinical guidelines' personalized selection. The system correctly identifies that the provided context is insufficient to answer the question, avoiding hallucination."
+        },
+        "noderag": {
+          "context_relevance": 3.5,
+          "context_recall": 2.5,
+          "groundedness": 1.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.8,
+          "hallucination_safety": 2.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context contains the exact WHO Essential Medicines List for section 1.3 (Antihypertensive Medicines), but does not contain clinical guideline selection criteria. Thus, it is partially relevant (3.5).\n2. **Context Recall**: The retrieved context captures the WHO EML list completely, but lacks the specific clinical guideline recommendations (e.g., patient demographics, age/ethnicity/diabetic selection criteria) present in the Ground Truth (2.5).\n3. **Groundedness**: The system answer claims 'Based on the provided context...', but then introduces extensive detailed clinical guidance (e.g., CKD/proteinuria indications, Metoprolol tapering, Carvedilol alpha-blocking, Black/elderly preferences) that is completely absent from the retrieved text. This is a severe hallucination/extrapolation from external knowledge relative to the context (1.5).\n4. **Answer Relevance**: The system answer directly addresses the prompt's request to compare WHO entries with clinical guidelines in detail (5.0).\n5. **Clinical Accuracy**: The clinical information supplied by the model is medically accurate and aligns well with standard hypertension guidelines and clinical practice (4.8).\n6. **Hallucination Safety**: While the external information added by the model is clinically correct and poses no patient safety hazard, claiming that this detailed clinical guidance was 'detailed in the text' when it was not constitutes a failure of grounding safety (2.0)."
+        }
+      }
+    },
+    {
+      "id": "Q15",
+      "question": "How do PubMed research findings on warfarin interactions compare with FDA label warnings?",
+      "ground_truth": "PubMed research provides evidence-based detail on mechanisms and clinical significance, while FDA labels provide regulatory warnings. Both identify NSAIDs, aspirin, and amiodarone as key interactions. FDA labels focus on required precautions; research literature provides quantitative risk estimates and mechanistic understanding.",
+      "question_type": "cross_source",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 3.5,
+          "context_recall": 2.5,
+          "groundedness": 5.0,
+          "answer_relevance": 3.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context includes PubMed literature on warfarin drug interactions and an snippet from an FDA label focusing on Section 6 (Adverse Reactions), but lacks Section 7 (Drug Interactions) of the FDA label. The system answer correctly identifies that the context is insufficient to draw a full comparison between PubMed research findings on warfarin interactions and FDA label warnings, thus avoiding hallucination. Groundedness, clinical accuracy, and hallucination safety are rated high due to this safe refusal. Context relevance and recall are lower because the retrieval missed the specific FDA label drug interaction warnings."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.5,
+          "hallucination_safety": 1.5,
+          "reasoning": "The retrieved context is largely tangential, discussing cardiovascular trials (MERIT-HF, CIBIS-II, etc.) and post-procedural antithrombotic management without providing detailed information on Warfarin interactions or FDA label comparisons. Consequently, context_relevance and context_recall are very low (2.0 and 1.0 respectively). The system answer hallucinates extensive specific data, statistical odds ratios (e.g., OR = 1.74, OR = 0.69), calciphylaxis warnings, and fake internal citation tags like '[Data: Entities (0, 43...)]' that are completely absent from the retrieved context. This results in a groundedness score of 1.0 and hallucination_safety score of 1.5. However, the answer is directly relevant to the user prompt (answer_relevance: 5.0) and the clinical facts asserted from external knowledge are accurate and sound (clinical_accuracy: 4.5)."
+        },
+        "lightrag": {
+          "context_relevance": 4.0,
+          "context_recall": 3.5,
+          "groundedness": 2.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.5,
+          "reasoning": "The retrieved context provides knowledge graph entities related to PubMed, openFDA, warfarin, and drug interactions, making it relevant (Context Relevance: 4.0). However, it lacks the detailed quantitative odds ratios and specific study results that were cited in the system answer, indicating moderate context recall (Context Recall: 3.5). Because the system answer draws heavily upon external parametric knowledge (e.g., specific odds ratios, confidence intervals, and detailed FDA label risk sections) not present in the provided context chunk, its groundedness score is penalized (Groundedness: 2.5). Nevertheless, the response is exceptionally well-structured, directly answers the prompt (Answer Relevance: 5.0), accurately reflects medical literature and regulatory labeling without introducing clinically unsafe information (Clinical Accuracy: 5.0, Hallucination Safety: 4.5)."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant, rich, and provides direct evidence from both PubMed research (systematic review with odds ratios) and FDA package label text. The system answer accurately synthesizes the comparison between quantitative research findings (e.g., specific odds ratios for bleeding and protective PPI effects) and regulatory FDA warnings (contraindications, CYP enzyme mechanisms, precautions). Every claim made in the system answer is strictly grounded in the retrieved text, with no hallucinations or clinical errors."
+        }
+      }
+    },
+    {
+      "id": "Q16",
+      "question": "What do different sources say about metformin's contraindications in renal impairment?",
+      "ground_truth": "Guidelines specify eGFR-based thresholds (contraindicated < 30, dose-adjust 30-45, safe > 45). FDA labels warn about lactic acidosis risk in renal impairment. WHO EML lists metformin without detailed renal guidance. MedQuAD specifies eGFR < 30 as contraindication. The sources are consistent but vary in specificity.",
+      "question_type": "cross_source",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 3.0,
+          "context_recall": 2.0,
+          "groundedness": 5.0,
+          "answer_relevance": 2.5,
+          "clinical_accuracy": 2.5,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. **Context Relevance**: The context includes MedQuAD information on metformin renal contraindications and FDA label text for ZITUVIMET (a sitagliptin/metformin combination), but also includes completely irrelevant passages (Metoprolol tartrate). Score: 3.0.\n2. **Context Recall**: The retrieved context misses key information present in the ground truth, such as WHO EML guidance and specific eGFR threshold ranges (30-45 dose adjustments) from clinical guidelines. Score: 2.0.\n3. **Groundedness**: The system's answer strictly reflects the context provided without inventing ungrounded claims. Score: 5.0.\n4. **Answer Relevance**: The response is truncated mid-sentence (\"States that metformin is contraindicated\") and fails to complete the thought or detail the specific renal thresholds (eGFR < 30) mentioned in the source. Score: 2.5.\n5. **Clinical Accuracy**: Leaving the statement as \"States that metformin is contraindicated\" without completing the qualification (eGFR < 30 mL/min/1.73m\u00b2 in severe renal impairment) creates a clinically inaccurate and overly broad statement regarding metformin safety. Score: 2.5.\n6. **Hallucination Safety**: There are no fabricated clinical data or hallucinations present; the output is strictly derived from context, albeit incomplete. Score: 5.0."
+        },
+        "graphrag": {
+          "reasoning": "Error during evaluation: Expecting ',' delimiter: line 3 column 3 (char 1439)",
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 1.0,
+          "clinical_accuracy": 1.0,
+          "hallucination_safety": 1.0
+        },
+        "lightrag": {
+          "context_relevance": 4.0,
+          "context_recall": 3.0,
+          "groundedness": 4.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context provides strong details on metformin's contraindications in renal impairment (eGFR < 30 mL/min/1.73 m\u00b2), lactic acidosis risk, and specific combination product rules (Zituvimet), though it omits source-specific comparative mentions like WHO EML or MedQuAD present in the ground truth. The system answer is directly relevant, clinically accurate, highly grounded in the retrieved context, and safe from clinical hallucinations."
+        },
+        "noderag": {
+          "context_relevance": 4.0,
+          "context_recall": 3.5,
+          "groundedness": 3.5,
+          "answer_relevance": 4.5,
+          "clinical_accuracy": 4.5,
+          "hallucination_safety": 4.0,
+          "reasoning": "1. **Context Relevance (4.0/5.0)**: The retrieved context contains relevant information regarding metformin, renal impairment, eGFR cutoffs, and lactic acidosis. Some retrieved passages contain tangential information about CKD management (ACE inhibitors, SGLT2 inhibitors, statins), slightly diluting focus.\n\n2. **Context Recall (3.5/5.0)**: The retrieved context includes MedQuAD and clinical eGFR guidelines but lacks specific information about WHO EML's lack of detailed renal guidance or distinct FDA label attributes mentioned in the ground truth comparison.\n\n3. **Groundedness (3.5/5.0)**: Most of the answer is grounded in the retrieved text. However, the system answer provides specific clinical guidance for Zituvimet (\"explicitly not recommended for use in patients with an eGFR between 30 and less than 45\") that is not explicitly present in the provided context passages (which only mention Zituvimet as a combination formulation).\n\n4. **Answer Relevance (4.5/5.0)**: The response directly addresses contraindications and dose modifications in renal impairment, clearly structuring eGFR cutoffs and risks.\n\n5. **Clinical Accuracy (4.5/5.0)**: The clinical information presented regarding eGFR thresholds (< 30 contraindicated, 30-45 half dose), lactic acidosis risk, and fixed-dose combination restrictions is clinically accurate and aligned with standard medical practice.\n\n6. **Hallucination Safety (4.0/5.0)**: The extrapolation regarding Zituvimet's eGFR 30-45 recommendation is medically correct external knowledge, posing minimal clinical safety risk, though it represents an ungrounded addition relative to the context."
+        }
+      }
+    },
+    {
+      "id": "Q17",
+      "question": "Cross-reference the drug interaction warnings across FDA labels, WHO guidance, and clinical guidelines for statins.",
+      "ground_truth": "All sources agree that statins interact with CYP3A4 inhibitors increasing myopathy risk. FDA labels provide specific dose caps (atorvastatin max 20mg with amiodarone). WHO guidance notes statin-amiodarone interaction generally. Guidelines recommend considering drug interactions when selecting statin intensity. The level of specificity varies by source.",
+      "question_type": "cross_source",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 3.5,
+          "context_recall": 3.0,
+          "groundedness": 5.0,
+          "answer_relevance": 4.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains details regarding FDA labels and clinical guidelines regarding statin interactions with CYP3A4 inhibitors (including specific dose caps like max 20mg atorvastatin with amiodarone), but it completely lacks any information regarding WHO guidance. Because a required component (WHO guidance) is missing from the retrieved context, the system's response accurately and safely states that the provided context does not contain sufficient information to answer the question. This avoids hallucinating external knowledge and maintains perfect groundedness and clinical safety."
+        },
+        "graphrag": {
+          "reasoning": "Error during evaluation: Expecting ',' delimiter: line 3 column 3 (char 1424)",
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 1.0,
+          "clinical_accuracy": 1.0,
+          "hallucination_safety": 1.0
+        },
+        "lightrag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.8,
+          "groundedness": 4.8,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The system response exceptionally addresses the prompt by thoroughly cross-referencing statin interaction warnings across FDA labels, WHO guidance, and clinical guidelines. The retrieved context contains specific details on statin metabolism (CYP3A4), specific dose caps (e.g., atorvastatin 20mg with amiodarone), and clinical concepts. The system's response is clinically accurate, aligns perfectly with the ground truth and clinical consensus, and contains no unsafe hallucinations."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 4.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.8,
+          "reasoning": "The retrieved context is highly relevant and complete, providing detailed evidence on FDA labeling, clinical guidelines, and WHO guidance for statin interaction warnings. The system answer addresses all components of the prompt clearly and accurately. Groundedness is very strong, with only minor extrapolations of specific dose cap numbers for certain antivirals/amlodipine that go slightly beyond the provided context snippets, though clinically true. Overall clinical accuracy and hallucination safety remain exceptionally high."
+        }
+      }
+    },
+    {
+      "id": "Q18",
+      "question": "How consistent are the treatment recommendations for type 2 diabetes across PubMed, guidelines, and WHO EML?",
+      "ground_truth": "Highly consistent: all sources agree on metformin as first-line. Guidelines provide the most detailed stepwise algorithm (add SGLT2i if CVD/CKD, GLP-1 RA if atherosclerotic CVD). PubMed provides evidence basis. WHO EML added empagliflozin in 2023, aligning with guideline recommendations for CV/renal benefit.",
+      "question_type": "cross_source",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 2.5,
+          "context_recall": 2.0,
+          "groundedness": 5.0,
+          "answer_relevance": 4.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains general information regarding Type 2 Diabetes Mellitus treatment steps and prevention, but completely lacks details regarding the WHO EML (Essential Medicines List) and comparative consistency across PubMed, guidelines, and the WHO EML. The system answer correctly identifies that the context does not contain sufficient information to answer the prompt, thereby avoiding hallucination and maintaining safety."
+        },
+        "graphrag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 3.0,
+          "reasoning": "1. **context_relevance**: 1.0 - The retrieved context focuses on statin trials, heart failure beta-blockers, and general cardiovascular conditions, containing no relevant evidence about Type 2 diabetes treatment recommendations, WHO EML, or metformin/SGLT2i/GLP-1 RA.\n2. **context_recall**: 1.0 - The context misses all essential clinical facts required to answer the prompt as per the ground truth.\n3. **groundedness**: 1.0 - The system answer relies entirely on parametric knowledge and fabricates fake citation tags (e.g., '[Data: Reports (1, 6)]') to context that does not exist in the retrieved text.\n4. **answer_relevance**: 5.0 - The system answer directly, thoroughly, and clearly answers the user's specific clinical query.\n5. **clinical_accuracy**: 5.0 - The clinical content is accurate and completely aligned with current guidelines, landmark trials (EMPA-REG, DAPA-HF, CREDENCE), and ground truth.\n6. **hallucination_safety**: 3.0 - Although the answer relies on ungrounded external knowledge and invents internal citations, the clinical information provided is accurate and poses no clinical hazard or risk to patient safety."
+        },
+        "lightrag": {
+          "context_relevance": 5.0,
+          "context_recall": 4.8,
+          "groundedness": 5.0,
+          "answer_relevance": 4.2,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains rich information about Type 2 Diabetes treatment across clinical guidelines, WHO EML additions (empagliflozin in 2023), and supporting studies/mechanisms. Context relevance and recall are very high. The system answer begins with a conservative disclaimer stating the context doesn't explicitly evaluate overall consistency, but then accurately synthesizes the recommendations across Guidelines, WHO EML, and PubMed studies directly from the context. The answer is clinically accurate, grounded, and safe, though slightly hesitant on giving a direct synthesis upfront."
+        },
+        "noderag": {
+          "context_relevance": 4.5,
+          "context_recall": 4.5,
+          "groundedness": 5.0,
+          "answer_relevance": 4.3,
+          "clinical_accuracy": 4.8,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains rich information regarding T2DM treatment algorithms, PubMed references, and the WHO EML update (empagliflozin added in 2023). The system answer accurately identifies that while explicit comparative meta-statements on overall consistency aren't directly synthesized in the text, it can break down what each source specifies based strictly on the retrieved context. All clinical details provided in the system answer (metformin as first-line, stepwise escalation, SGLT2i/GLP-1 RA indications, WHO EML 2023 addition) are fully grounded, clinically accurate, and free of hallucination."
+        }
+      }
+    },
+    {
+      "id": "Q19",
+      "question": "Is there agreement between FDA drug labels and MedQuAD on the safety profile of omeprazole?",
+      "ground_truth": "Both sources identify omeprazole's drug interactions (CYP2C19 inhibition affecting clopidogrel) and long-term risks (hypomagnesemia, B12 deficiency, fracture risk, C. difficile). FDA labels provide regulatory warnings; MedQuAD provides clinical context. Both recommend lowest effective dose for shortest duration.",
+      "question_type": "cross_source",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 1.5,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 4.5,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is largely irrelevant and missing crucial information about MedQuAD and the detailed safety profile of omeprazole. The system answer correctly and safely identifies that the context provided is insufficient to answer the question, avoiding hallucination."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.5,
+          "groundedness": 1.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 3.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context consists mostly of general cardiovascular clinical trials (JUPITER, MERIT-HF, etc.) with only brief mentions of MedQuAD and C. difficile. It lacks focused information on omeprazole and FDA drug labels. Score: 2.0.\n2. **Context Recall**: Almost all critical medical facts required to answer the prompt (such as FDA label specifics, CYP2C19 inhibition, clopidogrel interactions, B12 deficiency, bone fractures) are missing from the retrieved context. Score: 1.5.\n3. **Groundedness**: The system answer contains extensive information (e.g., Kroger OTC label details, 14-day duration, CYP2C19 mechanism, clopidogrel, B12 deficiency) that is not supported by the retrieved context, and invents inline context citations like [Data: Sources (20, 30)]. Score: 1.5.\n4. **Answer Relevance**: The system answer directly, thoroughly, and clearly addresses the exact query regarding agreement between FDA drug labels and MedQuAD. Score: 5.0.\n5. **Clinical Accuracy**: The facts presented in the response are highly accurate and align perfectly with the ground truth and clinical medical standards. Score: 5.0.\n6. **Hallucination Safety**: The response does not contain medically dangerous errors or false clinical claims. However, because it attributes external knowledge to non-existent context citations, there is a mild risk/hallucination regarding information provenance. Score: 3.0."
+        },
+        "lightrag": {
+          "context_relevance": 3.2,
+          "context_recall": 3.5,
+          "groundedness": 3.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "Context Relevance: The retrieved context contains relevant entities regarding Omeprazole, OpenFDA drug labels, CYP2C19 inhibition, and pantoprazole, but also includes a significant amount of tangential graph data (e.g., Zituvimet, Metoprolol, Heart Failure). Score: 3.2.\n\nContext Recall: The retrieved context captures main concepts such as Omeprazole and drug interactions, but misses some explicit text detailing long-term risks mentioned in the ground truth due to truncation. Score: 3.5.\n\nGroundedness: The response contains detailed clinical information (such as the 14-day course, hypomagnesemia, B12 deficiency, and C. difficile) that goes beyond the truncated context provided, drawing on parametric knowledge to answer thoroughly. Score: 3.5.\n\nAnswer Relevance: The answer directly, logically, and comprehensively addresses whether there is agreement between FDA labels and MedQuAD regarding omeprazole's safety profile, breaking down points of alignment and scope differences clearly. Score: 5.0.\n\nClinical Accuracy: The content is fully accurate according to clinical standards and aligns perfectly with the ground truth, correctly detailing CYP2C19 interactions (e.g., clopidogrel), long-term risks, and dosing recommendations. Score: 5.0.\n\nHallucination Safety: There are no medically false, fabricated, or dangerous clinical claims. All statements reflect standard medical knowledge. Score: 5.0."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains detailed information from both openFDA Drug Label and MedQuAD. The system answer accurately and comprehensively synthesizes these sources, outlining the acute regulatory warnings from the FDA label and the clinical, biochemical, and long-term risk profile from MedQuAD. The answer is completely grounded in the context, contains zero hallucinations, is highly relevant to the user query, and is clinically accurate."
+        }
+      }
+    },
+    {
+      "id": "Q20",
+      "question": "What are the most common drug interaction risks across all cardiovascular and diabetes medications?",
+      "ground_truth": "Major categories: (1) Bleeding amplification (warfarin + NSAIDs/aspirin), (2) Hyperkalemia triangle (ACE/ARB + K-sparing diuretics + NSAIDs), (3) Hypoglycemia masking (beta-blockers in diabetics), (4) Triple whammy renal injury (ACE/ARB + diuretic + NSAID), (5) Statin toxicity with CYP3A4 inhibitors, (6) Metformin + contrast dye, (7) QT prolongation combinations.",
+      "question_type": "global",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.5,
+          "context_recall": 4.0,
+          "groundedness": 5.0,
+          "answer_relevance": 2.0,
+          "clinical_accuracy": 2.5,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is highly relevant, containing a concise summary of major interaction categories (1-5 out of the 7 in ground truth). Context recall is good (4.0) as it covers 5 of the 7 key categories. Groundedness and Hallucination Safety are perfect (5.0) as the generated text is entirely backed by the retrieved text with no fabrication. However, the system answer is severely incomplete and truncated mid-word ('2. **HY'), which significantly impairs Answer Relevance (2.0) and Clinical Accuracy (2.5) due to missing critical clinical information."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.5,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context provides broad, high-level summaries of cardiovascular trials and post-procedural management, but completely lacks specific information regarding drug-drug interaction mechanisms. Score: 2.0\n2. **Context Recall**: The retrieved context misses almost all specific interaction categories outlined in the ground truth (e.g., hyperkalemia triangle, triple whammy, statin + CYP3A4, metformin + contrast dye, QT prolongation). Score: 1.5\n3. **Groundedness**: The system answer contains extensive details and inline source citations (e.g., Data: Sources (33)) that are completely absent from the provided retrieved context. It relies entirely on external/parametric knowledge. Score: 1.0\n4. **Answer Relevance**: The system answer directly, thoroughly, and clearly answers the user query, covering all major categories. Score: 5.0\n5. **Clinical Accuracy**: The response is exceptionally accurate, matching all 7 major drug interaction categories specified in the ground truth with detailed, clinically precise mechanisms. Score: 5.0\n6. **Hallucination Safety**: Clinically, the answer contains zero false medical claims, false contraindications, or dangerous errors. However, it fabricates citation tags to external sources not present in the context. Score: 4.0"
+        },
+        "lightrag": {
+          "context_relevance": 4.0,
+          "context_recall": 3.0,
+          "groundedness": 2.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context provides relevant entity descriptions related to diabetes and cardiovascular drugs (e.g., Aspirin, Beta-Blockers, Atorvastatin, CYP3A4 inhibitors). However, some truncated parts and extraneous entities reduce its overall conciseness. Score: 4.0.\n2. **Context Recall**: The retrieved context covers several key aspects (bleeding risk, hypoglycemia masking, statin toxicity), but lacks explicit mention of contrast dye with metformin, QT prolongation combinations, and the specific details of the hyperkalemia triangle and triple whammy renal injury. Score: 3.0.\n3. **Groundedness**: The system answer contains multiple specific categories (e.g., Metformin + contrast media, QT prolongation, Hyperkalemia triangle details) that are completely accurate to clinical practice and ground truth, but absent from the retrieved text snippet. This reliance on parametric memory reduces groundedness score to 2.5.\n4. **Answer Relevance**: The system answer directly, comprehensively, and clearly answers the user prompt with structured categories. Score: 5.0.\n5. **Clinical Accuracy**: The answer is medically precise, highly accurate, and matches the ground truth reference perfectly without any clinical errors. Score: 5.0.\n6. **Hallucination Safety**: Although the model utilized parametric knowledge not explicitly present in the provided context, none of the information generated is false, misleading, or clinically unsafe; all facts are gold-standard clinical knowledge. Score: 4.0."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 5.0,
+          "groundedness": 3.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.5,
+          "reasoning": "1. Context Relevance (5.0): The retrieved context is highly relevant, containing specific clinical evidence directly answering the question (including explicit structured medquad summaries of cardiovascular/diabetes drug interactions).\n2. Context Recall (5.0): The context captures all 7 key categories described in the ground truth (bleeding risk, hyperkalemia triangle, hypoglycemia masking, triple whammy renal injury, statin toxicity, metformin with contrast, and QT prolongation).\n3. Groundedness (3.5): While mostly grounded in the provided passages, the system answer introduces several external clinical details not present in the retrieved context (e.g., specific 30-50% dosage reductions for warfarin with amiodarone, distinction between cardioselective and non-selective beta-blockers, and specific OCT2/MATE inhibitors like cimetidine/dolutegravir for metformin).\n4. Answer Relevance (5.0): The response directly, comprehensively, and clearly answers the clinical query, perfectly aligned with the prompt requirements.\n5. Clinical Accuracy (5.0): All information provided, including the additional clinical details, is accurate, evidence-based, and clinically sound.\n6. Hallucination Safety (4.5): There are no dangerous or false hallucinations; the external additions represent accurate clinical knowledge without posing safety risks."
+        }
+      }
+    },
+    {
+      "id": "Q21",
+      "question": "What overarching patterns emerge from all sources regarding safe prescribing for elderly patients with multiple conditions?",
+      "ground_truth": "Key patterns: (1) Polypharmacy is the primary risk \u2014 more drugs = exponentially more interactions; (2) Renal function declines with age, affecting dosing of metformin, digoxin, and others; (3) Start low, go slow with beta-blockers and ACE inhibitors; (4) Avoid NSAIDs where possible; (5) Monitor potassium, renal function, and INR frequently; (6) PPIs and statins need regular review for continued necessity.",
+      "question_type": "global",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 2.5,
+          "context_recall": 2.0,
+          "groundedness": 5.0,
+          "answer_relevance": 3.0,
+          "clinical_accuracy": 4.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains fragmented information regarding statin use in older adults, adverse reactions (including acute renal failure), and NSAID warnings for patients over 60. However, it lacks comprehensive coverage of the overarching clinical patterns specified in the ground truth (e.g., polypharmacy risks, 'start low, go slow' principles for ACE inhibitors/beta-blockers, INR/potassium monitoring, PPI reviews). The system correctly identified that the context was insufficient to fully and safely synthesize overarching clinical patterns, opting to state that context does not contain sufficient information. This represents zero hallucination and high clinical safety, though context recall and relevance were low."
+        },
+        "graphrag": {
+          "context_relevance": 2.5,
+          "context_recall": 2.0,
+          "groundedness": 1.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 2.0,
+          "reasoning": "1. **Context Relevance**: The retrieved context consists of high-level community summaries referencing clinical trial names (JUPITER, MERIT-HF, RALES) and MedQuAD. It lacks specific prescribing guidelines, dosage adjustments, or explicit patterns for elderly polypharmacy, making it only partially relevant (Score: 2.5).\n2. **Context Recall**: The retrieved context misses almost all specific clinical facts required by the ground truth (e.g., renal decline details, NSAID avoidance, PPI/statin monitoring, specific drug interaction rules) (Score: 2.0).\n3. **Groundedness**: The system answer relies almost entirely on external parametric knowledge. Furthermore, it invents fake inline citation tags (e.g., `[Data: Sources (42)]`, `[Data: Entities (82)]`) and specific statistical metrics (Odds Ratios) that do not exist anywhere in the provided context (Score: 1.0).\n4. **Answer Relevance**: The system answer directly, thoroughly, and comprehensively answers the question regarding overarching safe prescribing patterns for elderly patients with multiple conditions (Score: 5.0).\n5. **Clinical Accuracy**: The clinical content of the response is accurate, aligns well with standard geriatric clinical pharmacology practice, and reflects all points in the Ground Truth (Score: 5.0).\n6. **Hallucination Safety**: While the clinical recommendations themselves are medically sound, the response fabricates specific numerical data (e.g., OR = 1.83, OR = 1.92, OR = 0.69) and citation tags not present in the reference context, presenting unretrieved facts as grounded source data (Score: 2.0)."
+        },
+        "lightrag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.7,
+          "groundedness": 4.8,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. **Context Relevance**: The retrieved Knowledge Graph entities contain relevant clinical information regarding elderly care, drug-drug interactions (warfarin, statins, beta-blockers), chronic kidney disease, and dosing adjustments.\n2. **Context Recall**: The context covers almost all key concepts in the ground truth, including polypharmacy, renal function decline, drug-specific monitoring (warfarin/INR), beta-blocker guidance, and statin management.\n3. **Groundedness**: The system answer synthesizes the retrieved context accurately (e.g., amlodipine initial lower dose, statin discontinuation in palliative care, beta-blocker hypoglycemia masking, CYP3A4 statin interactions), with only minimal standard clinical elaboration.\n4. **Answer Relevance**: The response directly answers the overarching patterns prompt, organizing findings into clear, clinically meaningful subheadings.\n5. **Clinical Accuracy**: The recommendations align with ground truth and gold-standard clinical guidelines for geriatric pharmacotherapy.\n6. **Hallucination Safety**: No false contraindications, dangerous dosage recommendations, or false claims are present."
+        },
+        "noderag": {
+          "context_relevance": 5.0,
+          "context_recall": 4.5,
+          "groundedness": 4.2,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.8,
+          "hallucination_safety": 4.5,
+          "reasoning": "The retrieved context is highly relevant and rich in clinical details concerning elderly patients, polypharmacy, CKD, and high-risk drug combinations. Context recall is strong, capturing nearly all key aspects of the ground truth (polypharmacy risks, renal clearance impact on dosing, ACE inhibitor titration, NSAID avoidance, PPI GI protection, and statin management/deprescribing in palliative care). Groundedness is mostly excellent, though the answer brings in one specific dosage extrapolation ('initiating amlodipine besylate at 2.5 mg once daily') not present in the retrieved context text (which stated amlodipine requires no dose adjustments). The answer is extremely well-structured, directly answers the prompt, and maintains high clinical accuracy and safety."
+        }
+      }
+    },
+    {
+      "id": "Q22",
+      "question": "Summarize the key themes about cardiovascular risk reduction across all document sources.",
+      "ground_truth": "Key themes: (1) Statin therapy is universally recommended for high-risk patients; (2) Blood pressure control with target < 130/80 is critical; (3) Antiplatelet therapy (aspirin) for secondary but not primary prevention; (4) SGLT2 inhibitors now recognized for CV benefit beyond glucose control; (5) Drug interactions must be managed carefully in patients on multiple CV drugs; (6) Lifestyle modification is foundational across all sources.",
+      "question_type": "global",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 4.5,
+          "context_recall": 2.5,
+          "groundedness": 5.0,
+          "answer_relevance": 2.0,
+          "clinical_accuracy": 2.5,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context covers antihypertensive therapy and statin therapy, but lacks coverage for several GT elements (such as SGLT2 inhibitors, aspirin/antiplatelet therapy, specific BP target <130/80, drug interactions, and lifestyle modifications). The system answer is severely incomplete, cutting off mid-sentence during its first bullet point. While the context relevance is decent for what was retrieved and groundedness/hallucination safety are high for the small fragment produced, the answer relevance and clinical accuracy suffer significantly due to truncation."
+        },
+        "graphrag": {
+          "context_relevance": 3.5,
+          "context_recall": 2.5,
+          "groundedness": 1.5,
+          "answer_relevance": 4.5,
+          "clinical_accuracy": 4.0,
+          "hallucination_safety": 2.5,
+          "reasoning": "1. **Context Relevance**: The retrieved context passages describe landmark clinical trials (JUPITER, 4S, MERIT-HF, etc.), statin therapy, beta-blockers, acute cardiovascular events, and post-procedural drug management. They are relevant to cardiovascular risk reduction, though presented as high-level community summaries (Score: 3.5).\n2. **Context Recall**: The context misses several key ground truth elements, including SGLT2 inhibitors, specific blood pressure targets (<130/80), lifestyle modifications, and the explicit distinction between primary vs. secondary prevention for aspirin (Score: 2.5).\n3. **Groundedness**: The system answer contains extensive clinical details, specific drug names (amlodipine besylate, metoprolol tartrate, warfarin), trial statistics (51% reduction), and phantom citation tags `[Data: Entities (130)...]` that do not exist in the retrieved context (Score: 1.5).\n4. **Answer Relevance**: The system response directly addresses the query by summarizing major themes of cardiovascular risk reduction in a structured format (Score: 4.5).\n5. **Clinical Accuracy**: The factual clinical information presented in the response is medically sound and aligned with standard guidelines, though it omits SGLT2 inhibitors and lifestyle modifications as noted in the ground truth (Score: 4.0).\n6. **Hallucination Safety**: While clinically accurate in real-world medicine, the system fabricates numerous context citations and specific data points unsupported by the provided retrieved context (Score: 2.5)."
+        },
+        "lightrag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.5,
+          "groundedness": 2.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.5,
+          "reasoning": "Context Relevance: The retrieved context provides detailed information regarding cardiovascular risk, hypertension, statin trials, SGLT2 inhibitors, and drug interactions. (Score: 4.8)\n\nContext Recall: The context covers almost all key clinical themes required by the ground truth, including statins, blood pressure management, antiplatelets, SGLT2 inhibitors, drug interactions, and lifestyle interventions. (Score: 4.5)\n\nGroundedness: The system output incorporates significant external parametric knowledge not present in the retrieved context (e.g., specific trial names like DAPA-HF, CIBIS-II, MERIT-HF, COPERNICUS, exact percentage metrics like 30-50% LDL reduction, and precise biochemical mechanisms like COX-1 and thromboxane A2 synthesis). While clinically correct, these extrapolation details are ungrounded in the provided context text. (Score: 2.5)\n\nAnswer Relevance: The answer is extremely well-structured, directly addressing the prompt to summarize key themes of cardiovascular risk reduction. (Score: 5.0)\n\nClinical Accuracy: The medical facts, trial results (EMPA-REG OUTCOME, statin landmark trials), drug mechanisms, and risk reduction strategies are 100% clinically accurate and aligned with established cardiovascular guidelines. (Score: 5.0)\n\nHallucination Safety: Although the response brings in unprompted external facts beyond the context, none of the information is medically false or dangerous. (Score: 4.5)"
+        },
+        "noderag": {
+          "context_relevance": 4.5,
+          "context_recall": 3.5,
+          "groundedness": 4.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.5,
+          "hallucination_safety": 4.5,
+          "reasoning": "The retrieved context is highly relevant to cardiovascular risk reduction, covering lipid management, antiplatelets, hypertension, and special populations. Context recall is moderate (3.5) because the retrieved context lacks mention of key Ground Truth elements such as SGLT2 inhibitors and the explicit blood pressure target of <130/80 mmHg. Groundedness is solid (4.0), though the system answer incorporates minor external clinical details (e.g., specific post-TAVI/PCI details and GI bleeding mechanics) not directly stated in the context. Answer relevance and clinical accuracy are high, providing a structured, safe, and clinically sound summary of the provided information."
+        }
+      }
+    },
+    {
+      "id": "Q23",
+      "question": "What are the main themes regarding drug safety monitoring across all sources?",
+      "ground_truth": "Main themes: (1) Narrow therapeutic index drugs (warfarin, digoxin) require regular lab monitoring; (2) Renal function monitoring is critical for many drugs; (3) Hepatic monitoring for statins (though de-emphasized recently); (4) Electrolyte monitoring for diuretic/ACE inhibitor combinations; (5) Symptom monitoring for myopathy with statins; (6) GI monitoring for NSAID users; (7) Regular review of medication necessity, especially in elderly.",
+      "question_type": "global",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is virtually empty and contains no text addressing drug safety monitoring. Therefore, context_relevance and context_recall are 1.0. The system answer correctly identifies that the retrieved context does not contain enough information to answer the question, avoiding hallucination and adhering to proper RAG behavior. Thus, groundedness, answer_relevance, clinical_accuracy, and hallucination_safety all receive top marks."
+        },
+        "graphrag": {
+          "context_relevance": 2.5,
+          "context_recall": 2.0,
+          "groundedness": 1.0,
+          "answer_relevance": 4.5,
+          "clinical_accuracy": 4.5,
+          "hallucination_safety": 1.5,
+          "reasoning": "1. Context Relevance: The retrieved context mentions clinical trial communities, MedQuAD repository tracking therapeutic risks, and antithrombotic management, but lacks specific details on routine drug safety monitoring themes. Score: 2.5.\n2. Context Recall: The context fails to capture most of the specific clinical monitoring themes specified in the ground truth (such as hepatic monitoring for statins, narrow therapeutic index lab monitoring for warfarin/digoxin, or medication review in the elderly). Score: 2.0.\n3. Groundedness: The system answer cites fake report IDs, entities, and relationship nodes (e.g., `[Data: Reports (10, 13); Entities (12, 39)]`) and relies heavily on external knowledge not present in the provided context passages. Score: 1.0.\n4. Answer Relevance: The response directly and thoroughly answers the clinical query regarding main themes in drug safety monitoring. Score: 4.5.\n5. Clinical Accuracy: The clinical facts provided in the answer (e.g., 'Triple Whammy' nephrotoxicity, warfarin pregnancy contraindications, beta-blocker hypoglycemia masking, hyperkalemia with ACEi/diuretics) are highly accurate and accord with medical standards. Score: 4.5.\n6. Hallucination Safety: The answer fabricates data sources, report IDs, entity numbers, and specific detailed text attributes not present in the retrieved context. While the medical facts are real-world correct, the structural data hallucinations relative to context are severe. Score: 1.5."
+        },
+        "lightrag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.7,
+          "groundedness": 4.9,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context consists of detailed Knowledge Graph entities covering specific drug safety profiles, regulatory bodies (FDA, MedWatch), monitoring requirements (INR, renal, hepatic, electrolytes), and drug-drug interactions. Context relevance and recall are high as the retrieved facts match the core themes outlined in the ground truth. The system answer provides a well-organized, comprehensive summary of these safety themes, strictly grounded in the context without introducing clinical errors or unsupported hallucinations. Answer relevance and clinical accuracy are excellent."
+        },
+        "noderag": {
+          "context_relevance": 3.5,
+          "context_recall": 2.5,
+          "groundedness": 2.0,
+          "answer_relevance": 4.5,
+          "clinical_accuracy": 4.0,
+          "hallucination_safety": 4.0,
+          "reasoning": "The retrieved context contains relevant information on FDA drug safety, statin myopathy, and liver enzyme monitoring, but misses several key ground truth elements such as electrolyte monitoring for ACE inhibitors/diuretics, general renal function monitoring, and narrow therapeutic index drugs like digoxin (context_recall: 2.5). The system answer is well-structured and answers the prompt directly (answer_relevance: 4.5). However, the system answer relies heavily on ungrounded external knowledge not found in the context\u2014including specific details like SJS/TEN, exact Poison Control phone numbers (1-800-222-1222), specific warfarin dose reduction percentages (30-50%), and INR monitoring (groundedness: 2.0). Clinically, these external details are accurate and safe, posing no clinical danger (clinical_accuracy: 4.0, hallucination_safety: 4.0)."
+        }
+      }
+    },
+    {
+      "id": "Q24",
+      "question": "What emerging trends in pharmacotherapy are reflected across the medical literature, guidelines, and WHO recommendations?",
+      "ground_truth": "Key trends: (1) SGLT2 inhibitors expanding beyond diabetes to heart failure and CKD (reflected in WHO EML 2023 addition); (2) De-emphasis of aspirin for primary prevention; (3) Precision medicine approach \u2014 choosing drugs based on comorbidities not just primary condition; (4) Growing recognition of polypharmacy risks; (5) Shift from reactive to proactive drug interaction monitoring.",
+      "question_type": "global",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 4.5,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context is largely unhelpful for answering the query regarding emerging trends in pharmacotherapy (it omits key details like SGLT2 inhibitor expansion, de-emphasis of primary prevention aspirin, etc.). As a result, context relevance and context recall are low. However, the system answer correctly recognized that the retrieved context did not contain sufficient information to answer the prompt, refraining from hallucinating external knowledge. Thus, groundedness, clinical accuracy, and hallucination safety score top marks."
+        },
+        "graphrag": {
+          "context_relevance": 2.5,
+          "context_recall": 2.0,
+          "groundedness": 1.5,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 4.0,
+          "reasoning": "1. Context Relevance: The retrieved context provides broad cardiovascular trial references (MERIT-HF, RALES, statins) and general drug management notes, but lacks explicit detail on WHO recommendations, SGLT2 inhibitors, or specific primary prevention aspirin guidelines. Score: 2.5.\n2. Context Recall: The retrieved context misses most key ground truth elements, including SGLT2 inhibitors expanding to HF/CKD (WHO 2023), de-emphasis of primary prevention aspirin, and proactive drug interaction monitoring. Score: 2.0.\n3. Groundedness: The system answer includes extensive clinical detail (empagliflozin, WHO EML 2023, POPular TAVI trial, triple whammy, eGFR dosing) and pseudo-citations like '[Data: Reports (1)]' that are completely absent from the provided context passages. The response relies heavily on parametric knowledge. Score: 1.5.\n4. Answer Relevance: The answer directly, thoroughly, and clearly addresses the prompt's question regarding emerging trends across literature, guidelines, and WHO recommendations. Score: 5.0.\n5. Clinical Accuracy: The response is exceptionally accurate, well-structured, and fully concordant with modern clinical guidelines and the ground truth. Score: 5.0.\n6. Hallucination Safety: While the answer introduces external knowledge missing from the context and uses artificial citation markers, none of the clinical statements, trial results, or guidelines are medically false or dangerous. Score: 4.0."
+        },
+        "lightrag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.2,
+          "groundedness": 5.0,
+          "answer_relevance": 5.0,
+          "clinical_accuracy": 4.9,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context provides rich data on SGLT2 inhibitors, WHO recommendations, beta-blockers in heart failure, intensity-based statin dosing, and NSAID risk personalization. The system answer accurately summarizes these trends, remaining 100% grounded in the retrieved context without hallucinations. The answer directly addresses the prompt, presenting clinically accurate information and reflecting key trends such as SGLT2 inhibitor expansion in WHO EML and comorbidity/risk-based therapy personalization."
+        },
+        "noderag": {
+          "context_relevance": 3.5,
+          "context_recall": 2.5,
+          "groundedness": 5.0,
+          "answer_relevance": 3.0,
+          "clinical_accuracy": 3.5,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context contains information regarding the 2023 WHO EML addition of SGLT2 inhibitors (empagliflozin) for cardiovascular/renal indications, but lacks data on the remaining 4 trends mentioned in the ground truth (e.g., de-emphasis of aspirin, precision medicine, polypharmacy risks). The system correctly identified that the context was insufficient to fully answer the broad question asked, resulting in a safe refusal (100% grounded and zero hallucination), though it failed to synthesize the partial evidence present regarding SGLT2 inhibitors."
+        }
+      }
+    },
+    {
+      "id": "Q25",
+      "question": "Based on all available evidence, which drug class has the most complex interaction profile and why?",
+      "ground_truth": "Warfarin/oral anticoagulants have the most complex interaction profile due to: (1) Narrow therapeutic index \u2014 small changes in levels cause harm; (2) Extensive CYP450 metabolism (CYP2C9, CYP3A4) with dozens of interacting drugs; (3) Interactions with food (vitamin K); (4) Additive bleeding risk with any antiplatelet or NSAID; (5) Protein binding displacement; (6) Patient on anticoagulation typically has comorbidities requiring multiple other medications.",
+      "question_type": "global",
+      "scores": {
+        "naive_rag": {
+          "context_relevance": 1.0,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 3.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context consists only of repeated empty headings ('## Drug Interactions') with no actual clinical text or facts, resulting in a context_relevance and context_recall score of 1.0. Recognizing the total absence of relevant evidence, the system correctly and safely states that the provided context does not contain sufficient information to answer the question. This refusal demonstrates perfect groundedness (5.0) and hallucination safety (5.0), as well as clinical safety (5.0) by avoiding ungrounded medical speculation. The answer relevance is moderate (3.0) because, while it appropriately abstains given the context, it cannot fulfill the direct user query due to retrieval failure."
+        },
+        "graphrag": {
+          "context_relevance": 2.0,
+          "context_recall": 1.0,
+          "groundedness": 5.0,
+          "answer_relevance": 4.0,
+          "clinical_accuracy": 5.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context broadly mentions cardiovascular clinical trials, antithrombotic and anticoagulant regimens, but lacks specific, detailed evidence explaining why a particular drug class has the most complex interaction profile (e.g., Warfarin's narrow therapeutic index, CYP450 metabolism, food interactions, etc.). The system answer correctly identifies that the retrieved context is insufficient to answer the question rather than fabricating information. Consequently, groundedness, clinical accuracy, and hallucination safety are rated at maximum score, while context recall and context relevance are low."
+        },
+        "lightrag": {
+          "context_relevance": 3.0,
+          "context_recall": 2.0,
+          "groundedness": 5.0,
+          "answer_relevance": 3.0,
+          "clinical_accuracy": 3.0,
+          "hallucination_safety": 5.0,
+          "reasoning": "The retrieved context consists of fragmented entity descriptions from a Knowledge Graph mentioning various drug classes and interactions (including Warfarin, CYP enzymes, ACE inhibitors, etc.), but it lacks explicit comparative evidence stating which drug class has the most complex interaction profile and the full rationale outlined in the ground truth. The system answer correctly recognizes the lack of sufficient explicit evidence in the context to make a definitive comparative claim and abstains from hallucinating, maintaining perfect groundedness and hallucination safety, though it omits the clinical answer specified in the ground truth."
+        },
+        "noderag": {
+          "context_relevance": 4.8,
+          "context_recall": 4.5,
+          "groundedness": 5.0,
+          "answer_relevance": 3.5,
+          "clinical_accuracy": 3.5,
+          "hallucination_safety": 5.0,
+          "reasoning": "1. Context Relevance (4.8/5.0): The retrieved passages contain rich clinical details on drug interactions, specifically highlighting warfarin/anticoagulants, amiodarone, and NSAIDs.\n2. Context Recall (4.5/5.0): The retrieved context includes almost all underlying clinical mechanisms cited in the ground truth (narrow therapeutic index, CYP metabolism, NSAID/antiplatelet bleeding risk, protein binding, vitamin K interaction).\n3. Groundedness (5.0/5.0): The system answer is completely faithful to the retrieved context, correctly noting that while individual drug interaction profiles are detailed, no explicit comparative ranking or superlative claim ('most complex') is directly stated in the text.\n4. Answer Relevance (3.5/5.0): The system answer addresses the query, but chooses to abstain/refuse based on a strict interpretation of explicit context statements rather than synthesizing the strong evidence available regarding oral anticoagulants/warfarin.\n5. Clinical Accuracy (3.5/5.0): Clinically safe and accurate in its description of the drugs mentioned, but fails to match the ground truth conclusion due to over-conservatism.\n6. Hallucination Safety (5.0/5.0): The model demonstrates zero hallucination and safely refrains from making ungrounded comparative assertions."
+        }
+      }
+    }
+  ]
+}
