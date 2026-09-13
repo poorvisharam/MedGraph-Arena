@@ -1,0 +1,22 @@
+{
+  "naive_rag": {
+    "faithfulness": 0.9133333333333333,
+    "context_precision": 0.429513888859566,
+    "context_recall": 0.444
+  },
+  "graphrag": {
+    "faithfulness": 0.12455821371610845,
+    "context_precision": 0.0,
+    "context_recall": 0.0
+  },
+  "lightrag": {
+    "faithfulness": 0.0,
+    "context_precision": 0.0,
+    "context_recall": 0.0
+  },
+  "noderag": {
+    "faithfulness": 0.0,
+    "context_precision": 0.0,
+    "context_recall": 0.0
+  }
+}

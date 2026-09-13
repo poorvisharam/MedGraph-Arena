@@ -1,0 +1,1376 @@
+{
+  "matchups": [
+    {
+      "question_id": "Q01",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A is more comprehensive and directly identifies metformin as a first-line treatment for Type 2 Diabetes Mellitus (aligning with the ground truth), while also noting its well-documented applications in weight loss and obesity. Answer B unnecessarily focuses on a specific brand name combination drug (ZITUVIMET).",
+      "reasoning_2": "Answer B correctly identifies metformin as a first-line treatment for type 2 diabetes mellitus, matching the ground truth. Answer A unnecessarily restricts its response to a specific combination medication (ZITUVIMET) and misses key general context about metformin."
+    },
+    {
+      "question_id": "Q01",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is much more comprehensive and detailed. Crucially, it includes the exact mechanisms of action listed in the ground truth (decreased hepatic glucose production, decreased intestinal absorption, improved insulin sensitivity), whereas Answer A completely omits how metformin works. Answer B also provides a well-organized breakdown of both primary and secondary uses.",
+      "reasoning_2": "Answer A is more comprehensive, well-structured, and accurate. It covers the primary use (Type 2 Diabetes Mellitus) and off-label/emerging uses, while also including the exact mechanism of action specified in the ground truth (reducing hepatic glucose production, decreasing intestinal absorption, and improving insulin sensitivity)."
+    },
+    {
+      "question_id": "Q01",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a more comprehensive answer to the question by including both its primary indication (first-line treatment for Type 2 Diabetes) as well as notable off-label and exploratory uses like weight loss and managing obesity sequelae. Answer B includes unnecessary formatting fluff ('Multi-Hop Reasoning Path') instead of focusing purely on providing a clean, direct answer.",
+      "reasoning_2": "Answer B accurately captures that metformin is a first-line treatment for type 2 diabetes mellitus (directly matching the ground truth) and provides additional context on its well-known off-label/associated uses such as weight loss. Answer A includes unnecessary formatting artifacts (multi-hop reasoning paths) and misses the explicit mention of it being a first-line therapy."
+    },
+    {
+      "question_id": "Q01",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive, accurate, and detailed explanation of metformin's primary indication (Type 2 Diabetes Mellitus) as well as its off-label and secondary uses (insulin resistance, weight management, PCOS). It also perfectly matches the ground truth regarding its mechanism of action. Answer A incorrectly restricts its answer to a specific brand-name combination product (ZITUVIMET).",
+      "reasoning_2": "Answer A provides a comprehensive, accurate, and well-structured answer to the question, covering its main indication (Type 2 Diabetes), off-label/secondary uses, and its exact mechanism of action as stated in the ground truth. Answer B incorrectly restricts its context to a specific set of unprovided documents and focuses narrowly on a specific combination drug."
+    },
+    {
+      "question_id": "Q01",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Answer B correctly identifies metformin as a biguanide, matching the ground truth description, whereas Answer A overly restricts its explanation to a specific combination brand name (ZITUVIMET). Both answers correctly state its primary use for type 2 diabetes mellitus.",
+      "reasoning_2": "Answer A provides a clear, accurate, and general explanation of metformin's usage for type 2 diabetes mellitus. Answer B unnecessarily restricts its answer to a specific combination brand name (ZITUVIMET / sitagliptin combination), making it less general and slightly misleading for a broad question about metformin."
+    },
+    {
+      "question_id": "Q01",
+      "question_type": "factual",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is comprehensive, accurate, and completely aligns with the ground truth, including the mechanism of action (decreasing hepatic glucose production, decreasing intestinal glucose absorption, and improving insulin sensitivity). It also accurately details both FDA-approved and common off-label/adjunct clinical uses. Answer B is overly formatted like a structured database query and omits the mechanism of action mentioned in the ground truth.",
+      "reasoning_2": "Answer B is much more comprehensive and accurate. It clearly states the primary indication (Type 2 Diabetes Mellitus as first-line therapy), includes off-label/secondary uses, and explicitly details the exact three-part mechanism of action described in the ground truth (decreasing hepatic glucose production, decreasing intestinal absorption, and improving insulin sensitivity)."
+    },
+    {
+      "question_id": "Q02",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A is more comprehensive and includes the specific statistical data and terms mentioned in the ground truth, such as gastric and duodenal ulceration (15\u201330%), GI bleeding (3\u20135 fold increased risk), gastric perforation, and dyspepsia.",
+      "reasoning_2": "Answer B is much more aligned with the ground truth, as it includes the specific details and statistics mentioned in the gold standard (e.g., gastric/duodenal ulceration rates of 15-30%, 3-5 fold increase in GI bleeding risk, gastric perforation, and dyspepsia). Answer A provides general information but misses these key details."
+    },
+    {
+      "question_id": "Q02",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Both answers accurately capture all the key details present in the ground truth, including the specific percentages and fold-increases for gastrointestinal risks. Answer B is slightly superior as it provides extra clinical context, detailed risk factors, and clear formatting, making it more comprehensive and helpful.",
+      "reasoning_2": "Both answers accurately capture all the specific GI and CV details provided in the ground truth (including exact percentages and fold-increases). Answer A is slightly better as it provides helpful context on why these side effects occur (COX inhibition) and lists key risk factors that heighten these complications."
+    },
+    {
+      "question_id": "Q02",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A is complete, accurate, and includes specific statistics directly aligning with the ground truth (such as 15\u201330% rate of ulceration and 3\u20135 fold increased risk of GI bleeding). Answer B is incomplete and cuts off mid-synthesis.",
+      "reasoning_2": "Answer B provides a complete, accurate, and highly detailed overview of the side effects of ibuprofen, directly matching the specific statistics and details mentioned in the ground truth. Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q02",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is exceptionally detailed, highly comprehensive, and directly aligns with the ground truth by including specific clinical statistics such as the 15-30% rate of gastric/duodenal ulceration in chronic users and the 3-5 fold increased risk of GI bleeding. Answer A is much more basic.",
+      "reasoning_2": "Answer A is exceptionally accurate and comprehensive, capturing all the specific statistics mentioned in the ground truth (e.g., 15-30% ulceration rate in chronic users, 3-5 fold increased risk of GI bleeding, and gastric perforation). Answer B is too brief and lacks these key specific details."
+    },
+    {
+      "question_id": "Q02",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer A provides a complete, accurate, and structured summary of the main side effects of ibuprofen. Answer B is incomplete as it gets cut off midway through its synthesis section.",
+      "reasoning_2": "Answer B is complete and accurately covers the primary gastrointestinal, cardiovascular, and allergic side effects of ibuprofen, aligning well with the ground truth. Answer A is incomplete, cutting off abruptly after the first heading in its synthesis section."
+    },
+    {
+      "question_id": "Q02",
+      "question_type": "factual",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is comprehensive, accurate, and includes all specific details provided in the ground truth (such as exact percentages for ulceration and fold-risk for GI bleeding). Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B is complete, exceptionally detailed, and matches the ground truth perfectly, including specific percentages and relative risk values (e.g., 15-30% ulceration rate, 3-5 fold GI bleeding risk). Answer A cut off abruptly and was incomplete."
+    },
+    {
+      "question_id": "Q03",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Both AI systems incorrectly assumed a provided context or set of drug labels was present rather than answering the general medical question directly. However, Answer A is a complete response that references guideline bodies (JNC) and common first-line drug examples, whereas Answer B is truncated and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence. While both models responded as if constrained by a provided text or drug labels rather than answering directly from general medical knowledge, Answer B is complete, coherent, and accurately notes that guidelines (like JNC) govern first-line choices while mentioning several relevant drug classes."
+    },
+    {
+      "question_id": "Q03",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B accurately outlines the first-line treatment options for hypertension based on patient demographics and comorbidities (such as CCBs for Black/elderly patients and ACE inhibitors for CKD), aligning well with the ground truth. Answer A incorrectly claims there is not enough information to answer the question based on a non-existent context.",
+      "reasoning_2": "Answer A provides accurate and specific medical information regarding first-line hypertension treatment based on patient demographics and comorbidities, aligning well with the ground truth. Answer B incorrectly claims there is not enough information to answer the question."
+    },
+    {
+      "question_id": "Q03",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Answer B correctly lists the primary classes of first-line medications for hypertension (Calcium Channel Blockers, ACE Inhibitors, and Thiazide Diuretics) as described in the ground truth. Answer A inappropriately claims there is not enough context to answer the question.",
+      "reasoning_2": "Answer A correctly identifies the primary drug classes used as first-line treatment for hypertension (CCBs, ACE inhibitors, and Thiazide diuretics). Answer B fails to answer the question, incorrectly stating there is not enough information based on a non-existent provided context."
+    },
+    {
+      "question_id": "Q03",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive and accurate overview of first-line hypertension treatments tailored to specific patient populations (Black patients, elderly patients, and patients with CKD), aligning closely with the ground truth. Answer A is vague and incomplete.",
+      "reasoning_2": "Answer A provides a detailed and accurate overview of first-line hypertension treatments tailored to patient demographics and comorbidities, closely aligning with current clinical guidelines and the ground truth. Answer B fails to provide specific clinical recommendations."
+    },
+    {
+      "question_id": "Q03",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Answer B correctly identifies the primary drug classes used as first-line treatments for hypertension (Calcium channel blockers, ACE inhibitors, and Thiazide diuretics), which directly aligns with the ground truth. Answer A erroneously refers to 'provided drug labels' (which were not part of the prompt) and fails to specify the actual recommended drug classes.",
+      "reasoning_2": "Answer A correctly identifies the primary drug classes recommended for first-line hypertension treatment (CCBs, ACE inhibitors, and Thiazide diuretics). Answer B fails to provide the specific drug classes and incorrectly references 'provided drug labels' when no such context was given."
+    },
+    {
+      "question_id": "Q03",
+      "question_type": "factual",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a much more comprehensive and nuanced breakdown of first-line hypertension treatment based on patient demographics and comorbidities (such as age, race, and presence of CKD), which aligns closely with the ground truth guidelines. Answer B is overly concise and fails to explain how treatment selection depends on patient characteristics.",
+      "reasoning_2": "Answer B provides a comprehensive and accurately tailored response that aligns well with the ground truth, explaining how first-line options depend on patient demographics (Black/elderly patients) and comorbidities (CKD). Answer A only lists the general drug classes without providing the necessary clinical context for selection."
+    },
+    {
+      "question_id": "Q04",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A captures all key elements of the ground truth, including the specific percentage reduction in LDL cholesterol (30-50%) and the non-lipid/pleiotropic effects (improving endothelial function, reducing vascular inflammation, stabilizing plaques, and antithrombotic properties). Answer B misses these important pleiotropic mechanisms.",
+      "reasoning_2": "Answer B precisely matches all key elements of the ground truth, including the exact percentage of LDL reduction (30-50%) and the specific pleiotropic effects (endothelial function, vascular inflammation, plaque stabilization, antithrombotic properties). Answer A focuses more on clinical indications and patient populations rather than explaining the physiological mechanism of action and pleiotropic effects."
+    },
+    {
+      "question_id": "Q04",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Both answers accurately and completely cover all points from the ground truth, including HMG-CoA reductase inhibition, 30-50% LDL reduction, and all specified pleiotropic effects. Answer B is more comprehensive as it adds examples of statins, landmark clinical trial evidence, and relevant information on side effects and clinical monitoring.",
+      "reasoning_2": "Both answers accurately capture all details from the ground truth. Answer A is slightly better as it is more detailed, well-structured, and includes helpful additional context such as examples of statins, clinical trial evidence, and side effect profiles."
+    },
+    {
+      "question_id": "Q04",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A is complete, highly accurate, and covers all key points mentioned in the ground truth, including the 30-50% reduction in LDL cholesterol and the specific pleiotropic effects. Answer B is incomplete and cuts off mid-sentence at the end.",
+      "reasoning_2": "Answer B provides a complete, accurate, and structured response that aligns perfectly with the ground truth, covering both LDL lowering (30-50%) and all pleiotropic effects (improving endothelial function, reducing inflammation, stabilizing plaques, antithrombotic properties). Answer A cuts off abruptly mid-sentence at the end and fails to mention pleiotropic effects."
+    },
+    {
+      "question_id": "Q04",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is substantially more accurate and complete based on the ground truth. It explicitly mentions the 30-50% LDL reduction and correctly identifies all the key pleiotropic effects outlined in the ground truth (improving endothelial function, reducing vascular inflammation, stabilizing plaques, and antithrombotic properties). Answer A completely misses the pleiotropic effects.",
+      "reasoning_2": "Answer A is completely aligned with the ground truth, covering both the primary lipid-lowering mechanism (including the specific 30-50% LDL reduction) and all four pleiotropic effects mentioned (endothelial function, vascular inflammation reduction, plaque stabilization, and antithrombotic properties). Answer B misses the pleiotropic effects entirely."
+    },
+    {
+      "question_id": "Q04",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer A provides a complete, clear, and comprehensive explanation of how statins work to prevent cardiovascular disease. Answer B cuts off mid-sentence at the end, leaving the synthesis section incomplete.",
+      "reasoning_2": "Answer B provides a complete, well-structured response detailing the primary mechanism of action (HMG-CoA reductase inhibition) and clinical outcomes. Answer A is incomplete and cuts off mid-sentence at the end of the response."
+    },
+    {
+      "question_id": "Q04",
+      "question_type": "factual",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is highly comprehensive, accurate, and completely addresses all points in the ground truth, including HMG-CoA reductase inhibition, 30-50% LDL reduction, and pleiotropic effects (endothelial function, anti-inflammatory, plaque stabilization, antithrombotic). Answer B is cut off mid-sentence and fails to complete its response.",
+      "reasoning_2": "Answer B is complete, accurate, and perfectly aligns with the ground truth, covering both the primary lipid-lowering mechanism (including the exact 30-50% reduction in LDL) and all pleiotropic effects mentioned (endothelial function, inflammation reduction, plaque stabilization, antithrombotic properties). Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q05",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A directly and accurately describes the mechanism of action of aspirin as an antiplatelet agent, matching the ground truth precisely. Answer B incorrectly states that the mechanism is not detailed, likely assuming a context that was not provided in the prompt.",
+      "reasoning_2": "Answer B provides an accurate and complete response that matches the ground truth perfectly. Answer A incorrectly hallucinates a constraint regarding 'provided text excerpts' and fails to answer the question."
+    },
+    {
+      "question_id": "Q05",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "Tie",
+      "reasoning_1": "Both answers are completely accurate and align perfectly with the ground truth. Answer B is slightly better as it provides a clearer breakdown and explanation of how thromboxane A2 functions, making the mechanism of action easier to understand.",
+      "reasoning_2": "Both answers accurately and comprehensively explain the mechanism of action of aspirin as an antiplatelet agent, matching all key details from the ground truth including the low dosage (75-100mg), irreversible inhibition of COX-1 in platelets, blockade of thromboxane A2 synthesis, and the resulting reduction in platelet aggregation."
+    },
+    {
+      "question_id": "Q05",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, accurate, and concise explanation that perfectly matches the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a complete, accurate description of aspirin's mechanism of action as an antiplatelet agent that perfectly aligns with the ground truth. Answer A is cut off abruptly mid-sentence and is incomplete."
+    },
+    {
+      "question_id": "Q05",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a complete, accurate, and clear explanation of aspirin's mechanism of action as an antiplatelet agent, matching the ground truth perfectly. Answer A incorrectly assumes it needs to rely on a non-existent provided text excerpt and fails to answer the question directly.",
+      "reasoning_2": "Answer A accurately and comprehensively explains the mechanism of action of aspirin as an antiplatelet agent, perfectly aligning with the ground truth. Answer B incorrectly claims that the mechanism is not detailed in provided excerpts, failing to directly answer the question."
+    },
+    {
+      "question_id": "Q05",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Answer B accurately and comprehensively explains the mechanism of action of aspirin as an antiplatelet agent, matching the ground truth. Answer A incorrectly assumes there was a provided text excerpt and fails to answer the question directly.",
+      "reasoning_2": "Answer A accurately and comprehensively describes the biochemical mechanism of action of aspirin as an antiplatelet agent, matching the ground truth. Answer B incorrectly assumes a context/document was provided and fails to give the actual mechanism of action."
+    },
+    {
+      "question_id": "Q05",
+      "question_type": "factual",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a complete, accurate, and clear explanation of aspirin's mechanism of action as an antiplatelet agent, perfectly matching the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a complete, clear, and accurate explanation of the mechanism of action of aspirin, perfectly aligning with all details in the ground truth (low dose, irreversible COX-1 inhibition, prevention of thromboxane A2 synthesis, and reduction of platelet aggregation). Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q06",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, accurate, and structured explanation of insulin resistance that aligns perfectly with the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a complete, accurate, and structured explanation of insulin resistance that aligns perfectly with the ground truth. Answer A is cut off mid-sentence and incomplete."
+    },
+    {
+      "question_id": "Q06",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Both Answer A and Answer B accurately reflect the ground truth. However, Answer B is much more comprehensive and helpful, providing additional accurate clinical context on the pathophysiology, lifestyle management, and pharmacological treatment of insulin resistance.",
+      "reasoning_2": "Both answers accurately cover the definition, pathophysiology, and associated conditions outlined in the ground truth. However, Answer A is more comprehensive and helpful as it expands on the clinical management and treatment strategies for insulin resistance."
+    },
+    {
+      "question_id": "Q06",
+      "question_type": "factual",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, accurate, and structured definition of insulin resistance that aligns perfectly with the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a complete, accurate, and structured response that matches all points in the ground truth. Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q06",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a complete, accurate, and highly comprehensive explanation of insulin resistance that aligns perfectly with the ground truth. Answer A is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A provides a clear, accurate, and comprehensive explanation of insulin resistance that aligns perfectly with the ground truth, including its association with T2D, metabolic syndrome, and PCOS, as well as its pathophysiology and management. Answer B is incomplete, cut off mid-sentence, and references 'provided drug documentation' which was not part of the prompt."
+    },
+    {
+      "question_id": "Q06",
+      "question_type": "factual",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both answers are incomplete and cut off mid-sentence. However, Answer A attempts to directly answer the question by correctly identifying insulin resistance as a metabolic condition, whereas Answer B only outputs a partial internal reasoning path and concepts list without providing a definition.",
+      "reasoning_2": "Both models provided incomplete, truncated answers that cut off mid-sentence, failing to adequately define insulin resistance."
+    },
+    {
+      "question_id": "Q06",
+      "question_type": "factual",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a thorough, accurate, and comprehensive definition of insulin resistance that aligns perfectly with the ground truth, along with pathophysiology and management options. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence. Answer B is exceptionally thorough, accurately incorporating all key points from the ground truth while expanding with relevant clinical details on management and pathophysiology."
+    },
+    {
+      "question_id": "Q07",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A directly addresses the question and aligns almost perfectly with the ground truth, detailing all four specific mechanisms of interaction (COX-1 inhibition, GI mucosal damage, protein binding displacement, and CYP2C9 inhibition) and mentioning paracetamol as the preferred alternative. Answer B misses these specific mechanisms and cuts off incomplete at the end.",
+      "reasoning_2": "Answer B directly answers the question and captures all four mechanisms of interaction mentioned in the ground truth (COX-1 inhibition, GI mucosal damage, protein binding displacement, and CYP2C9 inhibition), as well as recommending paracetamol as the preferred alternative. Answer A is much less detailed and misses the specific physiological mechanisms and alternative recommendations."
+    },
+    {
+      "question_id": "Q07",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "Tie",
+      "reasoning_1": "Both answers are exceptionally accurate, comprehensive, and clear. They both correctly answer 'no' and detail all four mechanisms of interaction mentioned in the ground truth (COX-1 platelet inhibition, GI mucosal damage, protein binding displacement, and CYP2C9 inhibition), as well as suggesting paracetamol as the preferred alternative along with appropriate clinical mitigation strategies.",
+      "reasoning_2": "Both answers are exceptionally accurate, comprehensive, and align perfectly with the ground truth. Answer A is slightly better because it presents the information naturally as a direct answer, whereas Answer B unnecessarily references an unseen 'provided context'."
+    },
+    {
+      "question_id": "Q07",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, well-structured, and accurate response that covers all key points mentioned in the ground truth, including mechanisms of interaction and alternatives. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a complete, accurate, and comprehensive explanation that aligns perfectly with the ground truth, detailing all four mechanisms of interaction and suggesting appropriate alternatives. Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q07",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B directly answers the question, covers every specific mechanism mentioned in the ground truth (COX-1 inhibition, GI mucosal damage, protein binding displacement, CYP2C9 inhibition), and provides the recommended alternative (paracetamol). Answer A is less detailed and cuts off mid-sentence at the end.",
+      "reasoning_2": "Answer A is exceptionally accurate, fully aligned with the ground truth, and covers all specific mechanisms of interaction (COX-1 inhibition, GI damage, protein binding displacement, CYP2C9 inhibition) as well as recommending paracetamol as the preferred alternative. Answer B is less detailed and cuts off mid-sentence at the end."
+    },
+    {
+      "question_id": "Q07",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer A provides a clear, comprehensive, and accurate explanation of why combining warfarin and ibuprofen is dangerous, detailing the risks of severe gastrointestinal bleeding and pharmacodynamic synergism. Although Answer A slightly truncates at the very end of its final bullet point, Answer B is severely truncated midway through its response and fails to deliver a complete answer.",
+      "reasoning_2": "Answer B provides a complete, accurate, and comprehensive explanation of why combining warfarin and ibuprofen is dangerous before getting slightly truncated at the very end. Answer A is severely truncated early in its reasoning path and fails to provide any substantial detail."
+    },
+    {
+      "question_id": "Q07",
+      "question_type": "multi_hop",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is complete, accurate, perfectly matches all details in the ground truth (including the specific mechanisms and paracetamol as the preferred alternative), and is well-formatted. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B is complete, highly accurate, and covers all key points mentioned in the ground truth, including specific mechanisms of action and recommending paracetamol as the preferred alternative. Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q08",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A accurately and comprehensively answers the question, perfectly matching the ground truth regarding the risk of hyperkalemia, the underlying mechanisms, and the therapeutic use in heart failure with monitoring. Answer B incorrectly claims the information is missing.",
+      "reasoning_2": "Answer B accurately and comprehensively answers the question, perfectly matching the ground truth regarding the hyperkalemia risk, the underlying mechanism, and its therapeutic use in heart failure with monitoring. Answer A fails to provide an answer."
+    },
+    {
+      "question_id": "Q08",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Both answers accurately capture all points from the ground truth, including the mechanism of interaction, the risk of hyperkalemia, and the therapeutic application in heart failure (referencing the RALES trial). However, Answer B is more comprehensive and polished, whereas Answer A has a truncation error at the end of its text ($> 5.0\\).",
+      "reasoning_2": "Answer A is complete, highly detailed, and accurately covers all points from the ground truth including the risk of hyperkalemia, the underlying physiological mechanisms, and the therapeutic use in heart failure. Answer B is incomplete and cuts off mid-sentence at the end."
+    },
+    {
+      "question_id": "Q08",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, accurate, and comprehensive explanation covering the hyperkalemia risk, mechanisms of action, and therapeutic application in heart failure as described in the ground truth. Answer B cuts off mid-sentence and fails to provide a final answer.",
+      "reasoning_2": "Answer B provides a comprehensive, accurate, and detailed explanation matching the ground truth, including the mechanism of hyperkalemia risk, its therapeutic use in heart failure, and necessary clinical monitoring. Answer A was cut off incomplete mid-sentence."
+    },
+    {
+      "question_id": "Q08",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A failed to answer the question, incorrectly stating that there was no information available. Answer B is detailed, accurate, and perfectly aligns with the ground truth, correctly identifying the risk of hyperkalemia, the underlying physiological mechanism, and the therapeutic context in heart failure.",
+      "reasoning_2": "Answer A provides a complete, accurate, and highly detailed response that covers all points in the ground truth, including the hyperkalemia risk, the mechanism of action for both drug classes, and the therapeutic exception for heart failure. Answer B falsely claims that no information is available and fails to answer the question."
+    },
+    {
+      "question_id": "Q08",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Answer B correctly identifies the core medical concept: combining ACE inhibitors with potassium-sparing diuretics leads to an increased risk of hyperkalemia, and it accurately explains the mechanism of action for both drug classes. Answer A fails to answer the question, falsely claiming lack of information, and cuts off mid-sentence.",
+      "reasoning_2": "Answer A accurately describes the mechanism of action for both drug classes and correctly identifies that combining them leads to increased serum potassium levels (hyperkalemia), aligning well with the ground truth. Although Answer A was cut off at the end, Answer B provides an incorrect meta-response claiming a lack of context documents and fails to answer the clinical question."
+    },
+    {
+      "question_id": "Q08",
+      "question_type": "multi_hop",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is complete, accurate, comprehensive, and perfectly aligns with the ground truth while providing useful clinical context. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence. Answer B is complete, highly accurate, detailed, and directly covers all key aspects mentioned in the ground truth, including the mechanism of hyperkalemia, therapeutic exception in heart failure, and clinical monitoring."
+    },
+    {
+      "question_id": "Q09",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A is complete, accurate, and covers almost all key points from the ground truth. Answer B is incomplete as it cuts off mid-sentence.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence. Answer B accurately and comprehensively explains why beta-blockers are used in heart failure despite their negative inotropic effects, aligning closely with the ground truth."
+    },
+    {
+      "question_id": "Q09",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is exceptionally comprehensive and covers all key points mentioned in the ground truth, including the mechanism of action (reducing heart rate/improving diastolic filling, reducing oxygen demand, preventing remodeling, reducing arrhythmia risk), clinical evidence (~35% mortality reduction from landmark trials), specific evidence-based agents, and practical dosing strategies ('start low, go slow'). Answer A is incomplete by comparison.",
+      "reasoning_2": "Answer A is comprehensive, highly accurate, and covers all points mentioned in the ground truth, including sympathetic activation, mechanisms of action (diastolic filling, oxygen demand, remodeling, arrhythmia risk), mortality benefit (~35% reduction with key trial references), specific evidence-based drugs, and dosing precautions ('start low, go slow'). Answer B misses several key ground truth elements, such as the mortality reduction percentage, arrhythmia risk reduction, and the necessity of starting at low doses."
+    },
+    {
+      "question_id": "Q09",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a clear, accurate, and correct medical explanation that addresses the core points in the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a clear, accurate, and coherent explanation addressing the mechanisms of beta-blockers in heart failure. Answer A is severely truncated and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q09",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and cuts off mid-sentence. Answer B is exceptionally thorough, accurate, and covers all points from the ground truth including the pathophysiological mechanisms, clinical trial evidence (~35% mortality reduction), specific evidence-based agents, and dosing precautions ('start low, go slow').",
+      "reasoning_2": "Answer A is exceptionally thorough, accurate, and completely addresses all aspects of the ground truth including mechanisms, trial evidence (~35% mortality reduction), specific drugs, and dosing precautions ('start low, go slow'). Answer B is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q09",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Both answers cut off abruptly without completing their responses. However, Answer B manages to list key concepts in its structured outline (such as SNS hyperactivation, catecholamine toxicity, cardiac remodeling, diastolic filling time, and dose titration) that directly address the ground truth before cutting off, making it significantly more informative than Answer A.",
+      "reasoning_2": "Both answers were truncated mid-generation. However, Answer A managed to list the core physiological mechanisms in its concept outline (SNS hyperactivation, catecholamine toxicity, cardiac remodeling, diastolic filling time, and dose titration) before cutting off, directly addressing the question. Answer B cut off during the introductory sentence before providing any reasoning."
+    },
+    {
+      "question_id": "Q09",
+      "question_type": "multi_hop",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, highly accurate, and clear explanation covering all key points from the ground truth, including pathophysiology, clinical mechanisms, specific landmark trials (~35% mortality reduction), specific evidence-based beta-blockers, and dosing strategies ('start low, go slow'). Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is cut off mid-sentence and incomplete. Answer B is exceptional, fully addressing all points in the ground truth with comprehensive detail, clear formatting, and accurate clinical nuance."
+    },
+    {
+      "question_id": "Q10",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A directly and accurately answers the question regarding standalone metformin dosing based on eGFR, matching the ground truth. Answer B unnecessarily restricts its response to a specific combination medication (ZITUVIMET - Sitagliptin/Metformin), which leads to incorrect advice regarding general metformin dosing in the eGFR 30-45 range.",
+      "reasoning_2": "Answer B directly and accurately reflects the ground truth guidelines for metformin dosing based on eGFR categories. Answer A focuses on a specific fixed-dose combination product (sitagliptin/metformin) rather than addressing metformin dosing in general, leading to inaccurate recommendations for general metformin use in moderate CKD."
+    },
+    {
+      "question_id": "Q10",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is much more comprehensive and provides a clear explanation of why renal function affects metformin clearance, accurately details the eGFR cutoffs matching the ground truth (including monitoring requirements), and adds relevant clinical safety context.",
+      "reasoning_2": "Answer A is more comprehensive and aligns better with the ground truth. It includes the need for regular monitoring of renal function, explains the underlying mechanism (lactic acidosis due to reduced clearance), and provides detailed eGFR-based dosing guidance."
+    },
+    {
+      "question_id": "Q10",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A accurately and concisely answers the prompt using the eGFR thresholds and safety risks outlined in the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a concise, clear, and accurate summary that aligns well with the ground truth. Answer A cuts off abruptly mid-sentence and fails to provide the full dosing recommendation."
+    },
+    {
+      "question_id": "Q10",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B directly and accurately addresses how metformin dosing is adjusted for chronic kidney disease based on eGFR guidelines (including halving the dose for eGFR 30-45 and contraindication for eGFR < 30), while also explaining the underlying mechanism (reduced clearance leading to lactic acidosis). Answer A overly restricts its response to a specific combination product (ZITUVIMET) and fails to mention the general recommendation to reduce/halve the dose of standalone metformin for moderate impairment.",
+      "reasoning_2": "Answer A directly addresses general metformin dosing in chronic kidney disease as specified in the ground truth, including halving the dose for eGFR 30-45 mL/min/1.73m\u00b2 and contraindication for eGFR < 30. Answer B focuses too narrowly on a specific combination drug (sitagliptin/metformin) and fails to explicitly explain general metformin dose adjustments for moderate renal impairment."
+    },
+    {
+      "question_id": "Q10",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer A provides a complete, accurate response based on drug safety guidelines regarding metformin and eGFR thresholds, although it specifically focuses on a combination drug (ZITUVIMET). Answer B cuts off abruptly mid-sentence and is incomplete.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence while explaining the eGFR 30 to < 45 threshold. Answer B provides a complete and coherent explanation covering renal function monitoring, contraindications (eGFR < 30), and contrast procedure precautions, even though it focuses slightly on a combination product context."
+    },
+    {
+      "question_id": "Q10",
+      "question_type": "multi_hop",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is complete, accurate, and aligns perfectly with the ground truth guidelines for metformin dosing in CKD. Answer B cut off mid-sentence and is incomplete.",
+      "reasoning_2": "Answer B provides a complete, accurate, and comprehensive explanation of how chronic kidney disease affects metformin dosing based on eGFR thresholds, matching the ground truth. Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q11",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A directly aligns with the ground truth, correctly noting that combining the drugs approximately doubles the bleeding risk and mentioning the specific clinical exception (mechanical heart valve with coronary disease). Answer B provides generic warning label information and misses these key details.",
+      "reasoning_2": "Answer B accurately reflects the ground truth by explicitly stating that the combination doubles the bleeding risk compared to warfarin alone, and it correctly identifies the specific indication exception (patients with a mechanical heart valve and coronary disease). Answer A only provides generic label warnings without these key specific details."
+    },
+    {
+      "question_id": "Q11",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is more comprehensive and accurate. Unlike Answer A, Answer B correctly explains the distinct mechanisms of action (anticoagulant vs. antiplatelet) mentioned in the ground truth, and provides useful clinical context on gastrointestinal bleeding risks and mitigation strategies.",
+      "reasoning_2": "Both answers accurately capture all core points from the ground truth, including the doubled bleeding risk, distinct mechanisms/effects, and specific indications (mechanical heart valve with coronary disease). Answer A is superior because it is more comprehensive, providing valuable clinical context such as gastrointestinal risk mechanisms and risk mitigation strategies."
+    },
+    {
+      "question_id": "Q11",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A directly and accurately incorporates all the key elements from the ground truth, including the doubled bleeding risk and the specific clinical example (mechanical heart valve with coronary disease). Answer B is incomplete and cuts off mid-sentence at the end.",
+      "reasoning_2": "Answer B accurately captures all the key points from the ground truth, including the specific details that the combination doubles the bleeding risk and the specific clinical example (mechanical heart valve with coronary disease). Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q11",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is exceptionally accurate and directly aligns with all key points in the ground truth: it explicitly notes that the combination doubles the bleeding risk, explains the distinct mechanisms of action (anticoagulant vs. antiplatelet), states that the benefit must outweigh the risk, and provides the exact example given in the ground truth (mechanical heart valve with coronary disease). Answer A is far too brief and lacks these specific crucial details.",
+      "reasoning_2": "Answer A directly and comprehensively covers all key points in the ground truth: it explicitly mentions that the combination doubles the bleeding risk, explains the distinct mechanisms of action (antiplatelet vs. anticoagulant), and identifies the specific clinical scenario where the benefit outweighs the risk (mechanical heart valve with coronary disease). Answer B is generic and relies on brief snippets from drug labels."
+    },
+    {
+      "question_id": "Q11",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer A provides a complete, accurate, and well-structured response highlighting the major bleeding risks associated with combining warfarin and aspirin. Answer B is incomplete and cuts off mid-sentence at the end.",
+      "reasoning_2": "Answer B provides a complete and accurate summary of the risks associated with combining warfarin and aspirin based on drug label information. Answer A is incomplete and cuts off mid-sentence at the end."
+    },
+    {
+      "question_id": "Q11",
+      "question_type": "multi_hop",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is complete, highly accurate, and covers all key points from the ground truth (doubled bleeding risk, different mechanisms of action, and specific clinical indications like mechanical heart valves with coronary disease). Answer B uses an unnecessary meta-reasoning template and is cut off mid-sentence at the end.",
+      "reasoning_2": "Answer B is complete, accurate, and covers all key points mentioned in the ground truth (doubling of bleeding risk, different mechanisms of action, and specific clinical indications like mechanical heart valves with coronary disease). Answer A was cut off mid-sentence and left incomplete."
+    },
+    {
+      "question_id": "Q12",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A is cut off mid-sentence, but it manages to correctly state the year (2023) and main indication (T2DM with cardiovascular disease) for empagliflozin's addition to the WHO Essential Medicines List. Answer B incorrectly refuses to answer, referencing a non-existent provided document context.",
+      "reasoning_2": "Answer B correctly identifies that empagliflozin was added to the WHO Essential Medicines List in 2023 for type 2 diabetes mellitus with cardiovascular disease, which aligns with the ground truth despite the response being abruptly truncated. Answer A incorrectly refuses to answer based on non-existent context restrictions."
+    },
+    {
+      "question_id": "Q12",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a complete, accurate, and structured explanation that aligns perfectly with the ground truth. Answer A is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is complete, accurate, and perfectly aligns with the ground truth details regarding the 2023 addition of empagliflozin to the WHO Essential Medicines List. Answer B is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q12",
+      "question_type": "multi_hop",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Both answers are incomplete and cut off prematurely. However, Answer A manages to state that empagliflozin was added in 2023 for T2DM with cardiovascular disease before cutting off, whereas Answer B contains no substantive factual content at all, only an introductory sentence.",
+      "reasoning_2": "Both answers are truncated and incomplete. However, Answer B managed to provide some correct information (added in 2023 for T2DM with cardiovascular disease) before cutting off, whereas Answer A provided no factual information at all."
+    },
+    {
+      "question_id": "Q12",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is completely accurate and aligns perfectly with the ground truth, detailing the 2023 addition to the WHO Essential Medicines List, the landmark trials (EMPA-REG OUTCOME, DAPA-HF, CREDENCE/DAPA-CKD), the specific 38% CV death reduction, and its role as a second-line therapy after metformin. Answer A incorrectly claims that context/documentation was missing and fails to answer the prompt.",
+      "reasoning_2": "Answer A provides a comprehensive and accurate explanation that closely aligns with the ground truth, detailing the 2023 WHO addition, the EMPA-REG trial results, cardiovascular and renal benefits, and updated treatment guidelines. Answer B incorrectly claims that no information is available based on non-existent context documents."
+    },
+    {
+      "question_id": "Q12",
+      "question_type": "multi_hop",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both answers failed to answer the question according to the ground truth. However, Answer B is severely truncated and incomplete, while Answer A provided a complete (though context-bound) response acknowledging the lack of information.",
+      "reasoning_2": "Both models failed to answer the question. Answer A provided an introductory sentence and then cut off completely without giving any reasons. Answer B hallucinated a context of 'provided drug labels and documentation' that was not part of the prompt, refusing to answer based on this non-existent context."
+    },
+    {
+      "question_id": "Q12",
+      "question_type": "multi_hop",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, accurate, and detailed explanation that perfectly aligns with all aspects of the ground truth. Answer B is incomplete and provides no actual answer.",
+      "reasoning_2": "Answer A is incomplete and cuts off after an introductory sentence. Answer B is extremely comprehensive, accurate, and aligns perfectly with the ground truth details, including trial names, numerical reductions, and clinical guideline recommendations."
+    },
+    {
+      "question_id": "Q13",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A accurately and comprehensively addresses the question, perfectly matching all key points from the ground truth (overall alignment with differing emphasis, shared myopathy risks, FDA-specific pregnancy/dosing/cognitive warnings). Answer B fails to answer the question and cuts off mid-sentence.",
+      "reasoning_2": "Answer B accurately captures all key points from the ground truth, explaining where FDA warnings and clinical guidelines align (myopathy, rhabdomyolysis) and where they differ in emphasis (pregnancy Category X, specific CYP3A4/amiodarone dose limits, cognitive effects). Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q13",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is more comprehensive and aligns better with the ground truth. It includes all points mentioned in the ground truth, specifically adding the guideline emphasis on intensity-based dosing (high: 40-80mg, moderate: 10-20mg) tied to patient risk categories, which Answer A omitted.",
+      "reasoning_2": "Answer A includes all elements from the ground truth, including the specific guideline recommendations regarding intensity-based dosing (high: 40-80 mg, moderate: 10-20 mg) tied to patient risk categories. Answer B omitted the guideline-specific dosing intensity information."
+    },
+    {
+      "question_id": "Q13",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, accurate, and structured comparison that closely matches all elements of the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence. Answer B is detailed, accurate, and comprehensively addresses all points mentioned in the ground truth."
+    },
+    {
+      "question_id": "Q13",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive, accurate, and structured comparison that directly aligns with the ground truth. It covers all key points including myopathy/rhabdomyolysis, FDA-specific warnings (pregnancy Category X, CYP3A4/amiodarone dose limits, cognitive effects), and clinical guideline emphasis (intensity-based dosing tied to risk categories). Answer A is incomplete and cut off mid-sentence.",
+      "reasoning_2": "Answer A provides a detailed, highly accurate comparison that perfectly aligns with all aspects of the ground truth. Answer B is incomplete and fails to answer the question."
+    },
+    {
+      "question_id": "Q13",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI systems provided severely truncated responses that cut off mid-sentence before addressing the question, making both answers incomplete and unhelpful.",
+      "reasoning_2": "Both AI systems provided incomplete responses that were cut off mid-sentence before addressing the question. Neither answer provided any of the relevant clinical information outlined in the ground truth."
+    },
+    {
+      "question_id": "Q13",
+      "question_type": "cross_source",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, accurate, and perfectly structured response that covers all details mentioned in the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer B provides a comprehensive, structured, and highly accurate response that aligns perfectly with all elements of the ground truth. Answer A is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q14",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI systems provided incomplete, truncated answers that fail to address the question or align with the ground truth.",
+      "reasoning_2": "Both models failed to answer the prompt because their responses were severely truncated mid-sentence. Neither model provided the information contained in the ground truth."
+    },
+    {
+      "question_id": "Q14",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete, cut off mid-sentence, and fails to answer the prompt. Answer B provides a comprehensive, accurate comparison that correctly identifies all the relevant antihypertensive medications on the WHO Essential Medicines List and contrasts the availability/population focus of the WHO EML with the clinical guideline recommendations based on patient demographics and comorbidities.",
+      "reasoning_2": "Answer A provides a comprehensive and accurate comparison between the WHO Essential Medicines List for antihypertensives and clinical guideline recommendations, correctly identifying the specific drugs listed on the WHO EML and explaining the demographic and comorbidity-driven choices recommended by guidelines. Answer B incorrectly refuses to answer."
+    },
+    {
+      "question_id": "Q14",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both answers are incomplete and severely truncated before providing any meaningful comparison. Answer A stops mid-bullet point after claiming a lack of context, while Answer B cuts off almost immediately during its initial outline setup.",
+      "reasoning_2": "Both AI systems provided incomplete, truncated answers that fail to address the question."
+    },
+    {
+      "question_id": "Q14",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive, accurate, and structured comparison that covers all the specific medications on the WHO EML mentioned in the ground truth (amlodipine, bisoprolol, enalapril, lisinopril, losartan, hydrochlorothiazide) and details how clinical guidelines personalize treatment based on demographics and comorbidities. Answer A is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A provides a thorough, detailed, and accurate comparison that aligns very closely with the ground truth, explicitly listing the specific WHO EML entries and explaining how clinical guidelines personalize selection based on demographics and comorbidities. Answer B is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q14",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI systems provided incomplete, truncated responses that failed to answer the prompt. Answer A cut off mid-sentence in its opening statement, and Answer B cut off during its initial reasoning path outline.",
+      "reasoning_2": "Both Answer A and Answer B are severely truncated after just a few words and fail to answer the prompt."
+    },
+    {
+      "question_id": "Q14",
+      "question_type": "cross_source",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, accurate, and structured comparison between the WHO Essential Medicines List (EML) and clinical guideline recommendations for antihypertensives, covering all the specific medications and clinical selection nuances mentioned in the ground truth. Answer B is incomplete and cut off mid-sentence.",
+      "reasoning_2": "Answer A is severely truncated and incomplete. Answer B provides a comprehensive, accurate comparison that correctly identifies all the WHO Essential Medicines List antihypertensives mentioned in the ground truth, and thoroughly explains how clinical guidelines tailor these medications based on patient demographics, comorbidities, and personalized care."
+    },
+    {
+      "question_id": "Q15",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "Tie",
+      "reasoning_1": "Both Answer A and Answer B are severely truncated and cut off mid-sentence before providing any substantive comparison or answering the question.",
+      "reasoning_2": "Both Answer A and Answer B are severely truncated and cut off mid-sentence, failing to provide any actual comparison or answer to the prompt."
+    },
+    {
+      "question_id": "Q15",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and cuts off mid-sentence. Answer B provides a comprehensive, well-structured, and detailed comparison between PubMed research findings and FDA label warnings regarding warfarin interactions.",
+      "reasoning_2": "Answer A provides a structured, detailed, and comprehensive comparison between PubMed research findings and FDA label warnings for warfarin interactions. Answer B is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q15",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI responses are severely truncated and incomplete, cutting off before providing any substantive comparison or information.",
+      "reasoning_2": "Both AI answers are incomplete and cut off abruptly before answering the question. Neither system provided the requested comparison."
+    },
+    {
+      "question_id": "Q15",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and cuts off after a single introductory sentence. Answer B provides a comprehensive, detailed, and accurate comparison between PubMed research findings and FDA label warnings for warfarin interactions.",
+      "reasoning_2": "Answer A provides a detailed, comprehensive, and well-structured comparison between PubMed research findings and FDA label warnings regarding warfarin interactions. Answer B is incomplete and truncates immediately after the introductory sentence."
+    },
+    {
+      "question_id": "Q15",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI answers were cut off almost immediately in their introductions without providing any actual content or answering the question.",
+      "reasoning_2": "Both Answer A and Answer B suffer from severe generation failure, cutting off during their introductory sentences without providing any actual content or answering the question."
+    },
+    {
+      "question_id": "Q15",
+      "question_type": "cross_source",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a thorough, well-structured, and comprehensive comparison between PubMed research findings and FDA label warnings regarding warfarin interactions. Answer B is severely incomplete and cuts off after the introductory heading.",
+      "reasoning_2": "Answer A is incomplete and cuts off abruptly at the beginning. Answer B provides a thorough, well-structured, and comprehensive comparison between PubMed research findings and FDA label warnings for warfarin interactions."
+    },
+    {
+      "question_id": "Q16",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, accurate response detailing the specific contraindication threshold (eGFR < 30 mL/min/1.73m\u00b2) and lactic acidosis risk mentioned in the sources. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is truncated and incomplete, cutting off mid-sentence. Answer B provides a complete, well-structured, and accurate response based on the available information."
+    },
+    {
+      "question_id": "Q16",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive, accurate, and well-structured summary of metformin's contraindications in renal impairment. It covers the specific eGFR thresholds (<30 for absolute contraindication, 30-45 for dose reduction), explains the risk of lactic acidosis, and includes details on combination products (Zituvimet), closely matching the ground truth. Answer A is overly restrictive and omits key dosing threshold information.",
+      "reasoning_2": "Answer A is comprehensive, accurate, and structured. It clearly details the eGFR-based thresholds (<30 contraindication, 30-45 dose adjustment), mentions the risk of lactic acidosis, and cites appropriate source types. Answer B is overly restrictive and omits key details regarding moderate renal impairment guidance."
+    },
+    {
+      "question_id": "Q16",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a clear, natural language explanation detailing specific source findings (e.g., MedQuAD specifying severe renal impairment with eGFR < 30 mL/min/1.73m\u00b2 and lactic acidosis risk). Answer B mainly outputs a structured reasoning path with concepts and relations rather than a fully developed answer.",
+      "reasoning_2": "Answer B provides a clear, natural language summary of the information from different sources regarding metformin's contraindications in renal impairment, including the eGFR threshold (<30 mL/min/1.73m\u00b2) and the risk of lactic acidosis. Answer A only provides a sparse knowledge-graph style output."
+    },
+    {
+      "question_id": "Q16",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and cuts off mid-sentence. Answer B provides a thorough, accurate, and structured comparison of the contraindications and dosing adjustments for metformin in renal impairment based on different sources.",
+      "reasoning_2": "Answer A provides a thorough, accurate, and well-structured response that aligns well with the ground truth. Answer B is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q16",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Answer A is incomplete and cuts off mid-sentence without providing any relevant information. Answer B, while formatted as a reasoning path rather than a standard prose response, correctly identifies severe renal impairment (eGFR < 30 mL/min/1.73 m\u00b2) as a key contraindication for metformin.",
+      "reasoning_2": "Answer A is complete and correctly identifies the main eGFR threshold (< 30 mL/min/1.73 m\u00b2) and the associated risk of lactic acidosis. Answer B is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q16",
+      "question_type": "cross_source",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a thorough, well-structured, and accurate summary detailing the contraindications and dosage adjustments for metformin in renal impairment based on different clinical sources and FDA drug labels. Answer B only provides an incomplete reasoning draft and fails to answer the question.",
+      "reasoning_2": "Answer B provides a comprehensive, detailed, and structured response addressing eGFR thresholds, lactic acidosis risks, dosing adjustments, and specific sources/labels. Answer A is incomplete and only provides a brief reasoning path/fragment."
+    },
+    {
+      "question_id": "Q17",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete, well-structured response that correctly identifies key details from the FDA labeling and clinical guidelines (such as the 20mg atorvastatin dose cap with amiodarone and myopathy risk with CYP3A4 inhibitors), while appropriately noting the absence of WHO guidance in its context. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence at the very beginning. Answer B provides a detailed, well-structured response that covers FDA labels, clinical guidelines, specific interactions, dose caps, and appropriately notes any missing information regarding WHO guidance."
+    },
+    {
+      "question_id": "Q17",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive and accurate cross-reference of statin drug interactions across all three required sources: FDA labels, WHO guidance, and clinical guidelines. Answer A failed to include information regarding WHO guidance, claiming insufficient information.",
+      "reasoning_2": "Answer A provides a comprehensive, accurate cross-reference across all three requested sources (FDA labels, WHO guidance, and clinical guidelines), closely aligning with the ground truth. Answer B incorrectly claims that there is insufficient context regarding WHO guidance and fails to provide details on that source."
+    },
+    {
+      "question_id": "Q17",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a clear and accurate comparison matching the details in the ground truth, and correctly identifies missing information regarding WHO guidance. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is truncated and incomplete, cutting off mid-sentence. Answer B provides a clear, structured, and accurate response covering FDA labels and clinical guidelines (including the specific atorvastatin 20mg cap with amiodarone) and correctly identifies the missing information regarding WHO guidance."
+    },
+    {
+      "question_id": "Q17",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is severely truncated and cut off mid-sentence. Answer B provides a comprehensive, accurate, and structured comparison across FDA labels, WHO guidance, and clinical guidelines, perfectly aligning with all points in the ground truth.",
+      "reasoning_2": "Answer A provides a thorough, highly detailed, and accurate cross-reference that aligns closely with all points in the ground truth and structures the comparison clearly. Answer B cut off after the introductory sentence and provided no meaningful content."
+    },
+    {
+      "question_id": "Q17",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both Answer A and Answer B are incomplete and cut off mid-sentence at the very beginning of their responses, failing to provide any actual cross-referenced analysis or substantive information.",
+      "reasoning_2": "Both Answer A and Answer B cut off incomplete at the very beginning of their responses without providing any substantive information or answering the prompt."
+    },
+    {
+      "question_id": "Q17",
+      "question_type": "cross_source",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a thorough, well-structured, and accurate cross-reference of statin drug interaction warnings across FDA labels, WHO guidance, and clinical guidelines, aligning perfectly with the ground truth. Answer B is incomplete and truncates after the introductory sentence.",
+      "reasoning_2": "Answer A is incomplete and cuts off mid-sentence. Answer B provides a comprehensive, well-structured, and accurate cross-reference that aligns perfectly with the ground truth details across FDA labels, WHO guidance, and clinical guidelines."
+    },
+    {
+      "question_id": "Q18",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI systems failed to answer the medical question, incorrectly stating that there was insufficient context or documents provided. Neither answer aligns with the ground truth, which details the consistency of metformin, guidelines, SGLT2i/GLP-1 RA recommendations, and the WHO EML.",
+      "reasoning_2": "Both AI models failed to provide the ground truth answer, instead stating that the provided context/documents lacked information on PubMed, WHO EML, and clinical guidelines. However, Answer B is better because it concisely acknowledges the lack of context without hallucinating or referencing unprovided FDA drug label details like Answer A does."
+    },
+    {
+      "question_id": "Q18",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive, accurate, and well-structured response that aligns perfectly with the ground truth. It correctly highlights the high level of consistency across PubMed, guidelines, and the WHO EML, specifically noting metformin as first-line, the addition of SGLT2 inhibitors for cardiorenal comorbidities, and empagliflozin's 2023 addition to the WHO EML. Answer A incorrectly claims that there is not enough information to answer.",
+      "reasoning_2": "Answer A comprehensively and accurately answers the question, aligning perfectly with the ground truth by discussing the high consistency across all sources, metformin as first-line, second-line comorbidity-driven agents (SGLT2i/GLP-1 RA), and the 2023 WHO EML addition of empagliflozin. Answer B incorrectly declines to answer, claiming a lack of context."
+    },
+    {
+      "question_id": "Q18",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A is complete, whereas Answer B is cut off mid-sentence and fails to provide an answer. Although Answer A incorrectly references a missing context, it is preferred over an incomplete response.",
+      "reasoning_2": "Answer A is severely truncated and provides no meaningful response to the question. Answer B, while failing to answer the question directly by assuming a context-based constraint, is a complete sentence and correctly identifies the missing components of the prompt."
+    },
+    {
+      "question_id": "Q18",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B directly and accurately answers the prompt, perfectly matching all key points of the ground truth: high overall consistency, metformin as first-line, risk-stratified second-line additions (SGLT2i for CVD/CKD, GLP-1 RA), and the 2023 addition of empagliflozin to the WHO EML. Answer A incorrectly claims a lack of context/information to answer the question.",
+      "reasoning_2": "Answer A provides a comprehensive and accurate answer that aligns closely with the ground truth. It correctly addresses the role of metformin as first-line therapy, SGLT2 inhibitors and GLP-1 RAs for comorbidity-driven second-line treatment, and the 2023 addition of empagliflozin to the WHO EML. Answer B incorrectly assumes a missing document context and fails to answer the question."
+    },
+    {
+      "question_id": "Q18",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer B is incomplete and cuts off at the very beginning of its response. Answer A, while incorrectly assuming a missing document context instead of answering from general knowledge, is a complete response and therefore superior to a severely truncated one.",
+      "reasoning_2": "Answer A is severely truncated and incomplete, cutting off at the very beginning of its response. While Answer B incorrectly assumes a set of provided documents was given, it provides a complete response, making it better than an incomplete one."
+    },
+    {
+      "question_id": "Q18",
+      "question_type": "cross_source",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, accurate, and structured comparison that directly aligns with the ground truth. Answer B was cut off mid-sentence and is incomplete.",
+      "reasoning_2": "Answer A is incomplete and cuts off after a few lines. Answer B provides a comprehensive, accurate, and structured response that aligns perfectly with the ground truth, highlighting metformin as first-line therapy, SGLT2 inhibitors for CV/renal risk, and the 2023 WHO EML addition of empagliflozin."
+    },
+    {
+      "question_id": "Q19",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "graphrag",
+      "reasoning_1": "Both models incorrectly assumed this was a RAG task with missing context (referencing 'provided context/documents'). However, Answer B is much more helpful and detailed as it actually provides key safety profile information from the FDA drug label for omeprazole, whereas Answer A provides almost no information.",
+      "reasoning_2": "Both AI systems failed to compare the FDA drug labels with MedQuAD, citing a lack of provided context about MedQuAD. However, Answer A correctly identified and summarized detailed safety profile information for omeprazole from the FDA label, whereas Answer B incorrectly claimed that no safety details were present in the context."
+    },
+    {
+      "question_id": "Q19",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive, accurate comparison between FDA drug labels and MedQuAD regarding omeprazole's safety profile, correctly identifying key specifics mentioned in the ground truth such as CYP2C19 inhibition/clopidogrel interaction, long-term risks (hypomagnesemia, B12 deficiency, fractures, C. difficile), and duration of use. Answer A incorrectly claims there is not enough context to answer.",
+      "reasoning_2": "Answer A accurately and comprehensively addresses the question, matching all key elements of the ground truth including CYP2C19 inhibition (clopidogrel interaction), long-term risks (hypomagnesemia, B12 deficiency, fracture risk, C. difficile), regulatory vs. clinical framing, and duration recommendations. Answer B incorrectly refuses to answer, claiming missing context."
+    },
+    {
+      "question_id": "Q19",
+      "question_type": "cross_source",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Answer A provides a complete response, whereas Answer B is severely truncated and cuts off mid-sentence at the very beginning of its output without providing any meaningful evaluation.",
+      "reasoning_2": "Answer A is severely truncated and cuts off mid-sentence without addressing the question. Answer B provides a complete, coherent response, correctly noting the lack of sufficient information provided to make the comparison."
+    },
+    {
+      "question_id": "Q19",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B directly and accurately answers the question, incorporating all key points from the ground truth (CYP2C19/clopidogrel interactions, long-term risks like hypomagnesemia, B12 deficiency, fractures, C. difficile, and duration recommendations). Answer A incorrectly refuses to answer, claiming a lack of context.",
+      "reasoning_2": "Answer A directly and accurately answers the question by comparing FDA drug labels and MedQuAD, capturing key points mentioned in the ground truth (e.g., CYP2C19 inhibition/clopidogrel interaction, hypomagnesemia, B12 deficiency, C. difficile, fracture risk, and recommendation for shortest duration). Answer B incorrectly states that information about MedQuAD is unavailable and fails to answer the question."
+    },
+    {
+      "question_id": "Q19",
+      "question_type": "cross_source",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer B is incomplete and cuts off mid-sentence during its reasoning path. Answer A provides a coherent response based on the FDA drug label information, even though it notes a lack of MedQuAD context.",
+      "reasoning_2": "Answer A is severely truncated and cuts off mid-sentence in the beginning. Answer B provides a complete, well-structured response detailing the safety profile of omeprazole, despite incorrectly assuming a specific document context was provided."
+    },
+    {
+      "question_id": "Q19",
+      "question_type": "cross_source",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, accurate, and highly structured comparison between FDA drug labels and MedQuAD regarding omeprazole's safety profile, explicitly covering all key points mentioned in the ground truth. Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is severely truncated and incomplete, cutting off midway through the first sentence. Answer B is extremely comprehensive, accurate, well-structured, and aligns perfectly with the ground truth."
+    },
+    {
+      "question_id": "Q20",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Both answers are severely truncated and incomplete. However, Answer A manages to address one of the key drug interaction categories (statin toxicity with CYP3A4 inhibitors) before cutting off, whereas Answer B cuts off in the introductory sentence without providing any actual drug interaction risks.",
+      "reasoning_2": "Both answers are severely truncated and incomplete. However, Answer B is slightly better because it manages to state a valid drug interaction risk (statin toxicity with CYP3A4 inhibitors, matching point 5 of the ground truth), whereas Answer A cuts off in the introductory sentence without providing any actual interaction risks."
+    },
+    {
+      "question_id": "Q20",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B is comprehensive, highly accurate, exceptionally well-structured, and covers all 7 points mentioned in the ground truth plus additional clinically relevant interactions. Answer A is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is exceptionally clear, highly detailed, and accurately covers all seven major interaction categories listed in the ground truth (along with a few additional relevant ones). Answer B is incomplete and cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q20",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Both answers suffer from severe truncation. However, Answer A is slightly better because it manages to state one correct major interaction risk (statin toxicity with CYP3A4 inhibitors) before cutting off, whereas Answer B cuts off during the introductory text without providing any substantive answer.",
+      "reasoning_2": "Both answers are incomplete and cut off mid-sentence. However, Answer B is slightly better because it manages to identify one major category from the ground truth (Statin toxicity with CYP3A4 inhibitors), whereas Answer A contains only introductory meta-text with no actual medical content."
+    },
+    {
+      "question_id": "Q20",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is cut off mid-sentence and incomplete. Answer B is exceptionally comprehensive, accurate, and perfectly addresses all seven major drug interaction categories outlined in the ground truth, along with helpful clinical explanations.",
+      "reasoning_2": "Answer A is exceptionally thorough, accurate, and covers all seven major drug interaction categories listed in the ground truth, along with helpful clinical explanations. Answer B is incomplete and truncates in the middle of the first sentence."
+    },
+    {
+      "question_id": "Q20",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both Answer A and Answer B are incomplete, cut-off responses that fail to provide any of the requested information about drug interaction risks.",
+      "reasoning_2": "Both Answer A and Answer B are severely truncated text fragments that fail to answer the question or provide any of the key drug interaction risks listed in the ground truth."
+    },
+    {
+      "question_id": "Q20",
+      "question_type": "global",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A completely and accurately covers all 7 major drug interaction categories listed in the ground truth with detailed clinical explanations. Answer B is incomplete and cuts off after the introduction.",
+      "reasoning_2": "Answer A is incomplete and cuts off after the intro. Answer B is comprehensive, extremely detailed, and perfectly addresses all seven major drug interaction categories listed in the ground truth."
+    },
+    {
+      "question_id": "Q21",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Both answers are incomplete, but Answer A attempts to address the prompt directly with a coherent statement on geriatric prescribing patterns, whereas Answer B consists of garbled, fragmented text regarding drug side effects and interactions.",
+      "reasoning_2": "Answer A is a truncated fragment about specific drug risks and does not answer the prompt at all. Answer B directly addresses the question regarding overarching patterns for safe prescribing in older adults, although it is slightly incomplete."
+    },
+    {
+      "question_id": "Q21",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is severely truncated and incomplete, cutting off after the first heading. Answer B is extremely comprehensive, accurate, well-structured, and covers virtually all points outlined in the ground truth, including polypharmacy, renal adjustments, 'start low, go slow' principles, avoiding NSAIDs, and frequent monitoring.",
+      "reasoning_2": "Answer A provides a comprehensive, highly detailed, and accurate summary that aligns closely with the ground truth concepts (polypharmacy, renal function decline, 'start low go slow', avoiding NSAIDs, monitoring requirements). Answer B is incomplete and cuts off after the first heading."
+    },
+    {
+      "question_id": "Q21",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Both AI systems provided incomplete and severely truncated responses. However, Answer B is preferred because it contains actual relevant clinical details that align with the ground truth (such as eGFR thresholds, dosage adjustments for renal/hepatic impairment, metformin, and careful titration), whereas Answer A only contains a introductory sentence and an incomplete heading.",
+      "reasoning_2": "Both answers are severely truncated. However, Answer A manages to include relevant clinical details that align with the ground truth (e.g., eGFR thresholds, dosage adjustments for drugs like Metformin and Lisinopril), whereas Answer B cuts off after a single introductory heading without providing any substantive clinical details."
+    },
+    {
+      "question_id": "Q21",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and appears to be a truncated fragment of text. Answer B is extremely comprehensive, well-structured, and aligns exceptionally well with the ground truth points, covering polypharmacy risks, renal function declines, the 'start low, go slow' approach, avoiding NSAIDs, monitoring, and statin review.",
+      "reasoning_2": "Answer A provides a comprehensive, well-structured, and accurate response that covers all key aspects of the ground truth, including polypharmacy risks, renal function considerations, 'start low, go slow' strategies, and specific drug interactions. Answer B is severely truncated, incomplete, and fails to address the prompt."
+    },
+    {
+      "question_id": "Q21",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both answers are incomplete text fragments. However, Answer B is slightly better as it references essential safe prescribing patterns for elderly patients, such as dosage adjustments, careful titration, and eGFR/renal thresholds for medications like Metformin and Lisinopril.",
+      "reasoning_2": "Both Answer A and Answer B are severely truncated, incomplete text fragments that fail to directly answer the question about overarching patterns for safe prescribing in elderly patients."
+    },
+    {
+      "question_id": "Q21",
+      "question_type": "global",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, highly accurate, and well-structured response that covers all key clinical patterns outlined in the ground truth, including polypharmacy risks, renal function adjustments, 'start low, go slow' dosing strategies, and NSAID avoidance. Answer B is incomplete and appears to be a truncated snippet.",
+      "reasoning_2": "Answer A is an incomplete sentence fragment. Answer B is extremely comprehensive, well-structured, and thoroughly addresses all key patterns mentioned in the ground truth, including polypharmacy, renal function adjustments, starting low and going slow, avoiding NSAIDs, and monitoring parameters."
+    },
+    {
+      "question_id": "Q22",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "naive_rag",
+      "reasoning_1": "Both answers are severely truncated and incomplete. However, Answer A is slightly better as it begins with a proper introduction and structured formatting directly addressing the question, whereas Answer B starts abruptly mid-text and is completely fragmented.",
+      "reasoning_2": "Both answers are incomplete and cut off mid-sentence. However, Answer B properly sets up the response to address the question and begins listing a correct key theme (Blood Pressure Reduction), whereas Answer A starts abruptly at item #4 with very minimal content."
+    },
+    {
+      "question_id": "Q22",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and cuts off after the first header. Answer B is comprehensive, highly detailed, well-structured, and accurately addresses all key themes mentioned in the ground truth (statin therapy, blood pressure control, SGLT2 inhibitors, antiplatelet therapy nuances, drug interactions, and lifestyle modifications).",
+      "reasoning_2": "Answer A is comprehensive, highly accurate, and directly covers all key themes mentioned in the ground truth (statin therapy, blood pressure control, SGLT2 inhibitors, aspirin for secondary vs. primary prevention, drug interactions, and lifestyle modification). Answer B is cut off mid-sentence and incomplete."
+    },
+    {
+      "question_id": "Q22",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both models failed to produce complete answers due to severe truncation. Answer A cuts off after its first sub-heading, and Answer B cuts off before even providing any information. Both are incomplete and unhelpful.",
+      "reasoning_2": "Both answers were truncated and failed to provide a complete response. However, Answer B is slightly better as it directly begins addressing the key themes (starting with blood pressure reduction), whereas Answer A gets bogged down in an unrequested 'reasoning path' section before cutting off almost immediately."
+    },
+    {
+      "question_id": "Q22",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B provides a comprehensive, detailed, and accurate summary covering all the key themes outlined in the ground truth (statins, BP control, SGLT2 inhibitors, aspirin for secondary vs. primary prevention, drug interactions, and lifestyle modifications). Answer A is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A provides a comprehensive, well-structured, and accurate summary covering all the key themes outlined in the ground truth (statin therapy, blood pressure management, SGLT2 inhibitors, antiplatelet therapy for secondary vs. primary prevention, drug interactions, and lifestyle modifications). Answer B is severely truncated and incomplete."
+    },
+    {
+      "question_id": "Q22",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both models failed significantly by providing incomplete, cut-off responses. However, Answer A is slightly better as it contains a small fragment of relevant information regarding drug interactions/warnings increasing CV risk, whereas Answer B cuts off entirely before providing any content.",
+      "reasoning_2": "Both Answer A and Answer B are severely truncated and incomplete, failing to provide any meaningful summary of the key themes requested in the prompt."
+    },
+    {
+      "question_id": "Q22",
+      "question_type": "global",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, highly detailed, and accurate summary that covers all the key themes outlined in the ground truth. Answer B is incomplete and cuts off mid-sentence during the reasoning step.",
+      "reasoning_2": "Answer A was severely truncated and incomplete, cutting off after the first header. Answer B provided a thorough, well-structured, and accurate summary covering all six key themes mentioned in the ground truth."
+    },
+    {
+      "question_id": "Q23",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "Tie",
+      "reasoning_1": "Both answers fail to provide the key themes listed in the ground truth. However, Answer A provides a complete response explaining that the context is insufficient, whereas Answer B is truncated mid-sentence and fails to list any themes.",
+      "reasoning_2": "Both AI systems completely failed to answer the question and provided none of the main themes listed in the ground truth. Answer A cut off mid-sentence after an introductory statement, while Answer B declined to answer citing missing context."
+    },
+    {
+      "question_id": "Q23",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A fails to answer the question, claiming a lack of context. Answer B is extremely detailed, accurate, and directly covers almost all the main themes specified in the ground truth, including narrow therapeutic index drugs, renal and hepatic monitoring, electrolyte tracking, statin-induced myopathy, and GI monitoring with NSAIDs.",
+      "reasoning_2": "Answer A provides a comprehensive, well-structured summary that aligns almost perfectly with all 7 points in the ground truth (narrow therapeutic index drugs, renal function, hepatic monitoring for statins including recent de-emphasis, electrolyte tracking for ACE inhibitors/diuretics, myopathy monitoring with statins, and GI risks with NSAIDs). Answer B incorrectly refuses to answer."
+    },
+    {
+      "question_id": "Q23",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "naive_rag",
+      "reasoning_1": "Neither model provided the correct themes outlined in the ground truth. However, Answer A generated a clear, coherent response explaining a lack of context, whereas Answer B provided a corrupted, truncated sentence fragment.",
+      "reasoning_2": "Answer A is an incomplete, fragmented snippet that fails to answer the prompt. Answer B correctly identifies a lack of context (or provides a coherent, complete response regarding context limitations) rather than returning garbled text."
+    },
+    {
+      "question_id": "Q23",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and cuts off mid-sentence without providing any specific details. Answer B is comprehensive, highly detailed, and accurately covers almost all the main themes listed in the ground truth.",
+      "reasoning_2": "Answer A provides a comprehensive, accurate, and detailed synthesis of drug safety monitoring themes that aligns remarkably well with all points in the ground truth (narrow therapeutic index drugs, renal function, hepatic monitoring for statins, electrolytes, myopathy symptoms, GI monitoring). Answer B cut off after its introduction without providing any themes."
+    },
+    {
+      "question_id": "Q23",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI systems provided incomplete, truncated responses that failed to answer the question. Answer A cuts off after an introductory sentence without listing any themes, while Answer B is a malformed text fragment.",
+      "reasoning_2": "Both answers are severely truncated and incomplete. However, Answer A is slightly better as it mentions specific drugs and monitoring concepts (e.g., Warfarin, Ibuprofen/NSAIDs, glycemic symptoms) relevant to drug safety monitoring, whereas Answer B cuts off entirely after its introductory sentence without providing any content or themes."
+    },
+    {
+      "question_id": "Q23",
+      "question_type": "global",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is exceptionally detailed, structured, and accurately covers almost all of the main themes listed in the ground truth (narrow therapeutic index drugs, renal function, hepatic monitoring for statins, electrolyte monitoring, myopathy symptom monitoring, and GI monitoring for NSAIDs). Answer B is a truncated, broken sentence fragment.",
+      "reasoning_2": "Answer A is severely truncated and incomplete, providing no meaningful answer. Answer B is extremely comprehensive, accurate, and covers virtually all the main themes listed in the ground truth with excellent clinical detail."
+    },
+    {
+      "question_id": "Q24",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI responses are severely incomplete and cut off mid-sentence, failing to provide any meaningful comparison to the ground truth.",
+      "reasoning_2": "Both answers are severely incomplete and cut off mid-sentence. However, Answer B is slightly better as it refrains from hallucinating incorrect trends not listed in the ground truth, whereas Answer A begins listing an unverified trend (Fixed-Dose Combination Therapy) before truncating."
+    },
+    {
+      "question_id": "Q24",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A fails to answer the question, incorrectly claiming there is not enough information. Answer B provides a detailed, accurate, and comprehensive response that aligns well with the ground truth, specifically covering SGLT2 inhibitor expansion, comorbidity-based personalized treatment, and polypharmacy/interaction risks.",
+      "reasoning_2": "Answer A comprehensively addresses the prompt, accurately covering the majority of the key trends listed in the ground truth, including SGLT2 inhibitors expanding beyond diabetes (with the 2023 WHO EML addition), individualized precision medicine approaches based on comorbidities, and managing polypharmacy and drug interaction risks. Answer B fails to answer the question, incorrectly claiming there is not enough information."
+    },
+    {
+      "question_id": "Q24",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI systems provided incomplete responses that failed to answer the prompt. Answer A was truncated mid-sentence after claiming there was not enough information, and Answer B was truncated at the beginning of its reasoning path.",
+      "reasoning_2": "Both AI systems failed to answer the question. Answer A was truncated almost immediately at the start of its response, while Answer B gave a generic refusal stating there was not enough information in the context."
+    },
+    {
+      "question_id": "Q24",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is incomplete and cuts off mid-sentence. Answer B is comprehensive, highly accurate, and directly addresses the core points outlined in the ground truth, specifically citing the SGLT2 inhibitor expansion (and WHO EML 2023 addition), individualized/precision medicine approaches, and polypharmacy/interaction risks.",
+      "reasoning_2": "Answer A provides a thorough, detailed breakdown of emerging trends in pharmacotherapy that closely aligns with the ground truth, specifically capturing the expansion of SGLT2 inhibitors (including the 2023 WHO EML update), precision/individualized medicine, and polypharmacy/interaction management. Answer B is incomplete and cuts off after the first heading."
+    },
+    {
+      "question_id": "Q24",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both AI answers are severely truncated and fail to provide the requested information or address the ground truth points.",
+      "reasoning_2": "Both models failed to provide a complete answer due to severe truncation. Neither system managed to present the key trends outlined in the ground truth."
+    },
+    {
+      "question_id": "Q24",
+      "question_type": "global",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a thorough, well-structured response that addresses the core elements of the ground truth (e.g., SGLT2 inhibitor expansion, WHO EML updates, polypharmacy, and interaction monitoring). Answer B is incomplete and cuts off mid-sentence.",
+      "reasoning_2": "Answer A is severely truncated and cut off after the first sentence. Answer B is highly comprehensive, accurate, well-structured, and directly addresses the key trends outlined in the ground truth, including SGLT2 inhibitor expansion, cardiorenal protection, risk stratification, and drug interaction management."
+    },
+    {
+      "question_id": "Q25",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "graphrag",
+      "winner": "graphrag",
+      "reasoning_1": "Answer B correctly identifies Vitamin K Antagonists/Warfarin as having the most complex interaction profile, which matches the ground truth. Although Answer B is cut off mid-sentence, it is still far superior to Answer A, which fails to answer the question entirely.",
+      "reasoning_2": "Answer A correctly identifies Vitamin K Antagonists (specifically Warfarin/Anticoagulants) as the drug class with the most complex interaction profile, matching the ground truth, despite being truncated. Answer B incorrectly refuses to answer."
+    },
+    {
+      "question_id": "Q25",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer B accurately identifies oral anticoagulants (specifically Warfarin) as having the most complex drug interaction profile and provides a comprehensive explanation covering all key points in the ground truth (narrow therapeutic index, extensive CYP450 metabolism, additive bleeding risks, protein binding displacement, and dietary interactions). Answer A falsely claims there is not enough information.",
+      "reasoning_2": "Answer A accurately identifies oral anticoagulants (specifically Warfarin) as having the most complex drug interaction profile and provides a detailed, comprehensive breakdown that covers all points in the ground truth (narrow therapeutic index, CYP450 metabolism pathways, dietary interactions with vitamin K, additive bleeding risk with NSAIDs/antiplatelets, and protein binding displacement). Answer B incorrectly refuses to answer."
+    },
+    {
+      "question_id": "Q25",
+      "question_type": "global",
+      "system_a": "naive_rag",
+      "system_b": "noderag",
+      "winner": "noderag",
+      "reasoning_1": "Answer B correctly identifies Warfarin/Vitamin K Antagonists as having the most complex interaction profile, aligning with the ground truth. Answer A incorrectly refuses to answer, claiming a lack of context.",
+      "reasoning_2": "Answer A correctly identifies Vitamin K Antagonists (Warfarin Sodium) as the drug class with the most complex interaction profile, aligning with the ground truth. Although Answer A is incomplete and cuts off before providing its detailed reasoning, it is still significantly better than Answer B, which incorrectly claims there is not enough information to answer."
+    },
+    {
+      "question_id": "Q25",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "lightrag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A is truncated and incomplete, cutting off mid-sentence. Answer B provides a comprehensive, highly accurate response that correctly identifies oral anticoagulants (Warfarin) as having the most complex interaction profile, thoroughly covering all key aspects mentioned in the ground truth (narrow therapeutic index, CYP450 metabolism, food/vitamin K interactions, additive bleeding risks with NSAIDs, and protein binding displacement).",
+      "reasoning_2": "Answer A provides a thorough, detailed, and accurate explanation that covers all key points mentioned in the ground truth regarding Warfarin/oral anticoagulants (narrow therapeutic index, CYP450 metabolism, food/vitamin K interactions, additive bleeding risks, etc.). Answer B is incomplete as it cuts off mid-sentence."
+    },
+    {
+      "question_id": "Q25",
+      "question_type": "global",
+      "system_a": "graphrag",
+      "system_b": "noderag",
+      "winner": "Tie",
+      "reasoning_1": "Both models identified the correct drug class (Vitamin K Antagonists/Warfarin) based on the ground truth, but both responses were truncated prematurely before providing the underlying reasons ('why'). Answer B is slightly better as it ends on a complete sentence rather than cutting off mid-clause like Answer A.",
+      "reasoning_2": "Both System A and System B correctly identify Warfarin/Vitamin K Antagonists as the drug class with the most complex interaction profile, but both responses cut off prematurely before providing any of the required reasoning or explanation ('why'). Thus, neither answer is complete or helpful."
+    },
+    {
+      "question_id": "Q25",
+      "question_type": "global",
+      "system_a": "lightrag",
+      "system_b": "noderag",
+      "winner": "lightrag",
+      "reasoning_1": "Answer A provides a comprehensive, highly accurate, and detailed answer that captures all the key points mentioned in the ground truth regarding Warfarin/oral anticoagulants, while also discussing other complex classes. Answer B is incomplete and truncates right after the introduction.",
+      "reasoning_2": "Answer A is severely truncated and cuts off before providing any detailed reasoning. Answer B accurately identifies Warfarin/oral anticoagulants as having the most complex interaction profile and comprehensively covers all the points mentioned in the ground truth, including narrow therapeutic index, CYP450 metabolism, dietary vitamin K interactions, additive bleeding risks with NSAIDs, and protein binding displacement."
+    }
+  ],
+  "stats": {
+    "naive_rag": {
+      "wins": 36,
+      "losses": 28,
+      "ties": 11
+    },
+    "graphrag": {
+      "wins": 9,
+      "losses": 49,
+      "ties": 17
+    },
+    "lightrag": {
+      "wins": 73,
+      "losses": 0,
+      "ties": 2
+    },
+    "noderag": {
+      "wins": 9,
+      "losses": 50,
+      "ties": 16
+    }
+  }
+}

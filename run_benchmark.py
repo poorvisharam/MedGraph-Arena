@@ -31,8 +31,8 @@ def main():
     # 3. Query
     run_script("query_runner.py")
 
-    # 4. Evaluate with RAGAS
-    run_script("ragas_eval.py")
+    # 4. Evaluate with G-Eval (6 Criteria)
+    run_script("geval_eval.py")
 
     # 5. Evaluate with LLM Judge
     run_script("llm_judge.py")
