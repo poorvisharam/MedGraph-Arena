@@ -124,8 +124,11 @@ class NaiveRAG:
 
         # Synthesize answer with LLM
         prompt = (
-            "You are a medical knowledge assistant. Answer the question based ONLY on the provided context. "
-            "If the context doesn't contain enough information, say so. Cite specific details from the context.\n\n"
+            "You are a strict medical evaluation assistant. Answer the question based ONLY and EXCLUSIVELY on the provided context. "
+            "Do NOT use any pre-trained external knowledge, clinical assumptions, or unstated facts. "
+            "If the context does not contain enough information to answer the question, you MUST explicitly state: "
+            "'The provided context does not contain sufficient information to answer this question.' "
+            "Do NOT extrapolate or infer beyond what is directly stated. Cite specific details from the context.\n\n"
             f"Context:\n{context_text}\n\n"
             f"Question: {question}\n\n"
             "Answer:"
