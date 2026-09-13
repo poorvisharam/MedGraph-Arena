@@ -69,6 +69,7 @@ FDA_DRUG_NAMES = [
 EVAL_DATASET_PATH = PROJECT_ROOT / "eval_dataset.json"
 RAGAS_RESULTS_PATH = RESULTS_DIR / "ragas_scores.json"
 JUDGE_RESULTS_PATH = RESULTS_DIR / "judge_results.json"
+GEVAL_RESULTS_PATH = RESULTS_DIR / "geval_scores.json"
 QUERY_OUTPUTS_PATH = RESULTS_DIR / "query_outputs.json"
 
 # ─── Rate Limiting ──────────────────────────────────────────────────
