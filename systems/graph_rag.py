@@ -36,6 +36,8 @@ class GraphRAGSystem:
         self.workspace_dir.mkdir(parents=True, exist_ok=True)
         self.input_dir = self.workspace_dir / "input"
         self.input_dir.mkdir(parents=True, exist_ok=True)
+        self.output_dir = self.workspace_dir / "output"
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         self._initialized = False
 
         # LLM client for fallback querying
@@ -49,76 +51,80 @@ class GraphRAGSystem:
         if self._initialized:
             return
 
-        # Create settings.yaml for GraphRAG
+        # Set environment variable for API key
+        os.environ["GRAPHRAG_API_KEY"] = GEMINI_OPENAI_API_KEY
+
+        # Run graphrag init if settings don't exist yet
+        settings_path = self.workspace_dir / "settings.yaml"
+        if not settings_path.exists():
+            try:
+                subprocess.run(
+                    [sys.executable, "-m", "graphrag", "init", "--root", str(self.workspace_dir)],
+                    cwd=str(self.workspace_dir),
+                    capture_output=True,
+                    text=True,
+                    timeout=60,
+                )
+            except Exception:
+                pass
+
+        # Write our custom settings.yaml configured for Gemini Free/Tier 1
         settings = {
-            "llm": {
-                "api_key": "${GRAPHRAG_API_KEY}",
-                "type": "openai_chat",
-                "model": GEMINI_MODEL,
-                "api_base": GEMINI_OPENAI_BASE_URL,
-                "api_version": None,
-                "max_tokens": 4096,
-                "temperature": 0.0,
-                "top_p": 1.0,
-                "request_timeout": 120,
-            },
-            "embeddings": {
-                "llm": {
-                    "api_key": "${GRAPHRAG_API_KEY}",
-                    "type": "openai_embedding",
-                    "model": "text-embedding-004",
+            "concurrent_requests": 10,
+            "async_mode": "threaded",
+            "completion_models": {
+                "default_completion_model": {
+                    "model_provider": "openai",
+                    "type": "litellm",
+                    "model": GEMINI_MODEL,
                     "api_base": GEMINI_OPENAI_BASE_URL,
+                    "api_key": GEMINI_OPENAI_API_KEY,
+                    "api_version": None,
+                    "max_tokens": 4096,
+                    "temperature": 0.0,
+                    "top_p": 1.0,
+                    "request_timeout": 180,
+                }
+            },
+            "embedding_models": {
+                "default_embedding_model": {
+                    "model_provider": "openai",
+                    "type": "litellm",
+                    "model": "gemini-embedding-001",
+                    "api_base": GEMINI_OPENAI_BASE_URL,
+                    "api_key": GEMINI_OPENAI_API_KEY,
                 }
             },
             "input": {
+                "type": "text",
+            },
+            "input_storage": {
                 "type": "file",
-                "file_type": "text",
                 "base_dir": "input",
+            },
+            "output_storage": {
+                "type": "file",
+                "base_dir": "output",
             },
             "chunks": {
                 "size": 1200,
                 "overlap": 100,
             },
             "cache": {
-                "type": "file",
+                "type": "json",
                 "base_dir": "cache",
             },
             "reporting": {
                 "type": "file",
                 "base_dir": "output",
             },
-            "storage": {
-                "type": "file",
-                "base_dir": "output",
-            },
         }
 
         import yaml
-        settings_path = self.workspace_dir / "settings.yaml"
         with open(settings_path, "w") as f:
             yaml.dump(settings, f, default_flow_style=False)
 
-        # Set environment variable for API key
-        os.environ["GRAPHRAG_API_KEY"] = GEMINI_OPENAI_API_KEY
-
-        # Run graphrag init
-        try:
-            result = subprocess.run(
-                ["graphrag", "init"],
-                cwd=str(self.workspace_dir),
-                capture_output=True,
-                text=True,
-                timeout=60,
-            )
-            if result.returncode == 0:
-                print("  [GraphRAG] Workspace initialized")
-            else:
-                print(f"  [GraphRAG] Init warning: {result.stderr[:200]}")
-        except FileNotFoundError:
-            print("  [GraphRAG] ⚠ graphrag CLI not found — will use API-based fallback")
-        except Exception as e:
-            print(f"  [GraphRAG] ⚠ Init error: {e}")
-
+        print("  [GraphRAG] Workspace settings configured with gemini-embedding-001 & concurrency 10")
         self._initialized = True
 
     def ingest(self, documents: list[str], metadatas: list[dict] | None = None):
@@ -140,103 +146,114 @@ class GraphRAGSystem:
         print("  [GraphRAG] Running indexing (this may take a while)...")
         try:
             result = subprocess.run(
-                ["graphrag", "index"],
+                [sys.executable, "-m", "graphrag", "index", "--root", str(self.workspace_dir)],
                 cwd=str(self.workspace_dir),
                 capture_output=True,
                 text=True,
-                timeout=600,  # 10 minute timeout
+                timeout=3600,  # 1 hour timeout
                 env={**os.environ, "GRAPHRAG_API_KEY": GEMINI_OPENAI_API_KEY},
             )
             if result.returncode == 0:
                 print("  [GraphRAG] Indexing complete ✓")
             else:
                 print(f"  [GraphRAG] Indexing error: {result.stderr[:500]}")
-                print("  [GraphRAG] Will use LLM-based fallback for queries")
-        except FileNotFoundError:
-            print("  [GraphRAG] ⚠ graphrag CLI not available — storing docs for fallback mode")
         except subprocess.TimeoutExpired:
-            print("  [GraphRAG] ⚠ Indexing timed out — will use fallback mode")
+            print("  [GraphRAG] ⚠ Indexing timed out")
         except Exception as e:
             print(f"  [GraphRAG] ⚠ Indexing failed: {e}")
 
-    def query(self, question: str, method: str = "global") -> dict:
+    def query(self, question: str, method: str = "local") -> dict:
         """
-        Query GraphRAG using CLI or fallback to direct LLM query with stored documents.
-        method: 'global' for theme-level synthesis, 'local' for entity-centric retrieval.
+        Query GraphRAG using official CLI.
+        method: 'local' for entity-centric retrieval, 'global' for theme-level synthesis.
         Returns: { answer, contexts, latency_ms }
         """
         start_time = time.time()
 
-        # Try CLI query first
+        strict_question = (
+            f"{question}\n\n[STRICT INSTRUCTION: Answer based ONLY on the retrieved graph context. "
+            "Do NOT use any pre-trained external knowledge. If the context does not contain enough information, "
+            "state: 'The provided context does not contain sufficient information to answer this question.']"
+        )
+
         try:
             result = subprocess.run(
-                ["graphrag", "query", "--method", method, "--query", question],
+                [
+                    sys.executable,
+                    "-m",
+                    "graphrag",
+                    "query",
+                    "--root",
+                    str(self.workspace_dir),
+                    "--method",
+                    method,
+                    strict_question,
+                ],
                 cwd=str(self.workspace_dir),
                 capture_output=True,
                 text=True,
-                timeout=120,
+                timeout=180,
                 env={**os.environ, "GRAPHRAG_API_KEY": GEMINI_OPENAI_API_KEY},
             )
+            latency_ms = (time.time() - start_time) * 1000
+
             if result.returncode == 0 and result.stdout.strip():
-                answer = result.stdout.strip()
-                latency_ms = (time.time() - start_time) * 1000
+                stdout = result.stdout.strip()
+                answer = stdout
+                for prefix in [
+                    "SUCCESS: Global Search Response:\n",
+                    "SUCCESS: Local Search Response:\n",
+                    "SUCCESS:",
+                ]:
+                    if answer.startswith(prefix):
+                        answer = answer[len(prefix):].strip()
+
+                contexts = self._extract_retrieved_contexts()
                 return {
                     "answer": answer,
-                    "contexts": [f"[GraphRAG {method} search]"],
+                    "contexts": contexts,
                     "latency_ms": round(latency_ms, 1),
                 }
-        except (FileNotFoundError, subprocess.TimeoutExpired, Exception):
-            pass
-
-        # Fallback: Use stored documents with LLM
-        return self._fallback_query(question, method, start_time)
-
-    def _fallback_query(self, question: str, method: str, start_time: float) -> dict:
-        """
-        Fallback query using stored documents + LLM when CLI is unavailable.
-        Simulates GraphRAG's global vs local approach via prompt engineering.
-        """
-        # Read all documents from input directory
-        docs = []
-        if self.input_dir.exists():
-            for f in sorted(self.input_dir.glob("*.txt")):
-                docs.append(f.read_text(encoding="utf-8"))
-
-        context_text = "\n\n---\n\n".join(docs[:10])  # Limit context
-
-        if method == "global":
-            system_prompt = (
-                "You are a medical knowledge assistant performing GLOBAL analysis. "
-                "Synthesize themes, patterns, and overarching insights across ALL provided documents. "
-                "Focus on high-level connections between topics, common themes, and cross-document relationships. "
-                "Provide a comprehensive synthesis, not just individual facts."
-            )
-        else:
-            system_prompt = (
-                "You are a medical knowledge assistant performing LOCAL entity-focused retrieval. "
-                "Find specific entities, facts, and relationships mentioned in the context. "
-                "Be precise and cite specific details. Focus on the exact entities asked about."
-            )
-
-        try:
-            response = self.llm.chat.completions.create(
-                model=GEMINI_MODEL,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"Context:\n{context_text}\n\nQuestion: {question}"},
-                ],
-                temperature=0.1,
-                max_tokens=1024,
-            )
-            answer = response.choices[0].message.content.strip()
+            else:
+                err_msg = result.stderr.strip() or result.stdout.strip() or "CLI query failed"
+                print(f"  [GraphRAG] Query error: {err_msg[:200]}")
+                return {
+                    "answer": f"[GraphRAG Error: {err_msg[:300]}]",
+                    "contexts": [],
+                    "latency_ms": round(latency_ms, 1),
+                }
         except Exception as e:
-            answer = f"[GraphRAG fallback error: {e}]"
+            latency_ms = (time.time() - start_time) * 1000
+            print(f"  [GraphRAG] Query error: {e}")
+            return {
+                "answer": f"[GraphRAG Error: {e}]",
+                "contexts": [],
+                "latency_ms": round(latency_ms, 1),
+            }
 
-        contexts = [doc[:200] + "..." for doc in docs[:5]]
-        latency_ms = (time.time() - start_time) * 1000
+    def _extract_retrieved_contexts(self) -> list[str]:
+        """Extract summaries or text units from GraphRAG parquet tables."""
+        contexts = []
+        try:
+            import pandas as pd
+            reports_path = self.output_dir / "community_reports.parquet"
+            if not reports_path.exists():
+                reports_path = self.output_dir / "create_final_community_reports.parquet"
+            text_units_path = self.output_dir / "text_units.parquet"
+            if not text_units_path.exists():
+                text_units_path = self.output_dir / "create_final_text_units.parquet"
 
-        return {
-            "answer": answer,
-            "contexts": contexts,
-            "latency_ms": round(latency_ms, 1),
-        }
+            if reports_path.exists():
+                df = pd.read_parquet(reports_path)
+                if "summary" in df.columns:
+                    contexts.extend(df["summary"].dropna().tolist()[:5])
+                elif "full_content" in df.columns:
+                    contexts.extend(df["full_content"].dropna().tolist()[:5])
+            if not contexts and text_units_path.exists():
+                df = pd.read_parquet(text_units_path)
+                if "text" in df.columns:
+                    contexts.extend(df["text"].dropna().tolist()[:5])
+        except Exception as e:
+            print(f"  [GraphRAG] Context extraction note: {e}")
+        return contexts if contexts else ["[GraphRAG community reports]"]
+
