@@ -7,7 +7,7 @@ from pathlib import Path
 
 import sys
 sys.path.insert(0, str(Path(__file__).parent))
-from config import DATA_DIR, SYSTEM_NAMES, SYSTEM_DISPLAY_NAMES
+from config import DATA_DIR, INDEXES_DIR, SYSTEM_NAMES, SYSTEM_DISPLAY_NAMES
 
 from systems.naive_rag import NaiveRAG
 from systems.graph_rag import GraphRAGSystem
@@ -71,6 +71,21 @@ def ingest_all(systems: dict | None = None):
     timings = {}
     for name, system in systems.items():
         display_name = SYSTEM_DISPLAY_NAMES.get(name, name)
+
+        # Skip already-indexed systems to avoid wasting tokens/time
+        if name == "naive_rag" and (INDEXES_DIR / "naive_rag" / "chroma.sqlite3").exists():
+            print(f"\n📥 [{display_name}] Chroma index already exists, skipping ingestion ✓")
+            timings[name] = 0.0
+            continue
+        if name == "lightrag" and (INDEXES_DIR / "lightrag" / "graph_chunk_entity_relation.graphml").exists():
+            print(f"\n📥 [{display_name}] GraphML index already exists, skipping ingestion ✓")
+            timings[name] = 0.0
+            continue
+        if name == "noderag" and (INDEXES_DIR / "noderag" / "cache" / "HNSW.bin").exists():
+            print(f"\n📥 [{display_name}] Heterogeneous graph index already exists, skipping ingestion ✓")
+            timings[name] = 0.0
+            continue
+
         print(f"\n📥 [{display_name}] Starting ingestion...")
         start = time.time()
 
@@ -82,6 +97,7 @@ def ingest_all(systems: dict | None = None):
         elapsed = time.time() - start
         timings[name] = round(elapsed, 1)
         print(f"  ⏱ [{display_name}] Completed in {elapsed:.1f}s")
+
 
     # Summary
     print("\n" + "=" * 60)
